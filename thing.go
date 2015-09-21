@@ -5,24 +5,14 @@ import (
 	"time"
 )
 
-// Channel represents an individual data channel being published by a Thing out
-// there in the world somewhere.
-type Channel struct {
-	ID         string
-	Value      string
-	RecordedAt time.Time
-	Unit       Unit
-}
-
-func (c Channel) String() string {
-	return fmt.Sprintf("%s: %s - %s, %s", c.ID, c.Value, c.Unit, c.RecordedAt)
-}
-
+// Thing is the top level datastructure representing an individual thing as
+// indexed on some upstream data provider.
 type Thing struct {
 	Title       string
 	Description string
 	Category    category
-	Datasource  string
+	Webpage     string
+	URI         string
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
 	IndexedAt   time.Time
@@ -32,4 +22,10 @@ type Thing struct {
 	Visibility  string
 	DataURL     string
 	Channels    []Channel
+}
+
+// String returns a String representation of the Thing (required for the
+// Stringer interface)
+func (t Thing) String() string {
+	return fmt.Sprintf("Thing<Title:%s,URI:%s>", t.Title, t.URI)
 }

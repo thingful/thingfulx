@@ -13,5 +13,5 @@ type Unit struct {
 // String is the implementation of the fmt.Stringer interface. This method is
 // used to print out a representation of the type.
 func (u Unit) String() string {
-	return fmt.Sprintf("%s (%s)", u.Name, u.Symbol)
+	return fmt.Sprintf("Unit<Name:%s,Symbol:%s>", u.Name, u.Symbol)
 }
