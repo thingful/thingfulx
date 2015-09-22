@@ -14,6 +14,8 @@ type Channel struct {
 	Unit       Unit
 }
 
+// String returns a string representation of the Channel - required to
+// implement the fmt.Stringer interface
 func (c Channel) String() string {
 	return fmt.Sprintf("Channel<ID:%s,Value:%s>", c.ID, c.Value)
 }
