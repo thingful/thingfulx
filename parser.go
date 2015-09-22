@@ -8,5 +8,5 @@ type Parser interface {
 	// The main Parse function - it takes in a slice of bytes that will have been
 	// retrieved from somewhere, and transforms them into a Slice of Thing
 	// instances.
-	Parse([]byte) ([]Thing, error)
+	Parse(data []byte) ([]Thing, error)
 }
