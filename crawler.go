@@ -1,20 +1,20 @@
+// Package thingfulx provides a compatibility layer for implementing parsers
+// for use with the Thingful indexing system. New upstream providers can be
+// added by implementing the core Fetcher and Parser interfaces contained
+// within this library. These libraries can then be imported and used by
+// Thingful.
 package thingfulx
 
-// Crawler is the top level interface that implementing libraries must support
-// to be a Thingful compatible parser. A Crawler is basically a simple
-// container that returns a Fetcher and a Parser for a specific upstream
-// provider identifed by the ID method on the Crawler instance.
-type Crawler interface {
-	// Fetcher returns an instantiated Fetcher instance for the upstream provider
-	// this crawler knows how to retrieve data from.
-	Fetcher() Fetcher
+// Crawler is a struct containing a Fetcher and a Parser that together know how
+// to fetch data from some upstream provider and parse it.
+type Crawler struct {
+	// Fetcher is an embedded Fetcher instance
+	Fetcher
 
-	// Parser returns an instantiated Parser instance for the upstream provider
-	// this crawler knows how to parse the data from.
-	Parser() Parser
+	// Parser is an embedded Parser instance
+	Parser
 
-	// Provider returns a unique identifier representing a single upstream source
-	// of data. Typically this will be the Host component of the domain's URL,
-	// but could be anything providing it is unique among crawlers.
-	Provider() string
+	// Provider returns a unique string identifier representing the upstream data
+	// provider this Crawler knows about.
+	Provider string
 }
