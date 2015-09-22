@@ -1,4 +1,4 @@
-# Simple Makefile for testing thingfulx
+# Simple Makefile for building and testing thingfulx
 #
 ARTEFACT_DIR = ./build
 GOCMD = go
@@ -27,7 +27,7 @@ lint:
 	$(GOLINT) ./...
 
 clean:
-	rm -f $(ARTEFACT_DIR)
+	rm -rf $(ARTEFACT_DIR)
 
 full: test coverage html
 
