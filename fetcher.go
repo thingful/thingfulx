@@ -1,6 +1,7 @@
 package thingfulx
 
 import (
+	"io/ioutil"
 	"net/http"
 )
 
@@ -15,4 +16,45 @@ type Fetcher interface {
 	// to fetch, a user agent string we must send with the request, and a handle
 	// to a resusable http Client instance
 	Fetch(rawurl, userAgent string, client *http.Client) (*Response, error)
+}
+
+// NewFetcher creates an returns an instance of a simple fetcher. This fetcher
+// is one that is able to fetch an arbitrary HTTP resource that doesn't require
+// any authentication.
+func NewFetcher() Fetcher {
+	return &fetcher{}
+}
+
+// fetcher is an implementation of the fetcher interface for simple cases where
+// no special authentication needs to be performed
+type fetcher struct{}
+
+// Fetch a resource from the upstream provider if we can.
+func (f *fetcher) Fetch(rawurl, userAgent string, client *http.Client) (*Response, error) {
+	// create a new request object
+	req, err := http.NewRequest("GET", rawurl, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	// we must set the user agent manually currently
+	req.Header.Add("User-Agent", userAgent)
+
+	// make the requests
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+
+	bytes, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return &Response{
+		Body:       bytes,
+		StatusCode: resp.StatusCode,
+	}, nil
 }
