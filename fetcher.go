@@ -1,6 +1,7 @@
 package thingfulx
 
 import (
+	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -12,10 +13,19 @@ import (
 // data.
 type Fetcher interface {
 	// Fetch is the method a Fetcher must implement which returns a byte array
-	// retrieved from the given rawurl string. It is passed in the rawurl we want
-	// to fetch, a user agent string we must send with the request, and a handle
-	// to a resusable http Client instance
-	Fetch(rawurl, userAgent string, client *http.Client) (*Response, error)
+	// retrieved from the given urlStr. It is passed in the request method, the
+	// urlStr we want to fetch, a user agent string that clients must send with
+	// outgoing requests, a handle to a resusable http Client instance, and an
+	// optional body for POST requests.
+	//
+	// The semantics of method, urlStr and body are exactly the same as that for
+	// the http.NewRequest constructor in the net/http package.
+	//
+	// We return an instantiated Response object which is a simple struct that
+	// contains the HTTP status code and the body and possibly an error if the
+	// fetch failed unexpectedly.  Note that an HTTP error from an upstream
+	// source does not cause an error object to be returned.
+	Fetch(method, urlStr, userAgent string, client *http.Client, body io.Reader) (*Response, error)
 }
 
 // NewFetcher creates an returns an instance of a simple fetcher. This fetcher
@@ -30,17 +40,16 @@ func NewFetcher() Fetcher {
 type fetcher struct{}
 
 // Fetch a resource from the upstream provider if we can.
-func (f *fetcher) Fetch(rawurl, userAgent string, client *http.Client) (*Response, error) {
+func (f *fetcher) Fetch(method, urlStr, userAgent string, client *http.Client, body io.Reader) (*Response, error) {
 	// create a new request object
-	req, err := http.NewRequest("GET", rawurl, nil)
+	req, err := http.NewRequest(method, urlStr, body)
 	if err != nil {
 		return nil, err
 	}
 
-	// we must set the user agent manually currently
+	// We must set the user agent manually
 	req.Header.Add("User-Agent", userAgent)
 
-	// make the requests
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
