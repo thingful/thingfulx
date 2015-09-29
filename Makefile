@@ -7,7 +7,7 @@ GOTEST = $(GODEP) go test
 GOLINT = golint
 GOCOVER = $(GODEP) go tool cover
 GOGET = $(GOCMD) get -u
-GORESTORE = $(GODEP) go restore
+GORESTORE = $(GODEP) restore
 
 default: test
 
