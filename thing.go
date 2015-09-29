@@ -53,7 +53,7 @@ type Thing struct {
 
 	// Visibility indicates whether or not a thing is public or private. Private
 	// things will only be accessible by consumers with valid credentials
-	Visibility string
+	Visibility visibility
 
 	// DataURL is a string containing the actual URL we go to fetch data from for
 	// this thing
