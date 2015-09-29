@@ -1,15 +1,22 @@
 # Simple Makefile for building and testing thingfulx
-#
+
 ARTEFACT_DIR = ./build
 GOCMD = go
-GOTEST = $(GOCMD) test
+GODEP = godep
+GOTEST = $(GODEP) go test
 GOLINT = golint
-GOCOVER = $(GOCMD) tool cover
+GOCOVER = $(GODEP) go tool cover
+GOGET = $(GOCMD) get -u
+GORESTORE = $(GODEP) go restore
 
 default: test
 
 setup:
-	$(GOCMD) get -u github.com/golang/lint/golint
+	$(GOGET) github.com/tools/godep
+	$(GOGET) github.com/golang/lint/golint
+
+restore:
+	$(GORESTORE)
 
 test:
 	mkdir -p $(ARTEFACT_DIR)
@@ -31,4 +38,4 @@ clean:
 
 full: test coverage html
 
-.PHONY: setup test lint coverage full html clean
+.PHONY: setup restore test lint coverage html clean full

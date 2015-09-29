@@ -6,6 +6,22 @@ build:
         - setup-go-workspace
 
         - script:
+            name: setup
+            code: |
+              make setup
+
+        - script:
+            name: restore
+            code: |
+              go version
+              make restore
+
+        - script:
             name: test
             code: |
               make full ARTEFACT_DIR=$WERCKER_REPORT_ARTIFACTS_DIR
+
+        - script:
+            name: lint
+            code: |
+              make lint
