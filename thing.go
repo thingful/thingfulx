@@ -61,7 +61,7 @@ type Thing struct {
 
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
-	Cdfaahannels []Channel
+	Channels []Channel
 }
 
 // String returns a String representation of the Thing (required for the
