@@ -2,25 +2,15 @@
 
 ARTEFACT_DIR = ./build
 GOCMD = go
-GODEP = godep
-GOTEST = $(GODEP) go test
+GOTEST = go test
 GOLINT = golint
-GOCOVER = $(GODEP) go tool cover
+GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
-GORESTORE = $(GODEP) restore
-GOSAVE = $(GODEP) save
 
 default: test
 
 setup:
-	$(GOGET) github.com/tools/godep
 	$(GOGET) github.com/golang/lint/golint
-
-restore:
-	$(GORESTORE)
-
-save:
-	$(GOSAVE)
 
 test:
 	mkdir -p $(ARTEFACT_DIR)
