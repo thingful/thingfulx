@@ -25,4 +25,10 @@ type Fetcher interface {
 	// instantiated http.Client object that the crawler should use to actually
 	// make the request.
 	Fetch(url, userAgent string, client *http.Client) ([]Thing, error)
+
+	// Host is a function that should return a string containing the host this
+	// fetcher is designed to handle. This should just be the host part and not
+	// contain the protocol, or any path information, e.g. it should be
+	// `api.thingspeak.com` rather than `https://api.thingspeak.com/channels`
+	Host() string
 }
