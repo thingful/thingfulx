@@ -27,8 +27,6 @@ func TestCompleteThing(t *testing.T) {
 		Category:    Environment,
 		Webpage:     "http://example.com/things",
 		URI:         "http://example.com/things#123abc",
-		CreatedAt:   timestamp,
-		UpdatedAt:   timestamp,
 		IndexedAt:   timestamp,
 		Lng:         -0.5,
 		Lat:         55.5,

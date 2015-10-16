@@ -29,14 +29,6 @@ type Thing struct {
 	// unique HTTP anchor to the block URL, e.g. http://example.com#abc123
 	URI string
 
-	// CreatedAt is a Time object indicating the timestamp when the thing was
-	// created, i.e. started for the first time
-	CreatedAt time.Time
-
-	// UpdatedAt is a Time object indicating the timestamp when the thing last
-	// updated it's data
-	UpdatedAt time.Time
-
 	// IndexedAt is a Time object indicating the timestamp when the thing was
 	// indexed by Thingful
 	IndexedAt time.Time
@@ -48,8 +40,8 @@ type Thing struct {
 	Lat float64
 
 	// Provider should be a URL that points to a human readable web page
-	// identifying the upstream data provider
-	ProviderURL string
+	// identifying the upstream data provider, e.g. http://thingspeak.com
+	Provider string
 
 	// Visibility indicates whether or not a thing is public or private. Private
 	// things will only be accessible by consumers with valid credentials
