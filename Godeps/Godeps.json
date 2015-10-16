@@ -1,10 +1,5 @@
 {
 	"ImportPath": "github.com/thingful/thingfulx",
 	"GoVersion": "go1.4",
-	"Deps": [
-		{
-			"ImportPath": "github.com/jarcoal/httpmock",
-			"Rev": "145b10d659265440f062c31ea15326166bae56ee"
-		}
-	]
+	"Deps": []
 }

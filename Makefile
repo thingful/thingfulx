@@ -8,6 +8,7 @@ GOLINT = golint
 GOCOVER = $(GODEP) go tool cover
 GOGET = $(GOCMD) get -u
 GORESTORE = $(GODEP) restore
+GOSAVE = $(GODEP) save
 
 default: test
 
@@ -17,6 +18,9 @@ setup:
 
 restore:
 	$(GORESTORE)
+
+save:
+	$(GOSAVE)
 
 test:
 	mkdir -p $(ARTEFACT_DIR)
