@@ -1,7 +1,6 @@
 package thingfulx
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -54,10 +53,4 @@ type Thing struct {
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel
-}
-
-// String returns a String representation of the Thing (required for the
-// Stringer interface)
-func (t Thing) String() string {
-	return fmt.Sprintf("Thing<Title:%s,URI:%s>", t.Title, t.URI)
 }
