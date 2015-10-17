@@ -23,8 +23,10 @@ type Fetcher interface {
 	// this.  This function takes as parameters the url we want to get data from,
 	// a user agent string (passed in by the main crawler engine), and an
 	// instantiated http.Client object that the crawler should use to actually
-	// make the request.
-	Fetch(url, userAgent string, client *http.Client) ([]Thing, error)
+	// make the request. We also pass in a TimeProvider which is used internally
+	// by the fetcher to record the indexing time of the parser. This is to allow
+	// for easier testing.
+	Fetch(url, userAgent string, client *http.Client, timeProvider TimeProvider) ([]Thing, error)
 
 	// Host is a function that should return a string containing the host this
 	// fetcher is designed to handle. This should just be the host part and not
