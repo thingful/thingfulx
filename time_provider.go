@@ -18,7 +18,7 @@ type TimeProvider interface {
 type DefaultTimeProvider struct{}
 
 // Now just returns the time as seen by time.Now()
-func (t *DefaultTimeProvider) Now() time.Time {
+func (t DefaultTimeProvider) Now() time.Time {
 	return time.Now()
 }
 
@@ -30,11 +30,12 @@ type MockTimeProvider struct {
 }
 
 // Now returns the internal time of the MockTimeProvider.
-func (t *MockTimeProvider) Now() time.Time {
+func (t MockTimeProvider) Now() time.Time {
 	return t.InternalTime
 }
 
-// Set is a function that allows setting the internal time of the MockTimeProvider
+// Set is a function that allows setting the internal time of the
+// MockTimeProvider
 func (t *MockTimeProvider) Set(other time.Time) {
 	t.InternalTime = other
 }
