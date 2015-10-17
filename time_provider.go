@@ -26,15 +26,15 @@ func (t *DefaultTimeProvider) Now() time.Time {
 // gives back a canned time for all calls to Now(). Intended for use in testing
 // Fetchers.
 type MockTimeProvider struct {
-	internalTime time.Time
+	InternalTime time.Time
 }
 
 // Now returns the internal time of the MockTimeProvider.
 func (t *MockTimeProvider) Now() time.Time {
-	return t.internalTime
+	return t.InternalTime
 }
 
 // Set is a function that allows setting the internal time of the MockTimeProvider
 func (t *MockTimeProvider) Set(other time.Time) {
-	t.internalTime = other
+	t.InternalTime = other
 }
