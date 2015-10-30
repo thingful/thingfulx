@@ -1,29 +1,29 @@
 package thingfulx
 
-type category string
+type Category string
 
 const (
 	// Home is the exported const representing the Thingful Home category
-	Home = category("home")
+	Home = Category("home")
 
 	// Environment is the exported const representing the Thingful Environment category
-	Environment = category("environment")
+	Environment = Category("environment")
 
 	// Transport is the exported const representing the Thingful Transport category
-	Transport = category("transport")
+	Transport = Category("transport")
 
 	// Health is the exported const representing the Thingful Health category
-	Health = category("health")
+	Health = Category("health")
 
 	// Energy is the exported const representing the Thingful Energy category
-	Energy = category("energy")
+	Energy = Category("energy")
 
 	// Flora is the exported const representing the Thingful Flora category
-	Flora = category("flora & fauna")
+	Flora = Category("flora & fauna")
 
 	// Experiment is the exported const representing the Thingful Experiment category
-	Experiment = category("experiment")
+	Experiment = Category("experiment")
 
 	// Miscellaneous is the exported const representing the Thingful Miscellaneous category
-	Miscellaneous = category("miscellaneous")
+	Miscellaneous = Category("miscellaneous")
 )

@@ -1,11 +1,11 @@
 package thingfulx
 
-type visibility string
+type Visibility string
 
 const (
 	// Public is the exported const representing a Public thing
-	Public = visibility("public")
+	Public = Visibility("public")
 
 	// Private is the exported const representing a Private thing
-	Private = visibility("private")
+	Private = Visibility("private")
 )
