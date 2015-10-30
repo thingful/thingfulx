@@ -14,7 +14,7 @@ type Thing struct {
 	Description string
 
 	// Category is a thingfulx.category instance - choose from the declared categories
-	Category category
+	Category Category
 
 	// Webpage is a URL to a human intelligible page about the thing
 	Webpage string
@@ -44,7 +44,7 @@ type Thing struct {
 
 	// Visibility indicates whether or not a thing is public or private. Private
 	// things will only be accessible by consumers with valid credentials
-	Visibility visibility
+	Visibility Visibility
 
 	// DataURL is a string containing the actual URL we go to fetch data from for
 	// this thing
