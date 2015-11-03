@@ -1,5 +1,6 @@
 package thingfulx
 
+// Category is a simple type alias for a string
 type Category string
 
 const (

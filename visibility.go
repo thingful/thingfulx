@@ -1,5 +1,6 @@
 package thingfulx
 
+// Visibility is a simple type alias for string.
 type Visibility string
 
 const (
