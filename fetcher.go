@@ -33,4 +33,11 @@ type Fetcher interface {
 	// contain the protocol, or any path information, e.g. it should be
 	// `api.thingspeak.com` rather than `https://api.thingspeak.com/channels`
 	Host() string
+
+	// URLS is a function that can be called by Pomelo, that then returns back a
+	// slice of strings containing the URLS that should be indexed for this host.
+	// This might be a single URL for hosts that publish relatively few things,
+	// or it might be a whole bunch for hosts that have pages of results, that
+	// Pomelo should iterate through.
+	URLS() []string
 }
