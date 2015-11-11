@@ -35,9 +35,16 @@ type Fetcher interface {
 	Host() string
 
 	// URLS is a function that can be called by Pomelo, that then returns back a
-	// slice of strings containing the URLS that should be indexed for this host.
-	// This might be a single URL for hosts that publish relatively few things,
-	// or it might be a whole bunch for hosts that have pages of results, that
-	// Pomelo should iterate through.
-	URLS() []string
+	// slice of strings containing the minimum set of URLS that should be indexed
+	// for this host.  This might be a single URL for hosts that publish
+	// relatively few things, or it might be a whole bunch for hosts that have
+	// pages of results, that Pomelo should iterate through. The key requirement
+	// is that this function should return the smallest set of URLs required to
+	// completely index the upstream data provider.
+	//
+	// We pass in a userAgent string to this function as it will typically have
+	// to make some HTTP request to the upstream source, and this should be made
+	// with the consistent user agent string. We also pass in an instantiated
+	// http.Client object as this is designed to be shared.
+	URLS(userAgent string, client *http.Client) ([]string, error)
 }
