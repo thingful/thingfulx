@@ -40,7 +40,7 @@ type Thing struct {
 
 	// Provider is a data structure containing information about the upstream
 	// data provider.
-	Provider Provider
+	Provider *Provider
 
 	// Visibility indicates what level of access the upstream data provider
 	// offers, Closed, Shared or Open.
