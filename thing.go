@@ -38,12 +38,12 @@ type Thing struct {
 	// Lat is the latitude of the Thing, represented as a decimal value
 	Lat float64
 
-	// Provider should be a URL that points to a human readable web page
-	// identifying the upstream data provider, e.g. http://thingspeak.com
-	Provider string
+	// Provider is a data structure containing information about the upstream
+	// data provider.
+	Provider Provider
 
-	// Visibility indicates whether or not a thing is public or private. Private
-	// things will only be accessible by consumers with valid credentials
+	// Visibility indicates what level of access the upstream data provider
+	// offers, Closed, Shared or Open.
 	Visibility Visibility
 
 	// DataURL is a string containing the actual URL we go to fetch data from for

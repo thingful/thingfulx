@@ -28,11 +28,11 @@ type Fetcher interface {
 	// for easier testing.
 	Fetch(url, userAgent string, client *http.Client, timeProvider TimeProvider) ([]Thing, error)
 
-	// Host is a function that should return a string containing the host this
-	// fetcher is designed to handle. This should just be the host part and not
-	// contain the protocol, or any path information, e.g. it should be
-	// `api.thingspeak.com` rather than `https://api.thingspeak.com/channels`
-	Host() string
+	// Provider is a function returning an instantiated Provider object
+	// describing the upstream data provider this particular fetcher can
+	// indexing. This data structure contains the name of the provider, plus a
+	// url.URL struct containing the base URL of the provider
+	Provider() *Provider
 
 	// URLS is a function that can be called by Pomelo, that then returns back a
 	// slice of strings containing the minimum set of URLS that should be indexed
