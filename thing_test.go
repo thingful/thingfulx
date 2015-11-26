@@ -17,7 +17,7 @@ func TestCompleteThing(t *testing.T) {
 		IndexedAt:   timestamp,
 		Lng:         -0.5,
 		Lat:         55.5,
-		Visibility:  Public,
+		Visibility:  Open,
 		DataURL:     "http://example.com/things.json",
 	}
 
@@ -49,7 +49,7 @@ func TestCompleteThing(t *testing.T) {
 		t.Errorf("Unexpected value, expected '55.5', got '%s'", thing.Lat)
 	}
 
-	if thing.Visibility != Public {
+	if thing.Visibility != Open {
 		t.Errorf("Unexpected value, expected 'public', got '%s'", thing.Visibility)
 	}
 
