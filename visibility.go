@@ -4,9 +4,12 @@ package thingfulx
 type Visibility string
 
 const (
-	// Public is the exported const representing a Public thing
-	Public = Visibility("public")
+	// Closed is the exported const representing a private Thing
+	Closed = Visibility("closed")
 
-	// Private is the exported const representing a Private thing
-	Private = Visibility("private")
+	// Shared is the exported const representing a Thing accessible through authentication
+	Shared = Visibility("shared")
+
+	// Open is the exported const representing an open Thing
+	Open = Visibility("open")
 )
