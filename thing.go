@@ -13,8 +13,8 @@ type Thing struct {
 	// Description is a long form description about the thing
 	Description string
 
-	// Category is a thingfulx.category instance - choose from the declared categories
-	Category Category
+	// Category is a thingfulx.Category instance - choose from the declared categories
+	Category *Category
 
 	// Webpage is a URL to a human intelligible page about the thing
 	Webpage string

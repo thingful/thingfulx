@@ -11,7 +11,7 @@ func TestCompleteThing(t *testing.T) {
 	thing := Thing{
 		Title:       "Title",
 		Description: "Description",
-		Category:    Environment,
+		Category:    &Environment,
 		Webpage:     "http://example.com/things",
 		URI:         "http://example.com/things#123abc",
 		IndexedAt:   timestamp,
@@ -29,7 +29,7 @@ func TestCompleteThing(t *testing.T) {
 		t.Errorf("Unexpected value, expected 'Description', got '%s'", thing.Description)
 	}
 
-	if thing.Category != Environment {
+	if thing.Category != &Environment {
 		t.Errorf("Unexpected value, expected 'environment', got '%s'", thing.Category)
 	}
 
