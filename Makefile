@@ -7,7 +7,7 @@ GOLINT = golint
 GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
 
-default: test
+default: full
 
 setup:
 	$(GOGET) github.com/golang/lint/golint

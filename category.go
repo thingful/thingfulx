@@ -40,7 +40,7 @@ var (
 		UID:  "energy",
 	}
 
-	// Flora is the exported const representing the Thingful Flora category
+	// Flora is the exported const representing the Thingful Flora and Fauna category
 	Flora = Category{
 		Name: "Flora & Fauna",
 		UID:  "flora-and-fauna",
