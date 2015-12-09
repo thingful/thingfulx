@@ -13,6 +13,10 @@ type Thing struct {
 	// Description is a long form description about the thing
 	Description string
 
+	// Metadata is a comma separated tags - additional metadata about the Thing,
+	// that isn't necessarily encoded into the feed.
+	Metadata string
+
 	// Category is a thingfulx.Category instance - choose from the declared categories
 	Category *Category
 
