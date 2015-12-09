@@ -7,6 +7,7 @@ package thingfulx
 
 import (
 	"net/http"
+	"time"
 )
 
 // Fetcher is the main interface for things that know how to fetch some
@@ -46,5 +47,5 @@ type Fetcher interface {
 	// to make some HTTP request to the upstream source, and this should be made
 	// with the consistent user agent string. We also pass in an instantiated
 	// http.Client object as this is designed to be shared.
-	URLS(userAgent string, client *http.Client) ([]string, error)
+	URLS(userAgent string, client *http.Client, delay time.Duration) ([]string, error)
 }
