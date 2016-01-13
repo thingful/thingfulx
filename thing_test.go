@@ -42,11 +42,11 @@ func TestCompleteThing(t *testing.T) {
 	}
 
 	if thing.Lng != -0.5 {
-		t.Errorf("Unexpected value, expected '-0.5', got '%s'", thing.Lng)
+		t.Errorf("Unexpected value, expected '-0.5', got '%#v'", thing.Lng)
 	}
 
 	if thing.Lat != 55.5 {
-		t.Errorf("Unexpected value, expected '55.5', got '%s'", thing.Lat)
+		t.Errorf("Unexpected value, expected '55.5', got '%#v'", thing.Lat)
 	}
 
 	if thing.Visibility != Open {
