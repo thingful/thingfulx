@@ -25,13 +25,16 @@ var (
 
 	// ErrInvalidLocationData is an error indicating that there is a problem with
 	// the location of a fetched thing
-	ErrInvalidLocationData = errors.New("thingfulx: missing or invalid location data")
+	ErrInvalidLocation = errors.New("thingfulx: missing or invalid location data")
 
 	// ErrInvalidTimeData is an error indicating that there is a problem with
 	// parsing the time value from a retrieved thing
-	ErrInvalidTimeData = errors.New("thingfulx: invalid time data")
+	ErrInvalidTime = errors.New("thingfulx: invalid time data")
 
 	// ErrMissingCredentials is an error that should be returned if a fetcher is
 	// missing required credentials
 	ErrMissingCredentials = errors.New("thingfulx: missing required credentials")
+
+	// ErrInvalidURL is an error used to flag an invalid url
+	ErrInvalidURL = errors.New("thingfulx: invalid url")
 )
