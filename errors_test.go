@@ -23,3 +23,13 @@ func TestErrMissingConfig(t *testing.T) {
 		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, e.Error())
 	}
 }
+
+func TestErrBadData(t *testing.T) {
+	e := NewErrBadData("some bad data")
+
+	msg := "thingfulx: some bad data"
+
+	if e.Error() != msg {
+		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, e.Error())
+	}
+}
