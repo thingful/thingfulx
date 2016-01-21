@@ -42,6 +42,22 @@ func NewErrMissingConfig(variable string) *ErrMissingConfig {
 	return &ErrMissingConfig{variable}
 }
 
+// ErrBadData is an error that can be returned for any bad data when parsing
+type ErrBadData struct {
+	Msg string
+}
+
+// Error is the implementation of the default error interface. Returns the
+// contained message
+func (e *ErrBadData) Error() string {
+	return fmt.Sprintf("thingfulx: %s", e.Msg)
+}
+
+// NewErrBadData is a constructor for creating ErrBadData instances
+func NewErrBadData(msg string) *ErrBadData {
+	return &ErrBadData{msg}
+}
+
 var (
 	// ErrInvalidData is a generic error that can be returned if retrieved data
 	// is invalid in any way
