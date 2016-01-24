@@ -20,17 +20,18 @@ type Thing struct {
 	// Category is a thingfulx.Category instance - choose from the declared categories
 	Category *Category
 
-	// Webpage is a URL to a human intelligible page about the thing
+	// Webpage is a URL to a human intelligible page about the thing. This
+	// doesn't have to be a unique page for the thing as typically one might not
+	// be available. In that case, this could be a link to a page describing the
+	// type of thing, or just a link to the main homepage of the project.
 	Webpage string
 
-	// URI is a unique identifier of the Thing. This does not have to be the URL
-	// from which data for this thing may be actually fetched as some things only
-	// publish their data as a single file containing multiple resources. In fact
-	// this doesn't even have to be a URL - it could be a URN style identifier.
-	// However by convention we've tended to make it into a URL. If the thing has
-	// no URL of it's own we've tended to synthesize one by for example adding a
-	// unique HTTP anchor to the block URL, e.g. http://example.com#abc123
-	URI string
+	// DataURL is a string containing the actual URL we go to fetch data from for
+	// this thing. This string must be unique for every thing indexed. We can
+	// achieve this for things that don't make a real unique URL available by
+	// adding a synthetic identifier to the URL string, i.e.
+	// http://example.com?city=Indiana#section_id=1234
+	DataURL string
 
 	// IndexedAt is a Time object indicating the timestamp when the thing was
 	// indexed by Thingful
@@ -49,10 +50,6 @@ type Thing struct {
 	// Visibility indicates what level of access the upstream data provider
 	// offers, Closed, Shared or Open.
 	Visibility Visibility
-
-	// DataURL is a string containing the actual URL we go to fetch data from for
-	// this thing
-	DataURL string
 
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
