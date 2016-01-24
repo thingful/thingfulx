@@ -13,12 +13,11 @@ func TestCompleteThing(t *testing.T) {
 		Description: "Description",
 		Category:    &Environment,
 		Webpage:     "http://example.com/things",
-		URI:         "http://example.com/things#123abc",
+		DataURL:     "http://example.com/things.json#id=123abc",
 		IndexedAt:   timestamp,
 		Lng:         -0.5,
 		Lat:         55.5,
 		Visibility:  Open,
-		DataURL:     "http://example.com/things.json",
 	}
 
 	if thing.Title != "Title" {
@@ -37,8 +36,8 @@ func TestCompleteThing(t *testing.T) {
 		t.Errorf("Unexpected value, expected 'http://example.com/things', got '%s'", thing.Webpage)
 	}
 
-	if thing.URI != "http://example.com/things#123abc" {
-		t.Errorf("Unexpected value, expected 'http://example.com/things#123abc', got '%s'", thing.URI)
+	if thing.DataURL != "http://example.com/things.json#id=123abc" {
+		t.Errorf("Unexpected value, expected 'http://example.com/things.json', got '%s'", thing.DataURL)
 	}
 
 	if thing.Lng != -0.5 {
@@ -51,9 +50,5 @@ func TestCompleteThing(t *testing.T) {
 
 	if thing.Visibility != Open {
 		t.Errorf("Unexpected value, expected 'public', got '%s'", thing.Visibility)
-	}
-
-	if thing.DataURL != "http://example.com/things.json" {
-		t.Errorf("Unexpected value, expected 'http://example.com/things.json', got '%s'", thing.DataURL)
 	}
 }
