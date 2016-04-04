@@ -13,13 +13,27 @@ type TimeProvider interface {
 	Now() time.Time
 }
 
+// NewTimeProvider returns an instantiated DefaultTimeProvider instance.
+func NewTimeProvider() TimeProvider {
+	return &DefaultTimeProvider{}
+}
+
 // DefaultTimeProvider is an implementation of our TimeProvider interface that
 // returns now directly from time.Now().
 type DefaultTimeProvider struct{}
 
-// Now just returns the time as seen by time.Now()
+// Now returns the current time. In the default implementation this is just the
+// value of time.Now()
 func (t DefaultTimeProvider) Now() time.Time {
 	return time.Now()
+}
+
+// NewMockTimeProvider is a convenience helper that returns a new
+// MockTimeProvider initialized to the specified time.
+func NewMockTimeProvider(t time.Time) TimeProvider {
+	return &MockTimeProvider{
+		InternalTime: t,
+	}
 }
 
 // MockTimeProvider is an implementation of the TimeProvider interface that
@@ -32,10 +46,4 @@ type MockTimeProvider struct {
 // Now returns the internal time of the MockTimeProvider.
 func (t MockTimeProvider) Now() time.Time {
 	return t.InternalTime
-}
-
-// Set is a function that allows setting the internal time of the
-// MockTimeProvider
-func (t *MockTimeProvider) Set(other time.Time) {
-	t.InternalTime = other
 }
