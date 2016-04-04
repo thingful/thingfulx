@@ -73,4 +73,8 @@ var (
 
 	// ErrInvalidURL is an error used to flag an invalid url
 	ErrInvalidURL = errors.New("thingfulx: invalid url")
+
+	// ErrNotFound is a concrete implementation of ErrUnexpectedResponse
+	// initialized for a 404 not found response
+	ErrNotFound = NewErrUnexpectedResponse("404")
 )
