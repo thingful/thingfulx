@@ -5,24 +5,18 @@ import (
 	"time"
 )
 
+func TestTimeProvider(t *testing.T) {
+	provider := NewTimeProvider()
+
+	provider.Now()
+}
+
 func TestMockTimeProvider(t *testing.T) {
 	ts := time.Now()
 
-	provider := MockTimeProvider{ts}
+	provider := NewMockTimeProvider(ts)
 
 	if provider.Now() != ts {
 		t.Errorf("Unexpected response to Now(), expected '%s', got '%s'", ts, provider.Now())
-	}
-
-	newTs := time.Now()
-
-	provider.Set(newTs)
-
-	if provider.Now() == ts {
-		t.Errorf("Unexpected response to Now(), expected '%s', got '%s'", ts, provider.Now())
-	}
-
-	if provider.Now() != newTs {
-		t.Errorf("Unexpected response to Now(), expected '%s', got '%s'", newTs, provider.Now())
 	}
 }
