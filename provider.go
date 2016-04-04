@@ -15,11 +15,6 @@ type Provider struct {
 	// Webpage should contain a link to the home page of the upstream provider.
 	Webpage *url.URL
 
-	// DataURL should contain a URL representing the base URL data is actually
-	// retrieved from. This might be different from the human intended Webpage
-	// described previously
-	DataURL *url.URL
-
 	// Description should contain some text describing the data provider.
 	Description string
 }
