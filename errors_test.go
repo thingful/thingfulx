@@ -14,6 +14,14 @@ func TestErrUnexpectedResponse(t *testing.T) {
 	}
 }
 
+func TestErrNotFound(t *testing.T) {
+	msg := "thingfulx: unexpected HTTP response code, got 404"
+
+	if ErrNotFound.Error() != msg {
+		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, ErrNotFound.Error())
+	}
+}
+
 func TestErrMissingConfig(t *testing.T) {
 	e := NewErrMissingConfig("API_KEY")
 
