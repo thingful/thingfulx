@@ -11,15 +11,9 @@ build:
               make setup
 
         - script:
-            name: restore
-            code: |
-              go version
-              make restore
-
-        - script:
             name: test
             code: |
-              make full ARTEFACT_DIR=$WERCKER_REPORT_ARTIFACTS_DIR
+              make test coverage html ARTEFACT_DIR=$WERCKER_REPORT_ARTIFACTS_DIR
 
         - script:
             name: lint
