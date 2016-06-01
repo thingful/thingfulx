@@ -1,8 +1,3 @@
-// Package thingfulx provides a compatibility layer for implementing parsers
-// for use with the Thingful indexing system. New upstream providers can be
-// added by implementing the core Fetcher and Parser interfaces contained
-// within this library. These libraries can then be imported and used by
-// Thingful.
 package thingfulx
 
 import (
