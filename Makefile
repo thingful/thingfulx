@@ -14,7 +14,7 @@ setup:
 
 test:
 	mkdir -p $(ARTEFACT_DIR)
-	$(GOTEST) -coverprofile=$(ARTEFACT_DIR)/cover.out ./...
+	$(GOTEST) -coverprofile=$(ARTEFACT_DIR)/cover.out .
 
 coverage: test
 	mkdir -p $(ARTEFACT_DIR)
@@ -25,7 +25,7 @@ html: test
 	$(GOCOVER) -html=$(ARTEFACT_DIR)/cover.out -o $(ARTEFACT_DIR)/coverage.html
 
 lint:
-	$(GOLINT) ./...
+	$(GOLINT) .
 
 clean:
 	rm -rf $(ARTEFACT_DIR)
