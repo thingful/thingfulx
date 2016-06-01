@@ -1,0 +1,3 @@
+package: github.com/thingful/thingfulx
+import:
+- package: github.com/jarcoal/httpmock
