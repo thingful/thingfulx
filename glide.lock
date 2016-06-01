@@ -1,0 +1,6 @@
+hash: 5dc1d95afd7c38f70ef52c8c208d56ba1bf90a2180a094d4d11b434bb785736b
+updated: 2016-06-01T12:05:51.395720434+01:00
+imports:
+- name: github.com/jarcoal/httpmock
+  version: 145b10d659265440f062c31ea15326166bae56ee
+devImports: []

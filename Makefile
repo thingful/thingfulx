@@ -3,18 +3,19 @@
 ARTEFACT_DIR = ./build
 GOCMD = go
 GOTEST = go test
-GOLINT = golint
+GOLINT = gometalinter --deadline=10s
 GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
 
 default: full
 
 setup:
-	$(GOGET) github.com/golang/lint/golint
+	$(GOGET) github.com/alecthomas/gometalinter
+	$(GOPATH)/bin/gometalinter --install --update
 
 test:
 	mkdir -p $(ARTEFACT_DIR)
-	$(GOTEST) -coverprofile=$(ARTEFACT_DIR)/cover.out ./...
+	$(GOTEST) -coverprofile=$(ARTEFACT_DIR)/cover.out .
 
 coverage: test
 	mkdir -p $(ARTEFACT_DIR)
@@ -25,11 +26,11 @@ html: test
 	$(GOCOVER) -html=$(ARTEFACT_DIR)/cover.out -o $(ARTEFACT_DIR)/coverage.html
 
 lint:
-	$(GOLINT) ./...
+	$(GOLINT) .
 
 clean:
 	rm -rf $(ARTEFACT_DIR)
 
-full: test coverage html
+full: test coverage html lint
 
-.PHONY: setup restore test lint coverage html clean full
+.PHONY: setup test lint coverage html clean full
