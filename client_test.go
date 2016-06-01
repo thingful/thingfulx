@@ -1,6 +1,7 @@
 package thingfulx
 
 import (
+	"io/ioutil"
 	"net/http"
 	"testing"
 	"time"
@@ -24,8 +25,20 @@ func TestDoHTTP(t *testing.T) {
 		t.Fatalf("Unexpected error, got %#v", err)
 	}
 
-	_, err = client.DoHTTP(req)
+	resp, err := client.DoHTTP(req)
 	if err != nil {
 		t.Fatalf("Unexpected error, got %#v", err)
 	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatalf("Unexpected error, got %#v", err)
+	}
+
+	if string(body) != "ok" {
+		t.Errorf("Unexpected response body, expected 'ok', got '%s'", body)
+	}
+
 }
