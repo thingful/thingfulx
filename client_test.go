@@ -30,7 +30,11 @@ func TestDoHTTP(t *testing.T) {
 		t.Fatalf("Unexpected error, got %#v", err)
 	}
 
-	defer resp.Body.Close()
+	defer func() {
+		if cerr := resp.Body.Close(); err == nil && cerr != nil {
+			err = cerr
+		}
+	}()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
