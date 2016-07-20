@@ -51,6 +51,9 @@ type Thing struct {
 	// offers, Closed, Shared or Open.
 	Visibility Visibility `json:"visibility"`
 
+	// RawData is the original data returned by the upstream data provider
+	RawData interface{} `json:"raw_data"`
+
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel `json:"channels"`
