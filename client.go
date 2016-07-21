@@ -7,7 +7,7 @@ import (
 
 const (
 	// ClientToken is the key we use when setting a token on the
-	// cleint clientInfo property
+	// client clientInfo property
 	ClientToken = "client-token"
 )
 
