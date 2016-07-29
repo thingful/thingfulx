@@ -17,6 +17,11 @@ build:
               ls ./vendor/golang.org/x/net/
 
         - script:
+            name: lint
+            code: |
+              make lint
+
+        - script:
             name: test
             code: |
               make test coverage html ARTEFACT_DIR=$WERCKER_REPORT_ARTIFACTS_DIR
