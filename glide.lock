@@ -1,8 +1,8 @@
 hash: 7e58a175eb5161082feb209f6ce5ed0049325fdeb93005aa325cf6d670849387
-updated: 2016-07-29T11:23:35.307980771+01:00
+updated: 2016-07-29T12:30:25.946645944+01:00
 imports:
 - name: github.com/jarcoal/httpmock
-  version: dd46565afcdf9afe2b626011560a7068fa5b1b46
+  version: 145b10d659265440f062c31ea15326166bae56ee
 - name: golang.org/x/net
   version: 6a513affb38dc9788b449d59ffed099b8de18fa0
   subpackages:
