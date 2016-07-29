@@ -2,6 +2,8 @@ package thingfulx
 
 import (
 	"time"
+
+	"golang.org/x/net/context"
 )
 
 // Fetcher is the main interface for things that know how to fetch some
@@ -22,7 +24,7 @@ type Fetcher interface {
 	// also pass in a TimeProvider which is used internally by the fetcher to
 	// record the indexing time of the parser. This is to allow for easier
 	// testing.
-	Fetch(url string, client Client, timeProvider TimeProvider) ([]Thing, error)
+	Fetch(ctx context.Context, url string, client Client, timeProvider TimeProvider) ([]Thing, error)
 
 	// Provider is a function returning an instantiated Provider object
 	// describing the upstream data provider this particular fetcher can
