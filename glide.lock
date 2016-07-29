@@ -1,6 +1,10 @@
-hash: 5dc1d95afd7c38f70ef52c8c208d56ba1bf90a2180a094d4d11b434bb785736b
-updated: 2016-06-01T12:05:51.395720434+01:00
+hash: 7e58a175eb5161082feb209f6ce5ed0049325fdeb93005aa325cf6d670849387
+updated: 2016-07-29T11:23:35.307980771+01:00
 imports:
 - name: github.com/jarcoal/httpmock
-  version: 145b10d659265440f062c31ea15326166bae56ee
+  version: dd46565afcdf9afe2b626011560a7068fa5b1b46
+- name: golang.org/x/net
+  version: 6a513affb38dc9788b449d59ffed099b8de18fa0
+  subpackages:
+  - context
 devImports: []
