@@ -6,7 +6,7 @@ const (
 	ClientToken = "client-token"
 )
 
-// Channel is a map object information
+// Context is a map object information
 // about the current environment that can be passed
 // to a fetcher
 type Context map[string]string
