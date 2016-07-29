@@ -1,3 +1,6 @@
 package: github.com/thingful/thingfulx
 import:
 - package: github.com/jarcoal/httpmock
+- package: golang.org/x/net
+  subpackages:
+  - context
