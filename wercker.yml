@@ -1,4 +1,4 @@
-box: golang
+box: thingful/golang@1.6.2
 
 # Build definition
 build:
