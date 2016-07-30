@@ -3,7 +3,7 @@
 ARTEFACT_DIR = ./build
 GOCMD = go
 GOTEST = go test
-GOLINT = gometalinter --deadline=10s --disable-all --enable=errcheck golint
+GOLINT = gometalinter --deadline=10s --disable-all --enable=errcheck varcheck
 GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
 
