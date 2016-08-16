@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+const (
+	// ClientToken is the key we use when setting a token on the
+	// client clientInfo property
+	ClientToken = "client-token"
+)
+
 // Client specifies an interface we will use for making outgoing requests
 // within each Fetcher. Currently everything is HTTP, but that won't
 // necessarily remain the case, so we add a layer of abstraction meaning we can

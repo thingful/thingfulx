@@ -1,17 +1,18 @@
 # Simple Makefile for building and testing thingfulx
 
+LINTER = gometalinter
 ARTEFACT_DIR = ./build
 GOCMD = go
 GOTEST = go test
-GOLINT = gometalinter --deadline=10s
+GOLINT = $(LINTER) --deadline=30s --vendor --debug
 GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
 
 default: full
 
 setup:
-	$(GOGET) github.com/alecthomas/gometalinter
-	$(GOPATH)/bin/gometalinter --install --update
+	$(GOGET) github.com/alecthomas/$(LINTER)
+	$(LINTER) --install
 
 test:
 	mkdir -p $(ARTEFACT_DIR)
@@ -26,7 +27,7 @@ html: test
 	$(GOCOVER) -html=$(ARTEFACT_DIR)/cover.out -o $(ARTEFACT_DIR)/coverage.html
 
 lint:
-	$(GOLINT) .
+	$(GOLINT) ./...
 
 clean:
 	rm -rf $(ARTEFACT_DIR)
