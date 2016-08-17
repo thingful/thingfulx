@@ -12,6 +12,17 @@ build:
               go version
 
         - script:
+            name: install glide
+            code: |
+              curl --location -o /tmp/glide-v0.11.1-linux-amd64.tar.gz https://github.com/Masterminds/glide/releases/download/v0.11.1/glide-v0.11.1-linux-amd64.tar.gz
+              tar zxf /tmp/glide-v0.11.1-linux-amd64.tar.gz
+              mv /tmp/linux-amd64/glide /usr/bin/glide
+
+        - script:
+            name: install deps
+              glide install
+
+        - script:
             name: setup
             code: |
               make setup
