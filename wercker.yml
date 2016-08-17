@@ -14,13 +14,15 @@ build:
         - script:
             name: install glide
             code: |
+              echo $PATH
               pwd
               curl --location -O  https://github.com/Masterminds/glide/releases/download/v0.11.1/glide-v0.11.1-linux-amd64.tar.gz
               tar zxf glide-v0.11.1-linux-amd64.tar.gz
 
         - script:
             name: install deps
-              ./glide install
+              glide install
+              ls -lh vendor
 
         - script:
             name: setup
