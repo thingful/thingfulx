@@ -2,6 +2,8 @@ package thingfulx
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestErrUnexpectedResponse(t *testing.T) {
@@ -9,17 +11,13 @@ func TestErrUnexpectedResponse(t *testing.T) {
 
 	msg := "thingfulx: unexpected HTTP response code, got 404"
 
-	if e.Error() != msg {
-		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, e.Error())
-	}
+	assert.Equal(t, e.Error(), msg)
 }
 
 func TestErrNotFound(t *testing.T) {
 	msg := "thingfulx: unexpected HTTP response code, got 404"
 
-	if ErrNotFound.Error() != msg {
-		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, ErrNotFound.Error())
-	}
+	assert.Equal(t, ErrNotFound.Error(), msg)
 }
 
 func TestErrMissingConfig(t *testing.T) {
@@ -27,9 +25,7 @@ func TestErrMissingConfig(t *testing.T) {
 
 	msg := "thingfulx: missing config variable - 'API_KEY'"
 
-	if e.Error() != msg {
-		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, e.Error())
-	}
+	assert.Equal(t, e.Error(), msg)
 }
 
 func TestErrBadData(t *testing.T) {
@@ -37,7 +33,5 @@ func TestErrBadData(t *testing.T) {
 
 	msg := "thingfulx: some bad data"
 
-	if e.Error() != msg {
-		t.Errorf("Unexpected response, expected '%s', got '%s'", msg, e.Error())
-	}
+	assert.Equal(t, e.Error(), msg)
 }
