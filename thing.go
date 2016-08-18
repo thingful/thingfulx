@@ -52,7 +52,7 @@ type Thing struct {
 	Visibility Visibility `json:"visibility"`
 
 	// RawData is the original data returned by the upstream data provider
-	RawData interface{} `json:"raw_data"`
+	RawData []byte `json:"raw_data"`
 
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
