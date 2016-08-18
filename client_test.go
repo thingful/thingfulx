@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/jarcoal/httpmock"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestDoHTTP(t *testing.T) {
@@ -41,8 +42,5 @@ func TestDoHTTP(t *testing.T) {
 		t.Fatalf("Unexpected error, got %#v", err)
 	}
 
-	if string(body) != "ok" {
-		t.Errorf("Unexpected response body, expected 'ok', got '%s'", body)
-	}
-
+	assert.Equal(t, body, []byte("ok"))
 }

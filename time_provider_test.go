@@ -3,6 +3,8 @@ package thingfulx
 import (
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTimeProvider(t *testing.T) {
@@ -16,7 +18,5 @@ func TestMockTimeProvider(t *testing.T) {
 
 	provider := NewMockTimeProvider(ts)
 
-	if provider.Now() != ts {
-		t.Errorf("Unexpected response to Now(), expected '%s', got '%s'", ts, provider.Now())
-	}
+	assert.Equal(t, provider.Now(), ts)
 }

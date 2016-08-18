@@ -1,8 +1,9 @@
 package thingfulx
 
 import (
-	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCategorise(t *testing.T) {
@@ -76,9 +77,7 @@ func TestCategorise(t *testing.T) {
 		for _, input := range testcase.inputs {
 			got = Categorise(input)
 
-			if !reflect.DeepEqual(testcase.expected, got) {
-				t.Errorf("Unexpected output, expected %#v, got %#v", testcase.expected, got)
-			}
+			assert.Equal(t, testcase.expected, got)
 		}
 	}
 }
