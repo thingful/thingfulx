@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
+	"github.com/thingful/httpmock"
 )
 
 func TestDoHTTP(t *testing.T) {
@@ -18,8 +18,13 @@ func TestDoHTTP(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	httpmock.RegisterResponder("GET", "http://example.com/foo",
-		httpmock.NewStringResponder(200, "ok"))
+	httpmock.RegisterStubRequest(
+		httpmock.NewStubRequest(
+			"GET",
+			"http://example.com/foo",
+			httpmock.NewStringResponder(200, "ok"),
+		),
+	)
 
 	req, err := http.NewRequest("GET", "http://example.com/foo", nil)
 	if err != nil {
