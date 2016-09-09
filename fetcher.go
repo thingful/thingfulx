@@ -6,12 +6,9 @@ import (
 	"golang.org/x/net/context"
 )
 
-// Fetcher is the main interface for things that know how to fetch some
-// resource from somewhere handling any protocol weirdness or authentication
-// requirements and return back a slice of parsed Thing instances. The
-// interface is agnostic in terms of protocol so an implementing class is free
-// to perform whatever steps required to get the data.
-type Fetcher interface {
+// ThingFetcher is an interface containing just the main Fetch method which
+// returns a slice of Things.
+type ThingFetcher interface {
 	// Fetch is the method that all crawlers must fulfil which actually perform
 	// the task of going and getting data from some remote data provider, and
 	// returning a slice of Thing objects extracted from that data source.
@@ -25,13 +22,11 @@ type Fetcher interface {
 	// record the indexing time of the parser. This is to allow for easier
 	// testing.
 	Fetch(ctx context.Context, url string, client Client, timeProvider TimeProvider) ([]Thing, error)
+}
 
-	// Provider is a function returning an instantiated Provider object
-	// describing the upstream data provider this particular fetcher can
-	// indexing. This data structure contains the name of the provider, plus a
-	// url.URL struct containing the base URL of the provider
-	Provider() *Provider
-
+// URLSFetcher is an interface containing just the method for getting the set
+// of URLS for a data provider.
+type URLSFetcher interface {
 	// URLS is a function that can be called by Pomelo, that then returns back a
 	// slice of strings containing the minimum set of URLS that should be indexed
 	// for this host.  This might be a single URL for hosts that publish
@@ -44,4 +39,20 @@ type Fetcher interface {
 	// use to make any outgoing requests, plus a delay Duration. Requests should
 	// not be made faster than the time interval specified by delay.
 	URLS(client Client, delay time.Duration) ([]string, error)
+}
+
+// Fetcher is the main interface for things that know how to fetch some
+// resource from somewhere handling any protocol weirdness or authentication
+// requirements and return back a slice of parsed Thing instances. The
+// interface is agnostic in terms of protocol so an implementing class is free
+// to perform whatever steps required to get the data.
+type Fetcher interface {
+	ThingFetcher
+	URLSFetcher
+
+	// Provider is a function returning an instantiated Provider object
+	// describing the upstream data provider this particular fetcher can
+	// indexing. This data structure contains the name of the provider, plus a
+	// url.URL struct containing the base URL of the provider
+	Provider() *Provider
 }
