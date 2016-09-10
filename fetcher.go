@@ -6,9 +6,9 @@ import (
 	"golang.org/x/net/context"
 )
 
-// ThingFetcher is an interface containing just the main Fetch method which
+// FetchThings is an interface containing just the main Fetch method which
 // returns a slice of Things.
-type ThingFetcher interface {
+type FetchThings interface {
 	// Fetch is the method that all crawlers must fulfil which actually perform
 	// the task of going and getting data from some remote data provider, and
 	// returning a slice of Thing objects extracted from that data source.
@@ -24,9 +24,9 @@ type ThingFetcher interface {
 	Fetch(ctx context.Context, url string, client Client, timeProvider TimeProvider) ([]Thing, error)
 }
 
-// URLSFetcher is an interface containing just the method for getting the set
-// of URLS for a data provider.
-type URLSFetcher interface {
+// FetchURLS is an interface containing just the method for getting the set of
+// URLS for a data provider.
+type FetchURLS interface {
 	// URLS is a function that can be called by Pomelo, that then returns back a
 	// slice of strings containing the minimum set of URLS that should be indexed
 	// for this host.  This might be a single URL for hosts that publish
@@ -47,8 +47,8 @@ type URLSFetcher interface {
 // interface is agnostic in terms of protocol so an implementing class is free
 // to perform whatever steps required to get the data.
 type Fetcher interface {
-	ThingFetcher
-	URLSFetcher
+	FetchThings
+	FetchURLS
 
 	// Provider is a function returning an instantiated Provider object
 	// describing the upstream data provider this particular fetcher can
