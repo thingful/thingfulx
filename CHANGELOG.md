@@ -5,6 +5,7 @@
 * Add structured Metadata in the form of Tags.
 * Compose Fetcher interface of two smaller interfaces: ThingFetcher and
   URLSFetcher
+* Remove json struct tags as we don't use this currently
 
 ## 0.1.7 2016-09-09
 
