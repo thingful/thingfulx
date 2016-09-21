@@ -6,6 +6,10 @@ import (
 	"golang.org/x/net/context"
 )
 
+// FetcherBuilder is type definition for the constructor functions that new
+// Fetchers must implement.
+type FetcherBuilder func() (Fetcher, error)
+
 // Fetcher is the main interface for things that know how to fetch some
 // resource from somewhere handling any protocol weirdness or authentication
 // requirements and return back a slice of parsed Thing instances. The
