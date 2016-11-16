@@ -20,8 +20,8 @@ func TestTruncate(t *testing.T) {
 			expected: 5.123457,
 		},
 		{
-			input:    -180.987654321,
-			expected: -180.987654,
+			input:    -179.987654321,
+			expected: -179.987654,
 		},
 	}
 
@@ -45,6 +45,14 @@ func TestNewLocation(t *testing.T) {
 			expected: &Location{
 				Longitude: 0,
 				Latitude:  0,
+			},
+		},
+		{
+			lng: 179.123456789,
+			lat: 55.987654321,
+			expected: &Location{
+				Longitude: 179.123457,
+				Latitude:  55.987654,
 			},
 		},
 	}
