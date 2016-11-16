@@ -3,7 +3,7 @@
 LINTER = gometalinter
 ARTEFACT_DIR = ./build
 GOCMD = go
-GOTEST = go test
+GOTEST = go test -v
 GOLINT = $(LINTER) --deadline=30s --vendor --debug
 GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
