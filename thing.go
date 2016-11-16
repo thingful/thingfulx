@@ -41,9 +41,6 @@ type Thing struct {
 	// data provider.
 	Provider *Provider
 
-	// RawData is the original data returned by the upstream data provider
-	RawData []byte
-
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel

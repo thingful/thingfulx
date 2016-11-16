@@ -28,7 +28,6 @@ func TestCompleteThing(t *testing.T) {
 			"thingful:category=environment",
 			"thingful:visibility=open",
 		},
-		RawData: []byte("raw_data"),
 		Channels: []Channel{
 			Channel{
 				Value:      "17.2",
@@ -59,7 +58,6 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, "http://api.example.com/things/123abc.json", thing.DataURL.String())
 	assert.Equal(t, -0.5, thing.Location.Longitude)
 	assert.Equal(t, 55.5, thing.Location.Latitude)
-	assert.Equal(t, thing.RawData, []byte("raw_data"))
 	assert.Contains(t, thing.Metadata, Tag("thingful:category=environment"))
 	assert.Contains(t, thing.Metadata, Tag("thingful:visibility=open"))
 	assert.Len(t, thing.Channels, 2)
