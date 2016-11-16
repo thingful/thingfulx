@@ -23,6 +23,10 @@ func TestTruncate(t *testing.T) {
 			input:    -179.987654321,
 			expected: -179.987654,
 		},
+		{
+			input:    55.85988984843241,
+			expected: 55.85989,
+		},
 	}
 
 	var got float64
