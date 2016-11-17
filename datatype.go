@@ -9,11 +9,17 @@ import (
 type DataType int
 
 const (
+	// NumberType is a const used to represent a number channel value
 	NumberType DataType = 1 + iota
+	// StringType is a const used to represent a string channel value
 	StringType
+	// BooleanType is a const used to represent a boolean channel value
 	BooleanType
+	// DateTimeType is a const used to represent a date/time channel value
 	DateTimeType
+	// URLType is a const used to represent a URL channel value
 	URLType
+	// BinaryType is a const used to represent a binary channel value
 	BinaryType
 )
 
