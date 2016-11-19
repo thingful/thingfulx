@@ -15,7 +15,7 @@ type Thing struct {
 	Description string
 
 	// Metadata is a slice of Tags used to describe some features of the Thing
-	Metadata []Tag
+	Metadata Metadata
 
 	// Webpage is a URL to a human intelligible page about the thing. This
 	// doesn't have to be a unique page for the thing as typically one might not

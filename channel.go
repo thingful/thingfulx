@@ -10,5 +10,5 @@ type Channel struct {
 	Value      string
 	Type       DataType
 	RecordedAt time.Time
-	Metadata   []Tag
+	Metadata   Metadata
 }

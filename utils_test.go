@@ -17,56 +17,56 @@ func TestCategorise(t *testing.T) {
 				"arduino air quality",
 				"raspberry pi home sensor",
 			},
-			Tag("thingful:category=experiment"),
+			NewTag("thingful:category=experiment"),
 		},
 		{
 			[]string{
 				"energy monitor",
 				"home thermostat",
 			},
-			Tag("thingful:category=energy"),
+			NewTag("thingful:category=energy"),
 		},
 		{
 			[]string{
 				"healthkit",
 				"exercise tracker",
 			},
-			Tag("thingful:category=health"),
+			NewTag("thingful:category=health"),
 		},
 		{
 			[]string{
 				"garden moisture",
 				"conservatory counter",
 			},
-			Tag("thingful:category=home"),
+			NewTag("thingful:category=home"),
 		},
 		{
 			[]string{
 				"turtle neck",
 				"shark week",
 			},
-			Tag("thingful:category=flora_and_fauna"),
+			NewTag("thingful:category=flora_and_fauna"),
 		},
 		{
 			[]string{
 				"weather checker",
 				"flood monitor",
 			},
-			Tag("thingful:category=environment"),
+			NewTag("thingful:category=environment"),
 		},
 		{
 			[]string{
 				"truck",
 				"plane or car",
 			},
-			Tag("thingful:category=transport"),
+			NewTag("thingful:category=transport"),
 		},
 		{
 			[]string{
 				"banana",
 				"anything else",
 			},
-			Tag("thingful:category=miscellaneous"),
+			NewTag("thingful:category=miscellaneous"),
 		},
 	}
 

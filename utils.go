@@ -26,20 +26,20 @@ var (
 func Categorise(str string) Tag {
 	switch {
 	case experimentRegexp.MatchString(str):
-		return Tag("thingful:category=experiment")
+		return NewTag("thingful:category=experiment")
 	case energyRegexp.MatchString(str):
-		return Tag("thingful:category=energy")
+		return NewTag("thingful:category=energy")
 	case healthRegexp.MatchString(str):
-		return Tag("thingful:category=health")
+		return NewTag("thingful:category=health")
 	case homeRegexp.MatchString(str):
-		return Tag("thingful:category=home")
+		return NewTag("thingful:category=home")
 	case floraRegexp.MatchString(str):
-		return Tag("thingful:category=flora_and_fauna")
+		return NewTag("thingful:category=flora_and_fauna")
 	case transportRegexp.MatchString(str):
-		return Tag("thingful:category=transport")
+		return NewTag("thingful:category=transport")
 	case environmentRegexp.MatchString(str):
-		return Tag("thingful:category=environment")
+		return NewTag("thingful:category=environment")
 	default:
-		return Tag("thingful:category=miscellaneous")
+		return NewTag("thingful:category=miscellaneous")
 	}
 }
