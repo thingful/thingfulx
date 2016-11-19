@@ -4,39 +4,30 @@ import (
 	"strconv"
 )
 
-// DataType is a type alias for our iota constant below representing the type
-// of the channel's value.
-type DataType int
+// DataType is a type alias for our constant representing the type of a
+// channel's value. We use a string rather than iota type int constants because
+// this value is also published to end clients.
+type DataType string
 
 const (
 	// NumberType is a const used to represent a number channel value
-	NumberType DataType = 1 + iota
+	NumberType DataType = "number"
+
 	// StringType is a const used to represent a string channel value
-	StringType
+	StringType DataType = "string"
+
 	// BooleanType is a const used to represent a boolean channel value
-	BooleanType
+	BooleanType DataType = "boolean"
+
 	// DateTimeType is a const used to represent a date/time channel value
-	DateTimeType
+	DateTimeType DataType = "dateTime"
+
 	// URLType is a const used to represent a URL channel value
-	URLType
+	URLType DataType = "url"
+
 	// BinaryType is a const used to represent a binary channel value
-	BinaryType
+	BinaryType DataType = "binary"
 )
-
-// dataTypes is a slice of strings used in the Stringer representation
-var dataTypes = []string{
-	"number",
-	"string",
-	"boolean",
-	"dateTime",
-	"url",
-	"binary",
-}
-
-// String returns a string representation of the const.
-func (d DataType) String() string {
-	return dataTypes[d-1]
-}
 
 // VerifyNumberType confirms that a given string value is really a number as we
 // will later claim.

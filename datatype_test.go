@@ -7,12 +7,12 @@ import (
 )
 
 func TestDataType(t *testing.T) {
-	assert.Equal(t, "number", NumberType.String())
-	assert.Equal(t, "string", StringType.String())
-	assert.Equal(t, "boolean", BooleanType.String())
-	assert.Equal(t, "dateTime", DateTimeType.String())
-	assert.Equal(t, "url", URLType.String())
-	assert.Equal(t, "binary", BinaryType.String())
+	assert.Equal(t, DataType("number"), NumberType)
+	assert.Equal(t, DataType("string"), StringType)
+	assert.Equal(t, DataType("boolean"), BooleanType)
+	assert.Equal(t, DataType("dateTime"), DateTimeType)
+	assert.Equal(t, DataType("url"), URLType)
+	assert.Equal(t, DataType("binary"), BinaryType)
 }
 
 func TestVerifyNumberType(t *testing.T) {
