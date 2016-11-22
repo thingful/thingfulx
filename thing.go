@@ -17,6 +17,11 @@ type Thing struct {
 	// Metadata is a slice of Tags used to describe some features of the Thing
 	Metadata Metadata
 
+	// Category is a thingfulx.Category instance - choose from the declared
+	// categories. This field is kept for backwards compatibility reasons. Should
+	// be removed and folded into metadata ultimately.
+	Category *Category
+
 	// Webpage is a URL to a human intelligible page about the thing. This
 	// doesn't have to be a unique page for the thing as typically one might not
 	// be available. In that case, this could be a link to a page describing the
@@ -40,6 +45,11 @@ type Thing struct {
 	// Provider is a data structure containing information about the upstream
 	// data provider.
 	Provider *Provider
+
+	// Visibility indicates what level of access the upstream data provider
+	// offers, Closed, Shared or Open. May be removed and folded into metadata
+	// ultimately.
+	Visibility Visibility
 
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
