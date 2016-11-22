@@ -47,8 +47,7 @@ type Thing struct {
 	Provider *Provider
 
 	// Visibility indicates what level of access the upstream data provider
-	// offers, Closed, Shared or Open. May be removed and folded into metadata
-	// ultimately.
+	// offers, Closed, Shared or Open. May be removed and folded into metadata.
 	Visibility Visibility
 
 	// Channels are a slice of Channel objects which capture the actual data of

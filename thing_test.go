@@ -28,6 +28,8 @@ func TestCompleteThing(t *testing.T) {
 			"thingful:category=environment",
 			"thingful:visibility=open",
 		),
+		Category:   &Environment,
+		Visibility: Open,
 		Channels: []Channel{
 			Channel{
 				Value:      "17.2",
@@ -66,4 +68,6 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, timestamp, channel.RecordedAt)
 	assert.Len(t, channel.Metadata, 4)
 	assert.Contains(t, channel.Metadata, Tag{Namespace: "thingful", Predicate: "unit", Value: "celsius"})
+	assert.Equal(t, &Environment, thing.Category)
+	assert.Equal(t, Open, thing.Visibility)
 }
