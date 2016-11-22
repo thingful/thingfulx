@@ -39,6 +39,75 @@ func TestNewTag(t *testing.T) {
 			input: "*:long=54.2",
 			expected: Tag{
 				Namespace: "",
+				Predicate: "",
+				Value:     "*:long=54.2",
+			},
+		},
+		{
+			input: "*:*=54.2",
+			expected: Tag{
+				Namespace: "",
+				Predicate: "",
+				Value:     "*:*=54.2",
+			},
+		},
+		{
+			input: "thingful:title=\"foo bar\"",
+			expected: Tag{
+				Namespace: "thingful",
+				Predicate: "title",
+				Value:     "foo bar",
+			},
+		},
+		{
+			input: "*:long=",
+			expected: Tag{
+				Namespace: "",
+				Predicate: "",
+				Value:     "*:long=",
+			},
+		},
+	}
+
+	for _, testcase := range testcases {
+		got := NewTag(testcase.input)
+		assert.Equal(t, testcase.expected, got)
+	}
+}
+
+func TestParseTag(t *testing.T) {
+	testcases := []struct {
+		input    string
+		expected Tag
+	}{
+		{
+			input: "temperature",
+			expected: Tag{
+				Namespace: "",
+				Predicate: "",
+				Value:     "temperature",
+			},
+		},
+		{
+			input: "thingful:quantity=temperature",
+			expected: Tag{
+				Namespace: "thingful",
+				Predicate: "quantity",
+				Value:     "temperature",
+			},
+		},
+		{
+			input: "geo:long=54.2",
+			expected: Tag{
+				Namespace: "geo",
+				Predicate: "long",
+				Value:     "54.2",
+			},
+		},
+		{
+			input: "*:long=54.2",
+			expected: Tag{
+				Namespace: "",
 				Predicate: "long",
 				Value:     "54.2",
 			},
@@ -70,7 +139,7 @@ func TestNewTag(t *testing.T) {
 	}
 
 	for _, testcase := range testcases {
-		got := NewTag(testcase.input)
+		got := ParseTag(testcase.input)
 		assert.Equal(t, testcase.expected, got)
 	}
 }

@@ -10,9 +10,13 @@ const (
 )
 
 var (
-	// machineTagPattern is a compiled regexp we use to identify a machinetag
-	// input vs a regular tag
-	machineTagPattern = regexp.MustCompile("^([a-z]\\w+|\\*)(:(([a-z]\\w+)|\\*))=(([^\\s]+)|\"([^\"]+)\")?$")
+	// newTagPattern is a "strict" pattern that will only match a complete
+	// machinetag.
+	newTagPattern = regexp.MustCompile("^([a-z]\\w+)(:(([a-z]\\w+)))=(([^\\s]+)|\"([^\"]+)\")?$")
+
+	// parseTagPattern is a more lenient pattern intended for parsing partial
+	// machinetags used when searching.
+	parseTagPattern = regexp.MustCompile("^([a-z]\\w+|\\*)(:(([a-z]\\w+)|\\*))=(([^\\s]+)|\"([^\"]+)\")?$")
 )
 
 // Tag represents a metadata fact we can state about either a Thing or a
@@ -26,21 +30,40 @@ type Tag struct {
 // Metadata is a type alias for a slice of Tags
 type Metadata []Tag
 
-// NewTag is a constructor function for making a new Tag instance from a given
-// string. Some example tags might be:
-//
-// * temperature
-// * light
-//
-// However really these are intended for structured tags that look like this:
-//
-// * thingful:quantity=temperature
-// * thingful:unit=lux
+// NewTag creates a new tag that will either be a full complete machinetag with
+// namespace and predicate non-empty, or all data will be captured as the
+// value.
 func NewTag(rawTag string) Tag {
 	var namespace, predicate, value string
 
-	if machineTagPattern.MatchString(rawTag) {
-		matches := machineTagPattern.FindStringSubmatch(rawTag)
+	if newTagPattern.MatchString(rawTag) {
+		matches := newTagPattern.FindStringSubmatch(rawTag)
+
+		namespace = matches[1]
+		predicate = matches[3]
+		if matches[6] != "" {
+			value = matches[6]
+		} else {
+			value = matches[7]
+		}
+	} else {
+		value = rawTag
+	}
+
+	return Tag{
+		Namespace: namespace,
+		Predicate: predicate,
+		Value:     value,
+	}
+}
+
+// ParseTag leniently constructs a Tag representation, with wildcard values for
+// namespace or predicate if not present.
+func ParseTag(rawTag string) Tag {
+	var namespace, predicate, value string
+
+	if parseTagPattern.MatchString(rawTag) {
+		matches := parseTagPattern.FindStringSubmatch(rawTag)
 
 		namespace = convertWildcard(matches[1])
 		predicate = convertWildcard(matches[3])
