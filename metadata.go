@@ -42,8 +42,8 @@ func NewTag(rawTag string) Tag {
 	if machineTagPattern.MatchString(rawTag) {
 		matches := machineTagPattern.FindStringSubmatch(rawTag)
 
-		namespace = wildcard(matches[1])
-		predicate = wildcard(matches[3])
+		namespace = convertWildcard(matches[1])
+		predicate = convertWildcard(matches[3])
 		if matches[6] != "" {
 			value = matches[6]
 		} else {
@@ -60,8 +60,9 @@ func NewTag(rawTag string) Tag {
 	}
 }
 
-// wildcard converts a machinetag wildcard character into an empty string.
-func wildcard(val string) string {
+// convertWildcard converts a machinetag wildcard character into an empty
+// string.
+func convertWildcard(val string) string {
 	if val == WildCard {
 		return ""
 	}
