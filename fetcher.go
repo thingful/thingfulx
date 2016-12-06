@@ -23,11 +23,11 @@ type Fetcher interface {
 	// actually retrieve the data so within this interface they are free to do
 	// this.
 	//
-	// This function takes as parameters the url we want to get data from,
-	// a Client object that the crawler will use to actually make the request. We
-	// also pass in a TimeProvider which is used internally by the fetcher to
-	// record the indexing time of the parser. This is to allow for easier
-	// testing.
+	// This function takes as parameters an instance of the Context Interface for
+	// request-scoped values, the url we want to get data from, a Client object
+	// that the crawler will use to actually make the request. We also pass in a
+	// TimeProvider which is used internally by the fetcher to record the indexing
+	// time of the parser. This is to allow for easier testing.
 	Fetch(ctx context.Context, url string, client Client, timeProvider TimeProvider) ([]Thing, error)
 
 	// Provider is a function returning an instantiated Provider object
@@ -44,8 +44,9 @@ type Fetcher interface {
 	// is that this function should return the smallest set of URLs required to
 	// completely index the upstream data provider.
 	//
-	// We pass in as parameters a Client implementation which the Fetcher must
+	// We pass in as parameters an instance of the Context Interface for
+	// request-scoped values, a Client implementation which the Fetcher must
 	// use to make any outgoing requests, plus a delay Duration. Requests should
 	// not be made faster than the time interval specified by delay.
-	URLS(client Client, delay time.Duration) ([]string, error)
+	URLS(ctx context.Context, client Client, delay time.Duration) ([]string, error)
 }
