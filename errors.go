@@ -77,4 +77,8 @@ var (
 	// ErrNotFound is a concrete implementation of ErrUnexpectedResponse
 	// initialized for a 404 not found response
 	ErrNotFound = NewErrUnexpectedResponse("404")
+
+	// ErrNotPermittedToFetch is an error returned when a remote site's
+	// robots.txt forbids us from accessing a resource
+	ErrNotPermittedToFetch = errors.New("thingfulx: robots.txt forbids access to the resource")
 )
