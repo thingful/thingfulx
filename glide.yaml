@@ -5,3 +5,4 @@ import:
   subpackages:
   - context
 - package: github.com/stretchr/testify
+- package: github.com/temoto/robotstxt
