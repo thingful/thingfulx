@@ -17,9 +17,6 @@ type Thing struct {
 	// indexed by Thingful
 	IndexedAt time.Time `json:"indexed_at"`
 
-	// Category is a thingfulx.Category instance - choose from the declared categories
-	Category *Category `json:"-"`
-
 	// Webpage is a URL to a human intelligible page about the thing. This
 	// doesn't have to be a unique page for the thing as typically one might not
 	// be available. In that case, this could be a link to a page describing the
@@ -42,12 +39,19 @@ type Thing struct {
 	// offers, Closed, Shared or Open.
 	Visibility Visibility `json:"visibility"`
 
-	// RawData is the original data returned by the upstream data provider
-	RawData []byte `json:"raw_data"`
-
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel `json:"channels"`
+}
+
+// Metadata is a data structure containing additional metadata about the Thing.
+// A key requirement for Metadata is that it must contain a 'thingful:Category'
+// property whose value must me a Category.Name as well as a 'thingful:CategoryUID'
+// whose value must me a Category.UID. These 2 metadata object are required
+// for correctly displaying Things on the thingful.net map.
+type Metadata struct {
+	Prop string `json:"property"`
+	Val  string `json:"value"`
 }
 
 // Provider is a data structure containing information about the upstream
