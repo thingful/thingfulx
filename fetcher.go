@@ -16,37 +16,51 @@ type FetcherBuilder func() (Fetcher, error)
 // interface is agnostic in terms of protocol so an implementing class is free
 // to perform whatever steps required to get the data.
 type Fetcher interface {
-	// Fetch is the method that all crawlers must fulfil which actually perform
-	// the task of going and getting data from some remote data provider, and
-	// returning a slice of Thing objects extracted from that data source.
-	// Certain providers might require multiple requests from different URLs to
-	// actually retrieve the data so within this interface they are free to do
-	// this.
-	//
+	Seeder
+
+	Crawler
+
+	Parser
+}
+
+// Seeder in the interface used by Pomelo to generate a minimum set of URLS that
+// should be indexed for a host.
+type Seeder interface {
+	// URLS returns the smallest set of URLs required to completely index the upstream
+	// data provider. The returned slice might be a single URL for hosts that publish
+	// relatively few things, or it might be a whole bunch for hosts that have pages
+	// of results.
 	// This function takes as parameters an instance of the Context Interface for
-	// request-scoped values, the url we want to get data from, a Client object
-	// that the crawler will use to actually make the request. We also pass in a
-	// TimeProvider which is used internally by the fetcher to record the indexing
-	// time of the parser. This is to allow for easier testing.
-	Fetch(ctx context.Context, url string, client Client, timeProvider TimeProvider) ([]Thing, error)
-
-	// Provider is a function returning an instantiated Provider object
-	// describing the upstream data provider this particular fetcher can
-	// indexing. This data structure contains the name of the provider, plus a
-	// url.URL struct containing the base URL of the provider
-	Provider() *Provider
-
-	// URLS is a function that can be called by Pomelo, that then returns back a
-	// slice of strings containing the minimum set of URLS that should be indexed
-	// for this host.  This might be a single URL for hosts that publish
-	// relatively few things, or it might be a whole bunch for hosts that have
-	// pages of results, that Pomelo should iterate through. The key requirement
-	// is that this function should return the smallest set of URLs required to
-	// completely index the upstream data provider.
-	//
-	// We pass in as parameters an instance of the Context Interface for
 	// request-scoped values, a Client implementation which the Fetcher must
 	// use to make any outgoing requests, plus a delay Duration. Requests should
 	// not be made faster than the time interval specified by delay.
 	URLS(ctx context.Context, client Client, delay time.Duration) ([]string, error)
+}
+
+// Crawler is the interface that must be implemented for performing
+// the task of going and getting data from some remote data provider, and
+// returning a slice of Thing objects extracted from that data source.
+// Certain providers might require multiple requests from different URLs to
+// actually retrieve the data so within this interface they are free to do
+// this.
+type Crawler interface {
+	// Crawl takes as parameters an instance of the Context Interface for
+	// request-scoped values, the url we want to get data from, a Client object
+	// that the crawler will use to actually make the request.
+	// It returns the data provider response as a slice of bytes.
+	Crawl(ctx context.Context, url string, client Client) ([]byte, error)
+}
+
+// Parser is the interface used to provide a full representation of a Thing.
+// This representation must include both data and metadata required to describes
+// a resource from both a factual and a semantic point of view.
+// For a comprehensive definition of how to semantically define a Thing and what
+// are the ontologies used by Thingful refer to https://github.com/thingful/schema.
+type Parser interface {
+	// Parse returns a slice of Thing objects extracted from that data source.
+	// This function takes as parameters a slice of bytes representing the data
+	// collected from the upstream data provider and a TimeProvider instance used
+	// internally by the fetcher to record the indexing time of the parser.
+	// This is to allow for easier testing.
+	Parse(rawData []byte, timeProvider TimeProvider) ([]Thing, error)
 }
