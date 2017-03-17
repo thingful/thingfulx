@@ -1,20 +1,20 @@
 hash: 496859eaf58b62944b44638ddad2227fef4a215856ff73c4a88dafa4ccbc4814
-updated: 2016-09-09T12:19:54.102304719+01:00
+updated: 2017-03-16T17:58:17.663813087Z
 imports:
 - name: github.com/stretchr/testify
-  version: d77da356e56a7428ad25149ca77381849a6a5232
+  version: 4d4bfba8f1d1027c4fdbe371823030df51419987
   subpackages:
   - assert
 - name: github.com/thingful/httpmock
-  version: d353b1737f2a6971c21b0f3c5ecf5a0bc50ca520
+  version: ad20707d669ac1ecad9d2028b8f858832937fc82
 - name: golang.org/x/net
-  version: 9313baa13d9262e49d07b20ed57dceafcd7240cc
+  version: a6577fac2d73be281a500b310739095313165611
   subpackages:
   - context
   - idna
 testImports:
 - name: github.com/davecgh/go-spew
-  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  version: 346938d642f2ec3594ed81d874461961cd0faa76
   subpackages:
   - spew
 - name: github.com/goware/urlx
@@ -24,19 +24,12 @@ testImports:
   subpackages:
   - difflib
 - name: github.com/PuerkitoBio/purell
-  version: 8a290539e2e8629dbc4e6bad948158f790ec31f4
+  version: 0bcb03f4b4d0a9428594752bd2a3b9aa0a9d4bd4
 - name: github.com/PuerkitoBio/urlesc
   version: 5bd2802263f21d8788851d5305584c82a5c75d7e
 - name: golang.org/x/text
-  version: 1e65e9bf72c307081cea196f47ef37aed17eb316
+  version: f28f36722d5ef2f9655ad3de1f248e3e52ad5ebd
   subpackages:
-  - cases
-  - internal/tag
-  - language
-  - runes
-  - secure/bidirule
-  - secure/precis
   - transform
-  - unicode/bidi
   - unicode/norm
   - width
