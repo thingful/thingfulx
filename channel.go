@@ -8,7 +8,6 @@ type Channel struct {
 	ID           string            `json:"id"`
 	Metadata     []ChannelMetadata `json:"metadata"`
 	Observations []Observation     `json:"observations"`
-	Data         Data              `json:"data"`
 }
 
 // ChannelMetadata is an object which contains any metadata required to
@@ -23,6 +22,7 @@ type ChannelMetadata struct {
 type Observation struct {
 	RecordedAt time.Time `json:"recorded_at"`
 	Location   Location  `json:"location"`
+	Data       Data      `json:"data"`
 }
 
 // Data holds the actual value returned by the Thing as well as the
