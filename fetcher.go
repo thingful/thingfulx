@@ -47,7 +47,7 @@ type Fetcher interface {
 	// request-scoped values, the url we want to get data from, a Client object
 	// that the crawler will use to actually make the request.
 	// It returns the data provider response as a slice of bytes.
-	Fetch(ctx context.Context, url string, client Client) ([]byte, error)
+	Fetch(ctx context.Context, dataURL string, client Client) ([]byte, error)
 }
 
 // Parser is the interface used to provide a full representation of a Thing.
@@ -61,5 +61,5 @@ type Parser interface {
 	// collected from the upstream data provider, the URL of the Thing being indexed
 	// and a TimeProvider instance used internally by the fetcher to record the indexing
 	// time of the parser. This is to allow for easier testing.
-	Parse(rawData []byte, url string, timeProvider TimeProvider) ([]Thing, error)
+	Parse(rawData []byte, dataURL string, timeProvider TimeProvider) ([]Thing, error)
 }
