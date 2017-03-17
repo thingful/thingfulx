@@ -41,7 +41,6 @@ func TestCompleteThing(t *testing.T) {
 				Val:  Environment.UID,
 			},
 		},
-		Visibility: Open,
 		Channels: []Channel{
 			{
 				ID: "value1",
@@ -83,7 +82,6 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Provider.URL, "http://example.com")
 	assert.Equal(t, thing.Metadata[0].Prop, "thingful:Category")
 	assert.Equal(t, thing.Metadata[0].Val, "Environment")
-	assert.Equal(t, thing.Visibility, Open)
 	assert.Equal(t, thing.Channels[0].ID, "value1")
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)

@@ -35,10 +35,6 @@ type Thing struct {
 	// Provider is an embedded data structure which describes the data provider.
 	Provider Provider `json:"provider"`
 
-	// Visibility indicates what level of access the upstream data provider
-	// offers, Closed, Shared or Open.
-	Visibility Visibility `json:"visibility"`
-
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel `json:"channels"`
@@ -49,6 +45,8 @@ type Thing struct {
 // property whose value must me a Category.Name as well as a 'thingful:CategoryUID'
 // whose value must me a Category.UID. These 2 metadata object are required
 // for correctly displaying Things on the thingful.net map.
+// The Metatadata object should contain information about the data visibility -
+// see http://theodi.org/data-spectrum for more info.
 type Metadata struct {
 	Prop string `json:"property"`
 	Val  string `json:"value"`
