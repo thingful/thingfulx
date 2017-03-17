@@ -1,14 +1,22 @@
 package thingfulx
 
-import (
-	"time"
-)
+import "time"
 
 // Channel represents an individual data channel being published by a Thing out
 // there in the world somewhere.
 type Channel struct {
-	ID         string    `json:"id"`
-	Value      string    `json:"value"`
+	ID           string        `json:"id"`
+	Metadata     []Metadata    `json:"metadata"`
+	Observations []observation `json:"observations"`
+	Data         data          `json:"data"`
+}
+
+type observation struct {
 	RecordedAt time.Time `json:"recorded_at"`
-	Unit       string    `json:"units"`
+	Location   Location  `json:"location"`
+}
+
+type data struct {
+	Type string      `json:"type"`
+	Val  interface{} `json:"value"`
 }

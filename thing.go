@@ -4,18 +4,18 @@ import (
 	"time"
 )
 
-// Thing is the top level datastructure representing an individual thing as
+// Thing is the top level data structure representing an individual thing as
 // indexed on some upstream data provider.
 type Thing struct {
-	// Title is a short descriptive lable for the thing
+	// Title is a short descriptive label for the thing
 	Title string `json:"title"`
 
 	// Description is a long form description about the thing
 	Description string `json:"description"`
 
-	// Metadata is a comma separated tags - additional metadata about the Thing,
-	// that isn't necessarily encoded into the feed.
-	Metadata string `json:"-"`
+	// IndexedAt is a Time object indicating the timestamp when the thing was
+	// indexed by Thingful
+	IndexedAt time.Time `json:"indexed_at"`
 
 	// Category is a thingfulx.Category instance - choose from the declared categories
 	Category *Category `json:"-"`
@@ -24,28 +24,19 @@ type Thing struct {
 	// doesn't have to be a unique page for the thing as typically one might not
 	// be available. In that case, this could be a link to a page describing the
 	// type of thing, or just a link to the main homepage of the project.
-	Webpage string `json:"webpage"`
+	Webpage string `json:"-"`
 
-	// DataURL is a string containing the actual URL we go to fetch data from for
-	// this thing. This string must be unique for every thing indexed. We can
-	// achieve this for things that don't make a real unique URL available by
-	// adding a synthetic identifier to the URL string, i.e.
-	// http://example.com?city=Indiana#section_id=1234
-	DataURL string `json:"datasource"`
+	// DataURL is an embedded data structure which describes the actual data entry point.
+	Endpoint Endpoint `json:"endpoint"`
 
-	// IndexedAt is a Time object indicating the timestamp when the thing was
-	// indexed by Thingful
-	IndexedAt time.Time `json:"indexed_at"`
+	// Metadata is a data structure containing additional metadata about the Thing.
+	Metadata []Metadata `json:"metadata"`
 
-	// Lng is the longitude of the Thing, represented as a decimal value
-	Lng float64 `json:"longitude"`
+	// Location is an embedded data structure which describes location data.
+	Location Location `json:"location"`
 
-	// Lat is the latitude of the Thing, represented as a decimal value
-	Lat float64 `json:"latitude"`
-
-	// Provider is a data structure containing information about the upstream
-	// data provider.
-	Provider *Provider `json:"-"`
+	// Provider is an embedded data structure which describes the data provider.
+	Provider Provider `json:"provider"`
 
 	// Visibility indicates what level of access the upstream data provider
 	// offers, Closed, Shared or Open.
@@ -57,4 +48,25 @@ type Thing struct {
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel `json:"channels"`
+}
+
+// Provider is a data structure containing information about the upstream
+// data provider.
+type Provider struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	URL         string `json:"url"`
+}
+
+// Endpoint is a data structure containing the actual URL we go to fetch data
+// from for this thing, the page MIME type and information about the endpoint
+// authentication. The URL value must be unique for every thing indexed.
+// We can achieve this for things that don't make a real unique URL available
+// by adding a synthetic identifier to the URL string, i.e.
+// http://example.com?city=Indiana#section_id=1234
+type Endpoint struct {
+	URL            string `json:"url"`
+	ContentType    string `json:"content_type"`
+	Authentication string `json:"authentication"`
 }
