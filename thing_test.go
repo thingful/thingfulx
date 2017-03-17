@@ -21,8 +21,9 @@ func TestCompleteThing(t *testing.T) {
 		},
 		IndexedAt: timestamp,
 		Location: Location{
-			Lng: -0.5,
-			Lat: 55.5,
+			Lng:       -0.5,
+			Lat:       55.5,
+			Elevation: 123.0,
 		},
 		Provider: Provider{
 			ID:          "testprovider",
@@ -57,11 +58,11 @@ func TestCompleteThing(t *testing.T) {
 							Lng: -1.23,
 							Lat: 45.6,
 						},
+						Data: Data{
+							Type: "xsd:double",
+							Val:  43.3,
+						},
 					},
-				},
-				Data: Data{
-					Type: "xsd:double",
-					Val:  43.3,
 				},
 			},
 		},
@@ -75,6 +76,7 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Endpoint.Authentication, "thingful:Open")
 	assert.Equal(t, thing.Location.Lng, -0.5)
 	assert.Equal(t, thing.Location.Lat, 55.5)
+	assert.Equal(t, thing.Location.Elevation, 123.0)
 	assert.Equal(t, thing.Provider.ID, "testprovider")
 	assert.Equal(t, thing.Provider.Name, "Test Provider")
 	assert.Equal(t, thing.Provider.Description, "Test Provider description")
@@ -86,6 +88,6 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lng, -1.23)
-	assert.Equal(t, thing.Channels[0].Data.Type, "xsd:double")
-	assert.Equal(t, thing.Channels[0].Data.Val, 43.3)
+	assert.Equal(t, thing.Channels[0].Observations[0].Data.Type, "xsd:double")
+	assert.Equal(t, thing.Channels[0].Observations[0].Data.Val, 43.3)
 }
