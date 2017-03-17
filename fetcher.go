@@ -3,7 +3,7 @@ package thingfulx
 import (
 	"time"
 
-	"golang.org/x/net/context"
+	"context"
 )
 
 // FetcherBuilder is type definition for the constructor functions that new
@@ -59,8 +59,8 @@ type Crawler interface {
 type Parser interface {
 	// Parse returns a slice of Thing objects extracted from that data source.
 	// This function takes as parameters a slice of bytes representing the data
-	// collected from the upstream data provider and a TimeProvider instance used
-	// internally by the fetcher to record the indexing time of the parser.
-	// This is to allow for easier testing.
-	Parse(rawData []byte, timeProvider TimeProvider) ([]Thing, error)
+	// collected from the upstream data provider, the URL of the Thing being indexed
+	// and a TimeProvider instance used internally by the fetcher to record the indexing
+	// time of the parser. This is to allow for easier testing.
+	Parse(rawData []byte, url string, timeProvider TimeProvider) ([]Thing, error)
 }
