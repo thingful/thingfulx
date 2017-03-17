@@ -6,7 +6,7 @@ import (
 )
 
 // IndexerBuilder is type definition for the constructor functions that new
-// Fetchers must implement.
+// Indexer must implement.
 type IndexerBuilder func() (Indexer, error)
 
 // Indexer is the main interface for things that know how to fetch some
