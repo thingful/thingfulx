@@ -5,16 +5,9 @@ import "time"
 // Channel represents an individual data channel being published by a Thing out
 // there in the world somewhere.
 type Channel struct {
-	ID           string            `json:"id"`
-	Metadata     []ChannelMetadata `json:"metadata"`
-	Observations []Observation     `json:"observations"`
-}
-
-// ChannelMetadata is an object which contains any metadata required to
-// semantically descibe a measurement collected by a Thing.
-type ChannelMetadata struct {
-	Prop string `json:"property"`
-	Val  string `json:"value"`
+	ID           string        `json:"id"`
+	Metadata     []Metadata    `json:"metadata"`
+	Observations []Observation `json:"observations"`
 }
 
 // Observation contains information about where and when the Observation

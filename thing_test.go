@@ -44,7 +44,7 @@ func TestCompleteThing(t *testing.T) {
 		Channels: []Channel{
 			{
 				ID: "value1",
-				Metadata: []ChannelMetadata{
+				Metadata: []Metadata{
 					{
 						Prop: "baz",
 						Val:  "qux",

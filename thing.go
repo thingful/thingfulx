@@ -40,18 +40,6 @@ type Thing struct {
 	Channels []Channel `json:"channels"`
 }
 
-// Metadata is a data structure containing additional metadata about the Thing.
-// A key requirement for Metadata is that it must contain a 'thingful:Category'
-// property whose value must me a Category.Name as well as a 'thingful:CategoryUID'
-// whose value must me a Category.UID. These 2 metadata object are required
-// for correctly displaying Things on the thingful.net map.
-// The Metatadata object should contain information about the data visibility -
-// see http://theodi.org/data-spectrum for more info.
-type Metadata struct {
-	Prop string `json:"property"`
-	Val  string `json:"value"`
-}
-
 // Provider is a data structure containing information about the upstream
 // data provider.
 type Provider struct {
