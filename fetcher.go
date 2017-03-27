@@ -16,10 +16,12 @@ type IndexerBuilder func() (Indexer, error)
 // to perform whatever steps required to get the data.
 type Indexer interface {
 	URLProvider
-
 	Fetcher
-
 	Parser
+
+	// UID returns a unique identifier for the data infrastructure indexed by
+	// this Indexer. Good practice for this to be the same as the package name.
+	UID() string
 }
 
 // URLProvider in the interface used by Pomelo to generate a minimum set of URLS that
