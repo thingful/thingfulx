@@ -14,18 +14,18 @@ func TestCompleteThing(t *testing.T) {
 		Title:       "Title",
 		Description: "Description",
 		Webpage:     "http://example.com/things",
-		Endpoint: Endpoint{
+		Endpoint: &Endpoint{
 			URL:            "http://example.com/things.json#id=123abc",
 			ContentType:    "application/exe",
 			Authentication: "thingful:Open",
 		},
 		IndexedAt: timestamp,
-		Location: Location{
+		Location: &Location{
 			Lng:       -0.5,
 			Lat:       55.5,
 			Elevation: 123.0,
 		},
-		Provider: Provider{
+		Provider: &Provider{
 			ID:          "testprovider",
 			Name:        "Test Provider",
 			Description: "Test Provider description",
@@ -53,11 +53,11 @@ func TestCompleteThing(t *testing.T) {
 				Observations: []Observation{
 					{
 						RecordedAt: timestamp,
-						Location: Location{
+						Location: &Location{
 							Lng: -1.23,
 							Lat: 45.6,
 						},
-						Data: Data{
+						Data: &Data{
 							Type: "xsd:double",
 							Val:  43.3,
 						},

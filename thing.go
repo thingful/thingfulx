@@ -24,16 +24,16 @@ type Thing struct {
 	Webpage string `json:"-"`
 
 	// DataURL is an embedded data structure which describes the actual data entry point.
-	Endpoint Endpoint `json:"endpoint"`
+	Endpoint *Endpoint `json:"endpoint"`
 
 	// Metadata is a data structure containing additional metadata about the Thing.
 	Metadata []Metadata `json:"metadata"`
 
 	// Location is an embedded data structure which describes location data.
-	Location Location `json:"location"`
+	Location *Location `json:"location"`
 
 	// Provider is an embedded data structure which describes the data provider.
-	Provider Provider `json:"provider"`
+	Provider *Provider `json:"provider"`
 
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing

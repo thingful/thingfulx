@@ -14,8 +14,8 @@ type Channel struct {
 // was recorded.
 type Observation struct {
 	RecordedAt time.Time `json:"recorded_at"`
-	Location   Location  `json:"location"`
-	Data       Data      `json:"data"`
+	Location   *Location `json:"location"`
+	Data       *Data     `json:"data"`
 }
 
 // Data holds the actual value returned by the Thing as well as the
