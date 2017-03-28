@@ -89,3 +89,121 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Channels[0].Observations[0].Data.Type, "xsd:double")
 	assert.Equal(t, thing.Channels[0].Observations[0].Data.Val, 43.3)
 }
+
+func TestGetMetaValue(t *testing.T) {
+	thing := Thing{
+		Title:       "Title",
+		Description: "Description",
+		Webpage:     "http://example.com/things",
+		Endpoint: &Endpoint{
+			URL:            "http://example.com/things.json#id=123abc",
+			ContentType:    "application/exe",
+			Authentication: "thingful:Open",
+		},
+		Metadata: []Metadata{
+			{
+				Prop: "thingful:Category",
+				Val:  Environment.Name,
+			},
+			{
+				Prop: "thingful:hasRoutes",
+				Val:  "1,2,3",
+			},
+		},
+		Channels: []Channel{
+			{
+				ID: "value1",
+				Metadata: []Metadata{
+					{
+						Prop: "baz",
+						Val:  "qux,boo",
+					},
+				},
+			},
+		},
+	}
+
+	testcases := []struct {
+		input    string
+		expected []string
+	}{
+		{
+			input:    "thingful:Category",
+			expected: []string{"Environment"},
+		},
+		{
+			input:    "thingful:hasRoutes",
+			expected: []string{"1", "2", "3"},
+		},
+		{
+			input:    "xxx",
+			expected: nil,
+		},
+	}
+
+	for _, testcase := range testcases {
+		got := thing.GetMetaValue(testcase.input)
+		assert.Equal(t, testcase.expected, got)
+	}
+}
+
+func TestGetChannelsMetaValue(t *testing.T) {
+	thing := Thing{
+		Title:       "Title",
+		Description: "Description",
+		Webpage:     "http://example.com/things",
+		Endpoint: &Endpoint{
+			URL:            "http://example.com/things.json#id=123abc",
+			ContentType:    "application/exe",
+			Authentication: "thingful:Open",
+		},
+		Metadata: []Metadata{
+			{
+				Prop: "thingful:Category",
+				Val:  Environment.Name,
+			},
+			{
+				Prop: "thingful:CategoryUID",
+				Val:  Environment.UID,
+			},
+		},
+		Channels: []Channel{
+			{
+				ID: "value1",
+				Metadata: []Metadata{
+					{
+						Prop: "baz",
+						Val:  "qux,boo",
+					},
+					{
+						Prop: "meta",
+						Val:  "test",
+					},
+				},
+			},
+		},
+	}
+
+	testcases := []struct {
+		input    string
+		expected []string
+	}{
+		{
+			input:    "baz",
+			expected: []string{"qux", "boo"},
+		},
+		{
+			input:    "meta",
+			expected: []string{"test"},
+		},
+		{
+			input:    "xxx",
+			expected: nil,
+		},
+	}
+
+	for _, testcase := range testcases {
+		got := thing.GetChannelsMetaValue(testcase.input)
+		assert.Equal(t, testcase.expected, got)
+	}
+}

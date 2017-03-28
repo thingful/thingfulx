@@ -1,8 +1,11 @@
 package thingfulx
 
 import (
+	"strings"
 	"time"
 )
+
+const ()
 
 // Thing is the top level data structure representing an individual thing as
 // indexed on some upstream data provider.
@@ -59,4 +62,34 @@ type Endpoint struct {
 	URL            string `json:"url"`
 	ContentType    string `json:"content_type"`
 	Authentication string `json:"authentication"`
+}
+
+// GetMetaValue returns a comma separated list of values
+// that match the Val property set on a Thing Metadata type
+// whose Prop matches the prop argument.
+func (t Thing) GetMetaValue(prop string) []string {
+	for _, meta := range t.Metadata {
+		if meta.Prop == prop {
+			out := strings.Split(meta.Val, ",")
+			return out
+		}
+	}
+
+	return nil
+}
+
+// GetChannelsMetaValue returns a comma separated list of values
+// that match the Val property set on a Channel Metadata type
+// whose Prop matches the prop argument.
+func (t Thing) GetChannelsMetaValue(prop string) []string {
+	for _, ch := range t.Channels {
+		for _, meta := range ch.Metadata {
+			if meta.Prop == prop {
+				out := strings.Split(meta.Val, ",")
+				return out
+			}
+		}
+	}
+
+	return nil
 }
