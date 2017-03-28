@@ -3,6 +3,7 @@ package thingfulx
 import (
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"testing"
 	"time"
 
@@ -48,4 +49,65 @@ func TestDoHTTP(t *testing.T) {
 	}
 
 	assert.Equal(t, body, []byte("ok"))
+}
+
+func TestHTTPGetRequest(t *testing.T) {
+	duration := time.Duration(1) * time.Second
+
+	client := NewClient("thingful", duration)
+
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterStubRequest(
+		httpmock.NewStubRequest(
+			"GET",
+			"http://example.com",
+			httpmock.NewStringResponder(200, "ok"),
+		),
+	)
+
+	got, err := client.DoHTTPGetRequest("http://example.com")
+	assert.Nil(t, err)
+
+	assert.Equal(t, []byte("ok"), got)
+}
+
+func TestHTTPGetRequestError(t *testing.T) {
+
+	testcases := []struct {
+		httpStatus int
+		expected   error
+	}{
+		{
+			httpStatus: http.StatusNotFound,
+			expected:   ErrNotFound,
+		},
+		{
+			httpStatus: http.StatusTeapot,
+			expected:   NewErrUnexpectedResponse(strconv.Itoa(http.StatusTeapot)),
+		},
+	}
+
+	for _, testcase := range testcases {
+		duration := time.Duration(1) * time.Second
+
+		client := NewClient("thingful", duration)
+
+		httpmock.Reset()
+
+		httpmock.Activate()
+		defer httpmock.DeactivateAndReset()
+
+		httpmock.RegisterStubRequest(
+			httpmock.NewStubRequest(
+				"GET",
+				"http://example.com",
+				httpmock.NewBytesResponder(testcase.httpStatus, nil),
+			),
+		)
+
+		_, err := client.DoHTTPGetRequest("http://example.com")
+		assert.Equal(t, testcase.expected, err)
+	}
 }
