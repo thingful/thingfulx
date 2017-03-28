@@ -64,10 +64,10 @@ type Endpoint struct {
 	Authentication string `json:"authentication"`
 }
 
-// GetMetaValue returns a comma separated list of values
+// MetaValForProp returns a comma separated list of values
 // that match the Val property set on a Thing Metadata type
 // whose Prop matches the prop argument.
-func (t Thing) GetMetaValue(prop string) []string {
+func (t Thing) MetaValForProp(prop string) []string {
 	for _, meta := range t.Metadata {
 		if meta.Prop == prop {
 			out := strings.Split(meta.Val, ",")
@@ -78,10 +78,10 @@ func (t Thing) GetMetaValue(prop string) []string {
 	return nil
 }
 
-// GetChannelsMetaValue returns a comma separated list of values
+// ChannelMetaValForProp returns a comma separated list of values
 // that match the Val property set on a Channel Metadata type
 // whose Prop matches the prop argument.
-func (t Thing) GetChannelsMetaValue(prop string) []string {
+func (t Thing) ChannelMetaValForProp(prop string) []string {
 	for _, ch := range t.Channels {
 		for _, meta := range ch.Metadata {
 			if meta.Prop == prop {

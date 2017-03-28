@@ -142,7 +142,7 @@ func TestGetMetaValue(t *testing.T) {
 	}
 
 	for _, testcase := range testcases {
-		got := thing.GetMetaValue(testcase.input)
+		got := thing.MetaValForProp(testcase.input)
 		assert.Equal(t, testcase.expected, got)
 	}
 }
@@ -203,7 +203,7 @@ func TestGetChannelsMetaValue(t *testing.T) {
 	}
 
 	for _, testcase := range testcases {
-		got := thing.GetChannelsMetaValue(testcase.input)
+		got := thing.ChannelMetaValForProp(testcase.input)
 		assert.Equal(t, testcase.expected, got)
 	}
 }
