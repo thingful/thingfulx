@@ -1,44 +1,67 @@
 package thingfulx
 
-import "strings"
-
-const (
-	thingfulSchema = Ontology("https://thingful.github.io/schema#")
-
-	m3liteSchema = Ontology("http://purl.org/iot/vocab/m3-lite#")
-
-	ssnSchema = Ontology("http://purl.oclc.org/NET/ssnx/ssn#")
-
-	iotliteSchema = Ontology("http://purl.oclc.org/NET/UNIS/fiware/iot-lite#")
-
-	xsdSchema = Ontology("http://www.w3.org/2001/XMLSchema#")
+import (
+	"errors"
+	"strings"
 )
 
-// Ontology type is used to define a set list of ontologies known
-// by the Thingfulx library.
-type Ontology string
+const (
+	// thingfulSchema is the base url for Thingful's ontology
+	thingfulSchema = "https://thingful.github.io/schema#"
 
-// String is the Ontology type stringer implementation
-func (o Ontology) String() string {
-	return string(o)
-}
+	// m3liteSchema is the base url for the m3-lite ontology
+	m3liteSchema = "http://purl.org/iot/vocab/m3-lite#"
 
-var namespace = map[string]Ontology{
-	"thingful:": thingfulSchema,
-	"m3-lite:":  m3liteSchema,
-	"ssn:":      ssnSchema,
-	"iot-lite:": iotliteSchema,
-	"xsd:":      xsdSchema,
-}
+	// ssnSchema is the base url for the SSN ontology
+	ssnSchema = "http://purl.oclc.org/NET/ssnx/ssn#"
 
-// ExpandNamespace reruns the expanded version of n.
-func ExpandNamespace(n string) Ontology {
-	for k, v := range namespace {
-		if strings.Contains(n, k) {
-			j := strings.Replace(n, k, string(v), 1)
-			return Ontology(j)
+	// iotliteSchema is the base url for the IOT-LITE ontoloty
+	iotliteSchema = "http://purl.oclc.org/NET/UNIS/fiware/iot-lite#"
+
+	// xsdSchema is the base url for XSD terms
+	xsdSchema = "http://www.w3.org/2001/XMLSchema#"
+)
+
+var (
+	// ErrUnknownNamespace is an error returned when we attempt to expand a
+	// property that we don't have a namespace mapping for
+	ErrUnknownNamespace = errors.New("thingfulx: Unknown namespace")
+)
+
+var (
+	// expanded is a map containing the schema to compact form mappings.
+	namespaces = map[string]string{
+		"thingful:": thingfulSchema,
+		"m3-lite:":  m3liteSchema,
+		"ssn:":      ssnSchema,
+		"iot-lite:": iotliteSchema,
+		"xsd:":      xsdSchema,
+	}
+)
+
+// Expand returns the expanded version of a value (either prop or
+// value).
+func Expand(val string) (string, error) {
+	// k is the compact version, v is the expanded, and val is a compact string
+	for k, v := range namespaces {
+		if strings.Contains(val, k) {
+			return strings.Replace(val, k, v, 1), nil
 		}
 	}
 
-	return ""
+	return "", ErrUnknownNamespace
+}
+
+// Compact is a function that converts an expanded form of a ontology property
+// into its compact representation.  This function returns an error if we are
+// unable to match the namespace.
+func Compact(val string) (string, error) {
+	// here k is still the compact, v is the expanded, but val is the expanded string
+	for k, v := range namespaces {
+		if strings.Contains(val, v) {
+			return strings.Replace(val, v, k, 1), nil
+		}
+	}
+
+	return "", ErrUnknownNamespace
 }
