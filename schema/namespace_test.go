@@ -1,4 +1,4 @@
-package thingfulx
+package schema
 
 import (
 	"testing"
@@ -11,7 +11,6 @@ func TestExpand(t *testing.T) {
 	testcases := []struct {
 		input    string
 		expected string
-		err      error
 	}{
 		{
 			input:    "thingful:foobar",
@@ -35,19 +34,17 @@ func TestExpand(t *testing.T) {
 		},
 		{
 			input:    "unknown-namespace",
-			expected: "",
-			err:      ErrUnknownNamespace,
+			expected: "unknown-namespace",
+		},
+		{
+			input:    "https://thingful.github.io/schema#foobar",
+			expected: "https://thingful.github.io/schema#foobar",
 		},
 	}
 
 	for _, testcase := range testcases {
-		got, err := Expand(testcase.input)
-		if testcase.err == nil {
-			assert.Nil(t, err)
-			assert.Equal(t, testcase.expected, got)
-		} else {
-			assert.Equal(t, testcase.err, err)
-		}
+		got := Expand(testcase.input)
+		assert.Equal(t, testcase.expected, got)
 	}
 }
 
@@ -56,7 +53,6 @@ func TestCompact(t *testing.T) {
 	testcases := []struct {
 		input    string
 		expected string
-		err      error
 	}{
 		{
 			input:    "https://thingful.github.io/schema#foobar",
@@ -80,18 +76,16 @@ func TestCompact(t *testing.T) {
 		},
 		{
 			input:    "http://schema.org/Organization",
-			expected: "",
-			err:      ErrUnknownNamespace,
+			expected: "http://schema.org/Organization",
+		},
+		{
+			input:    "m3-lite:foobar",
+			expected: "m3-lite:foobar",
 		},
 	}
 
 	for _, testcase := range testcases {
-		got, err := Compact(testcase.input)
-		if testcase.err == nil {
-			assert.Nil(t, err)
-			assert.Equal(t, testcase.expected, got)
-		} else {
-			assert.Equal(t, testcase.err, err)
-		}
+		got := Compact(testcase.input)
+		assert.Equal(t, testcase.expected, got)
 	}
 }

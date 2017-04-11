@@ -1,7 +1,6 @@
-package thingfulx
+package schema
 
 import (
-	"errors"
 	"strings"
 )
 
@@ -23,12 +22,6 @@ const (
 )
 
 var (
-	// ErrUnknownNamespace is an error returned when we attempt to expand a
-	// property that we don't have a namespace mapping for
-	ErrUnknownNamespace = errors.New("thingfulx: Unknown namespace")
-)
-
-var (
 	// expanded is a map containing the schema to compact form mappings.
 	namespaces = map[string]string{
 		"thingful:": thingfulSchema,
@@ -39,29 +32,31 @@ var (
 	}
 )
 
-// Expand returns the expanded version of a value (either prop or
-// value).
-func Expand(val string) (string, error) {
+// Expand returns the expanded version of a value (either prop or value). If we
+// are unable to expand the value then we return the input string. This allows
+// this function to be called safely on an already expanded property.
+func Expand(val string) string {
 	// k is the compact version, v is the expanded, and val is a compact string
 	for k, v := range namespaces {
 		if strings.Contains(val, k) {
-			return strings.Replace(val, k, v, 1), nil
+			return strings.Replace(val, k, v, 1)
 		}
 	}
 
-	return "", ErrUnknownNamespace
+	return val
 }
 
 // Compact is a function that converts an expanded form of a ontology property
-// into its compact representation.  This function returns an error if we are
-// unable to match the namespace.
-func Compact(val string) (string, error) {
+// into its compact representation. If we are unable to compact the value then
+// we return the input string. This allows this function to be called safely on
+// an already compacted property.
+func Compact(val string) string {
 	// here k is still the compact, v is the expanded, but val is the expanded string
 	for k, v := range namespaces {
 		if strings.Contains(val, v) {
-			return strings.Replace(val, v, k, 1), nil
+			return strings.Replace(val, v, k, 1)
 		}
 	}
 
-	return "", ErrUnknownNamespace
+	return val
 }
