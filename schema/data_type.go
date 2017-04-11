@@ -15,6 +15,6 @@ var (
 	// RFC3339
 	DateTimeType = DataType(Expand("xsd:dateTime"))
 
-	// String is our exported const representing string values
+	// StringType is our exported const representing string values
 	StringType = DataType(Expand("xsd:string"))
 )
