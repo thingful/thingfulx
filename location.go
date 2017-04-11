@@ -1,6 +1,6 @@
 package thingfulx
 
-// Location is a data structure which holds an individual Thing's
+// Location is a data structure which holds an individual Thing or Observations
 // geographic coordinates
 type Location struct {
 	Lng       float64 `json:"longitude"`
