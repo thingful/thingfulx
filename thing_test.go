@@ -52,6 +52,7 @@ func TestCompleteThing(t *testing.T) {
 						Val:  "qux",
 					},
 				},
+				Type: schema.DoubleType,
 				Observations: []Observation{
 					{
 						RecordedAt: timestamp,
@@ -59,10 +60,7 @@ func TestCompleteThing(t *testing.T) {
 							Lng: -1.23,
 							Lat: 45.6,
 						},
-						Data: &Data{
-							Type: schema.DoubleType,
-							Val:  43.3,
-						},
+						Val: 43.3,
 					},
 				},
 			},
@@ -84,12 +82,13 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Provider.URL, "http://example.com")
 	assert.Equal(t, thing.Metadata[0].Prop, schema.HasCategory)
 	assert.Equal(t, thing.Metadata[0].Val, "Environment")
+	assert.Len(t, thing.Channels, 1)
 	assert.Equal(t, thing.Channels[0].ID, "value1")
+	assert.Equal(t, thing.Channels[0].Type, schema.DoubleType)
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lng, -1.23)
-	assert.Equal(t, thing.Channels[0].Observations[0].Data.Type, schema.DoubleType)
-	assert.Equal(t, thing.Channels[0].Observations[0].Data.Val, 43.3)
+	assert.Equal(t, thing.Channels[0].Observations[0].Val, 43.3)
 }
 
 func TestMetaVal(t *testing.T) {
