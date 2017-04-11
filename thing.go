@@ -1,11 +1,8 @@
 package thingfulx
 
 import (
-	"strings"
 	"time"
 )
-
-const ()
 
 // Thing is the top level data structure representing an individual thing as
 // indexed on some upstream data provider.
@@ -24,7 +21,7 @@ type Thing struct {
 	// doesn't have to be a unique page for the thing as typically one might not
 	// be available. In that case, this could be a link to a page describing the
 	// type of thing, or just a link to the main homepage of the project.
-	Webpage string `json:"-"`
+	Webpage string `json:"webpage"`
 
 	// DataURL is an embedded data structure which describes the actual data entry point.
 	Endpoint *Endpoint `json:"endpoint"`
@@ -59,37 +56,21 @@ type Provider struct {
 // by adding a synthetic identifier to the URL string, i.e.
 // http://example.com?city=Indiana#section_id=1234
 type Endpoint struct {
-	URL            string `json:"url"`
-	ContentType    string `json:"content_type"`
-	Authentication string `json:"authentication"`
+	URL         string     `json:"url"`
+	ContentType string     `json:"content_type"`
+	Visibility  Visibility `json:"authentication"`
 }
 
-// MetaValForProp returns a comma separated list of values
-// that match the Val property set on a Thing Metadata type
-// whose Prop matches the prop argument.
-func (t Thing) MetaValForProp(prop string) []string {
+// MetaVal returns the first value for the given property in the Thing's
+// metadata. If the property is not found this returns the empty string. If you
+// need to access multiple values with the same property key, you should use
+// the map directly.
+func (t *Thing) MetaVal(prop string) string {
 	for _, meta := range t.Metadata {
 		if meta.Prop == prop {
-			out := strings.Split(meta.Val, ",")
-			return out
+			return meta.Val
 		}
 	}
 
-	return nil
-}
-
-// ChannelMetaValForProp returns a comma separated list of values
-// that match the Val property set on a Channel Metadata type
-// whose Prop matches the prop argument.
-func (t Thing) ChannelMetaValForProp(prop string) []string {
-	for _, ch := range t.Channels {
-		for _, meta := range ch.Metadata {
-			if meta.Prop == prop {
-				out := strings.Split(meta.Val, ",")
-				return out
-			}
-		}
-	}
-
-	return nil
+	return ""
 }
