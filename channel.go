@@ -1,6 +1,10 @@
 package thingfulx
 
-import "time"
+import (
+	"time"
+
+	"github.com/thingful/thingfulx/schema"
+)
 
 // Channel represents an individual data channel being published by a Thing out
 // there in the world somewhere.
@@ -21,6 +25,6 @@ type Observation struct {
 // Data holds the actual value returned by the Thing as well as the
 // concrete type of the value itself.
 type Data struct {
-	Type string      `json:"type"`
-	Val  interface{} `json:"value"`
+	Type schema.DataType `json:"type"`
+	Val  interface{}     `json:"value"`
 }
