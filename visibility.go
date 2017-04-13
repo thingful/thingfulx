@@ -4,6 +4,11 @@ package thingfulx
 // visibility.
 type Visibility string
 
+// String is our implementation of Stringer for the Visibility type
+func (v Visibility) String() string {
+	return string(v)
+}
+
 const (
 	// Closed is the exported const representing a private endpoint requiring
 	// authentication to use.
