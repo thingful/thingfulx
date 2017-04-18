@@ -11,13 +11,15 @@ var (
 	// DoubleType is our exported const representing double or float data types
 	DoubleType = DataType(Expand("xsd:double"))
 
-	// DateTimeType is our exported const representing date/time values in
-	// RFC3339
+	// DateTimeType is our exported const representing a date/time values
 	DateTimeType = DataType(Expand("xsd:dateTime"))
 
-	// TimeType is our exported const representing time values in RFC3339
+	// TimeType is our exported const representing a value that is a time
 	TimeType = DataType(Expand("xsd:time"))
 
 	// StringType is our exported const representing string values
 	StringType = DataType(Expand("xsd:string"))
+
+	// BytesType is our exported const representing an opaque slice of bytes
+	BytesType = DataType(Expand("thingful:bytes"))
 )
