@@ -38,6 +38,11 @@ type Thing struct {
 	// Channels are a slice of Channel objects which capture the actual data of
 	// the thing
 	Channels []Channel `json:"channels"`
+
+	// Visibility indicates generally what type of access is possible to the
+	// Thing using the data spectrum classifications from the ODI: Open, Shared
+	// or Closed
+	Visibility Visibility `json:"visibility"`
 }
 
 // Provider is a data structure containing information about the upstream
@@ -56,9 +61,8 @@ type Provider struct {
 // by adding a synthetic identifier to the URL string, i.e.
 // http://example.com?city=Indiana#section_id=1234
 type Endpoint struct {
-	URL         string     `json:"url"`
-	ContentType string     `json:"content_type"`
-	Visibility  Visibility `json:"authentication"`
+	URL         string `json:"url"`
+	ContentType string `json:"content_type"`
 }
 
 // MetaVal returns the first value for the given property in the Thing's

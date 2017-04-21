@@ -16,10 +16,10 @@ func TestCompleteThing(t *testing.T) {
 		Title:       "Title",
 		Description: "Description",
 		Webpage:     "http://example.com/things",
+		Visibility:  Open,
 		Endpoint: &Endpoint{
 			URL:         "http://example.com/things.json#id=123abc",
 			ContentType: "application/exe",
-			Visibility:  Open,
 		},
 		IndexedAt: timestamp,
 		Location: &Location{
@@ -70,9 +70,9 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Title, "Title")
 	assert.Equal(t, thing.Description, "Description")
 	assert.Equal(t, thing.Webpage, "http://example.com/things")
+	assert.Equal(t, thing.Visibility, Visibility("open"))
 	assert.Equal(t, thing.Endpoint.URL, "http://example.com/things.json#id=123abc")
 	assert.Equal(t, thing.Endpoint.ContentType, "application/exe")
-	assert.Equal(t, thing.Endpoint.Visibility, Visibility("open"))
 	assert.Equal(t, thing.Location.Lng, -0.5)
 	assert.Equal(t, thing.Location.Lat, 55.5)
 	assert.Equal(t, thing.Location.Elevation, 123.0)
@@ -96,10 +96,10 @@ func TestMetaVal(t *testing.T) {
 		Title:       "Title",
 		Description: "Description",
 		Webpage:     "http://example.com/things",
+		Visibility:  Open,
 		Endpoint: &Endpoint{
 			URL:         "http://example.com/things.json#id=123abc",
 			ContentType: "application/json",
-			Visibility:  Open,
 		},
 		Metadata: []Metadata{
 			{
