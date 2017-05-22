@@ -37,6 +37,10 @@ func TestExpand(t *testing.T) {
 			expected: "unknown-namespace",
 		},
 		{
+			input:    "qu:foobar",
+			expected: "http://purl.org/NET/ssnx/qu/qu#foobar",
+		},
+		{
 			input:    "https://thingful.github.io/schema#foobar",
 			expected: "https://thingful.github.io/schema#foobar",
 		},
@@ -77,6 +81,10 @@ func TestCompact(t *testing.T) {
 		{
 			input:    "http://schema.org/Organization",
 			expected: "http://schema.org/Organization",
+		},
+		{
+			input:    "http://purl.org/NET/ssnx/qu/qu#foobar",
+			expected: "qu:foobar",
 		},
 		{
 			input:    "m3-lite:foobar",

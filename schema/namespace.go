@@ -19,6 +19,9 @@ const (
 
 	// xsdSchema is the base url for XSD terms
 	xsdSchema = "http://www.w3.org/2001/XMLSchema#"
+
+	// quSchema is the base url for QU ontologies
+	quSchema = "http://purl.org/NET/ssnx/qu/qu#"
 )
 
 var (
@@ -29,6 +32,7 @@ var (
 		"ssn:":      ssnSchema,
 		"iot-lite:": iotliteSchema,
 		"xsd:":      xsdSchema,
+		"qu:":       quSchema,
 	}
 )
 
