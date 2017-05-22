@@ -7,14 +7,14 @@ import (
 )
 
 func TestExpand(t *testing.T) {
-
+http: //purl.org/iot/vocab/thingful
 	testcases := []struct {
 		input    string
 		expected string
 	}{
 		{
 			input:    "thingful:foobar",
-			expected: "https://thingful.github.io/schema#foobar",
+			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
 		{
 			input:    "m3-lite:foobar",
@@ -41,8 +41,8 @@ func TestExpand(t *testing.T) {
 			expected: "http://purl.org/NET/ssnx/qu/qu#foobar",
 		},
 		{
-			input:    "https://thingful.github.io/schema#foobar",
-			expected: "https://thingful.github.io/schema#foobar",
+			input:    "http://purl.org/iot/vocab/thingful#foobar",
+			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
 	}
 
@@ -59,7 +59,7 @@ func TestCompact(t *testing.T) {
 		expected string
 	}{
 		{
-			input:    "https://thingful.github.io/schema#foobar",
+			input:    "http://purl.org/iot/vocab/thingful#foobar",
 			expected: "thingful:foobar",
 		},
 		{
