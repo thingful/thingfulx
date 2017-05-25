@@ -7,7 +7,7 @@ import (
 )
 
 func TestExpand(t *testing.T) {
-http: //purl.org/iot/vocab/thingful
+
 	testcases := []struct {
 		input    string
 		expected string
