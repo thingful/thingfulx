@@ -6,7 +6,7 @@ import (
 
 const (
 	// thingfulSchema is the base url for Thingful's ontology
-	thingfulSchema = "https://thingful.github.io/schema#"
+	thingfulSchema = "http://purl.org/iot/vocab/thingful#"
 
 	// m3liteSchema is the base url for the m3-lite ontology
 	m3liteSchema = "http://purl.org/iot/vocab/m3-lite#"
