@@ -33,6 +33,9 @@ func TestCompleteThing(t *testing.T) {
 			Description: "Test Provider description",
 			URL:         "http://example.com",
 		},
+		ThingType:   schema.Expand("thingful:ConnectedDevice"),
+		DataLicense: schema.Expand("thingful:SomeRandomDataLicense"),
+		Category:    Environment.Name,
 		Metadata: []Metadata{
 			{
 				Prop: schema.HasCategory,
@@ -80,6 +83,9 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Provider.Name, "Test Provider")
 	assert.Equal(t, thing.Provider.Description, "Test Provider description")
 	assert.Equal(t, thing.Provider.URL, "http://example.com")
+	assert.Equal(t, thing.ThingType, schema.Expand("thingful:ConnectedDevice"))
+	assert.Equal(t, thing.DataLicense, schema.Expand("thingful:SomeRandomDataLicense"))
+	assert.Equal(t, thing.Category, Environment.Name)
 	assert.Equal(t, thing.Metadata[0].Prop, schema.HasCategory)
 	assert.Equal(t, thing.Metadata[0].Val, "Environment")
 	assert.Len(t, thing.Channels, 1)
