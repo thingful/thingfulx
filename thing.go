@@ -43,6 +43,20 @@ type Thing struct {
 	// Thing using the data spectrum classifications from the ODI: Open, Shared
 	// or Closed
 	Visibility Visibility `json:"visibility"`
+
+	// ThingType indicates what type is this thing, it is short for thingful:isThingType
+	// the most generic thing type is thingful:ConnectedDevice
+	ThingType string `json:"isThingType"`
+
+	// Category indicates what type this thing belongs to, it is short for thingful:hasCategory
+	// This is mainly used by thingful.net. Only values allowes are what is defined in thingfulx/category.go
+	// for example, thingfulx.Environment.Name
+	Category string `json:"hasCategory"`
+
+	// DataLicense indicates what of data license this thing has, it is short for thingful:hasDataLicense
+	// This could be used to decide what can we do with this thing's data
+	// NOTE: need data license ontology!!
+	DataLicense string `json:"hasDataLicense"`
 }
 
 // Provider is a data structure containing information about the upstream
