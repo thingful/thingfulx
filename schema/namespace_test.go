@@ -41,6 +41,14 @@ func TestExpand(t *testing.T) {
 			expected: "http://purl.org/NET/ssnx/qu/qu#foobar",
 		},
 		{
+			input:    "schema:foobar",
+			expected: "http://schema.org/foobar",
+		},
+		{
+			input:    "cc:foobar",
+			expected: "https://creativecommons.org/ns#foobar",
+		},
+		{
 			input:    "http://purl.org/iot/vocab/thingful#foobar",
 			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
@@ -80,7 +88,11 @@ func TestCompact(t *testing.T) {
 		},
 		{
 			input:    "http://schema.org/Organization",
-			expected: "http://schema.org/Organization",
+			expected: "schema:Organization",
+		},
+		{
+			input:    "https://creativecommons.org/ns#license",
+			expected: "cc:license",
 		},
 		{
 			input:    "http://purl.org/NET/ssnx/qu/qu#foobar",

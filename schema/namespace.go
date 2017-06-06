@@ -22,6 +22,12 @@ const (
 
 	// quSchema is the base url for QU ontologies
 	quSchema = "http://purl.org/NET/ssnx/qu/qu#"
+
+	// schemaOrg is base url for schema.org
+	schemaOrgSchema = "http://schema.org/"
+
+	// ccSchema is base url for Creative Commons REL
+	ccSchema = "https://creativecommons.org/ns#"
 )
 
 var (
@@ -33,6 +39,8 @@ var (
 		"iot-lite:": iotliteSchema,
 		"xsd:":      xsdSchema,
 		"qu:":       quSchema,
+		"schema:":   schemaOrgSchema,
+		"cc:":       ccSchema,
 	}
 )
 
