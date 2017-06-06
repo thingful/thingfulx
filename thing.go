@@ -15,7 +15,7 @@ type Thing struct {
 
 	// IndexedAt is a Time object indicating the timestamp when the thing was
 	// indexed by Thingful
-	IndexedAt time.Time `json:"indexed_at"`
+	IndexedAt time.Time `json:"indexedAt"`
 
 	// Webpage is a URL to a human intelligible page about the thing. This
 	// doesn't have to be a unique page for the thing as typically one might not
@@ -43,6 +43,20 @@ type Thing struct {
 	// Thing using the data spectrum classifications from the ODI: Open, Shared
 	// or Closed
 	Visibility Visibility `json:"visibility"`
+
+	// ThingType indicates what type is this thing, it is short for thingful:isThingType
+	// the most generic thing type is thingful:ConnectedDevice
+	ThingType string `json:"thingType"`
+
+	// Category indicates what type this thing belongs to, it is short for thingful:hasCategory
+	// This is mainly used by thingful.net.
+	// The value will be those defined by m3-lite's domain of interest, plus some additionally defined by thingful
+	Category string `json:"category"`
+
+	// DataLicense indicates what of data license this thing has, it is short for thingful:hasDataLicense
+	// This could be used to decide what can we do with this thing's data
+	// NOTE: need data license ontology!!
+	DataLicense string `json:"dataLicense"`
 }
 
 // Provider is a data structure containing information about the upstream
@@ -62,7 +76,7 @@ type Provider struct {
 // http://example.com?city=Indiana#section_id=1234
 type Endpoint struct {
 	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
+	ContentType string `json:"contentType"`
 }
 
 // MetaVal returns the first value for the given property in the Thing's

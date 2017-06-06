@@ -33,6 +33,9 @@ func TestCompleteThing(t *testing.T) {
 			Description: "Test Provider description",
 			URL:         "http://example.com",
 		},
+		ThingType:   schema.Expand("thingful:ConnectedDevice"),
+		DataLicense: schema.Expand("thingful:SomeRandomDataLicense"),
+		Category:    Environment.Name,
 		Metadata: []Metadata{
 			{
 				Prop: schema.HasCategory,
@@ -45,7 +48,14 @@ func TestCompleteThing(t *testing.T) {
 		},
 		Channels: []Channel{
 			{
-				ID: "value1",
+				ID:           "value1",
+				QuantityKind: schema.Expand("m3-lite:WindSpeed"),
+				Unit:         schema.Expand("m3-lite:KilometerPerHour"),
+				MeasuredBy:   schema.Expand("m3-lite:WindSpeedSensor"),
+				DomainOfInterest: []string{
+					schema.Expand("m3-lite:Weather"),
+					schema.Expand("m3-lite:Environment"),
+				},
 				Metadata: []Metadata{
 					{
 						Prop: "baz",
@@ -80,11 +90,18 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Provider.Name, "Test Provider")
 	assert.Equal(t, thing.Provider.Description, "Test Provider description")
 	assert.Equal(t, thing.Provider.URL, "http://example.com")
+	assert.Equal(t, thing.ThingType, schema.Expand("thingful:ConnectedDevice"))
+	assert.Equal(t, thing.DataLicense, schema.Expand("thingful:SomeRandomDataLicense"))
+	assert.Equal(t, thing.Category, Environment.Name)
 	assert.Equal(t, thing.Metadata[0].Prop, schema.HasCategory)
 	assert.Equal(t, thing.Metadata[0].Val, "Environment")
 	assert.Len(t, thing.Channels, 1)
 	assert.Equal(t, thing.Channels[0].ID, "value1")
 	assert.Equal(t, thing.Channels[0].Type, schema.DoubleType)
+	assert.Equal(t, thing.Channels[0].QuantityKind, schema.Expand("m3-lite:WindSpeed"))
+	assert.Equal(t, thing.Channels[0].Unit, schema.Expand("m3-lite:KilometerPerHour"))
+	assert.Equal(t, thing.Channels[0].MeasuredBy, schema.Expand("m3-lite:WindSpeedSensor"))
+	assert.Equal(t, thing.Channels[0].DomainOfInterest[0], schema.Expand("m3-lite:Weather"))
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lng, -1.23)
