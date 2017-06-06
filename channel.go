@@ -14,7 +14,7 @@ type Channel struct {
 	Observations []Observation `json:"observations"`
 
 	// this is a bit confusing, can we use `json:"data_type"` instead?
-	Type schema.DataType `json:"type"`
+	Type schema.DataType `json:"dataType"`
 
 	// QuantityKind defines measurement type of quantity kind of this channel,
 	// in Ontology PoV, Channel is type QuantityKind, so type of channel can be anything that classified as quantitykind
