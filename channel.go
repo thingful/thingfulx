@@ -19,15 +19,15 @@ type Channel struct {
 	// QuantityKind defines measurement type of quantity kind of this channel,
 	// in Ontology PoV, Channel is type QuantityKind, so type of channel can be anything that classified as quantitykind
 	// for example m3-lite:Temperature, m3-lite:WindSpeed
-	QuantityKind string `json:"isQuantityKind"`
+	QuantityKind string `json:"quantityKind"`
 
 	// Unit defines unit of this channel, it is short for thingful:hasUnit,
 	// for example m3-lite:PPM, m3-lite:Miles
-	Unit string `json:"hasUnit"`
+	Unit string `json:"unit"`
 
 	// DomainOfInterest defines domain of interest of this channel, it is short for thingful:hasDomainOfInterest,
 	// for example m3-lite:Environment, m3-lite:Weather
-	DomainOfInterest string `json:"hasDomainOfInterest"`
+	DomainOfInterest string `json:"domainOfInterest"`
 
 	// MeasuredBy defines type of sensor that measure this channel, it is short for thingful:measuredBy,
 	// for example m3-lite:Seismometer, m3-lite:LightSensor
@@ -37,7 +37,7 @@ type Channel struct {
 // Observation contains information about where and when the Observation
 // was recorded.
 type Observation struct {
-	RecordedAt time.Time   `json:"recorded_at"`
+	RecordedAt time.Time   `json:"recordedAt"`
 	Location   *Location   `json:"location"`
 	Val        interface{} `json:"value"`
 }
