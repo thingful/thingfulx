@@ -13,7 +13,7 @@ type Channel struct {
 	Metadata     []Metadata    `json:"metadata"`
 	Observations []Observation `json:"observations"`
 
-	// this is a bit confusing, can we use `json:"data_type"` instead?
+	// dataType defines the type of data of this channel, eg; string, double, date-time
 	Type schema.DataType `json:"dataType"`
 
 	// QuantityKind defines measurement type of quantity kind of this channel,
