@@ -27,7 +27,7 @@ type Channel struct {
 
 	// DomainOfInterest defines domain of interest of this channel, it is short for thingful:hasDomainOfInterest,
 	// for example m3-lite:Environment, m3-lite:Weather
-	DomainOfInterest string `json:"domain"`
+	DomainOfInterest []string `json:"domain"`
 
 	// MeasuredBy defines type of sensor that measure this channel, it is short for thingful:measuredBy,
 	// for example m3-lite:Seismometer, m3-lite:LightSensor

@@ -49,8 +49,8 @@ type Thing struct {
 	ThingType string `json:"thingType"`
 
 	// Category indicates what type this thing belongs to, it is short for thingful:hasCategory
-	// This is mainly used by thingful.net. Only values allowes are what is defined in thingfulx/category.go
-	// for example, thingfulx.Environment.Name
+	// This is mainly used by thingful.net.
+	// The value will be those defined by m3-lite's domain of interest, plus some additionally defined by thingful
 	Category string `json:"category"`
 
 	// DataLicense indicates what of data license this thing has, it is short for thingful:hasDataLicense

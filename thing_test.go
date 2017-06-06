@@ -48,11 +48,14 @@ func TestCompleteThing(t *testing.T) {
 		},
 		Channels: []Channel{
 			{
-				ID:               "value1",
-				QuantityKind:     schema.Expand("m3-lite:WindSpeed"),
-				Unit:             schema.Expand("m3-lite:KilometerPerHour"),
-				MeasuredBy:       schema.Expand("m3-lite:WindSpeedSensor"),
-				DomainOfInterest: schema.Expand("m3-lite:Weather"),
+				ID:           "value1",
+				QuantityKind: schema.Expand("m3-lite:WindSpeed"),
+				Unit:         schema.Expand("m3-lite:KilometerPerHour"),
+				MeasuredBy:   schema.Expand("m3-lite:WindSpeedSensor"),
+				DomainOfInterest: []string{
+					schema.Expand("m3-lite:Weather"),
+					schema.Expand("m3-lite:Environment"),
+				},
 				Metadata: []Metadata{
 					{
 						Prop: "baz",
@@ -98,7 +101,7 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Channels[0].QuantityKind, schema.Expand("m3-lite:WindSpeed"))
 	assert.Equal(t, thing.Channels[0].Unit, schema.Expand("m3-lite:KilometerPerHour"))
 	assert.Equal(t, thing.Channels[0].MeasuredBy, schema.Expand("m3-lite:WindSpeedSensor"))
-	assert.Equal(t, thing.Channels[0].DomainOfInterest, schema.Expand("m3-lite:Weather"))
+	assert.Equal(t, thing.Channels[0].DomainOfInterest[0], schema.Expand("m3-lite:Weather"))
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lng, -1.23)
