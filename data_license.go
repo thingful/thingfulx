@@ -5,44 +5,43 @@ package thingfulx
 const (
 
 	// Permissions
+	// Reproduction refers to "making multiple copies"
 	Reproduction = "https://creativecommons.org/ns#Reproduction"
-	//Reproduction refers to "making multiple copies"
 
+	// Distribution refers to "distribution, public display, and publicly performance"
 	Distribution = "https://creativecommons.org/ns#Distribution"
-	//Distribution refers to "distribution, public display, and publicly performance"
 
+	// DerivativeWorks refers to "distribution of derivative works"
 	DerivativeWorks = "https://creativecommons.org/ns#DerivativeWorks"
-	//DerivativeWorks refers to "distribution of derivative works"
 
+	// Sharing refers to "permits commercial derivatives, but only non-commercial distribution"
 	Sharing = "https://creativecommons.org/ns#Sharing"
-	//Sharing refers to "permits commercial derivatives, but only non-commercial distribution"
 
 	// Requirements
+	// Notice refers to "copyright and license notices be kept intact"
 	Notice = "https://creativecommons.org/ns#Notice"
-	//Notice refers to "copyright and license notices be kept intact"
 
+	// Attribution refers to "credit be given to copyright holder and/or author"
 	Attribution = "https://creativecommons.org/ns#Attribution"
-	//Attribution refers to "credit be given to copyright holder and/or author"
 
+	// ShareAlike refers to "derivative works be licensed under the same terms or compatible terms as the original work"
 	ShareAlike = "https://creativecommons.org/ns#ShareAlike"
-	//ShareAlike refers to "derivative works be licensed under the same terms or compatible terms as the original work"
 
+	// SourceCode refers to "source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license"
 	SourceCode = "https://creativecommons.org/ns#SourceCode"
-	//SourceCode refers to "source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license"
 
+	// Copyleft refers to "derivative and combined works must be licensed under specified terms, similar to those on the original work"
 	Copyleft = "https://creativecommons.org/ns#Copyleft"
-	//Copyleft refers to "derivative and combined works must be licensed under specified terms, similar to those on the original work"
 
+	// LesserCopyleft refers to "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"
 	LesserCopyleft = "https://creativecommons.org/ns#LesserCopyleft"
-	//LesserCopyleft refers to "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"
 
 	// Prohibitions
+	// CommercialUse refers to "exercising rights for commercial purposes"
 	CommercialUse = "http://web.resource.org/cc/CommercialUse"
-	//CommercialUse refers to "exercising rights for commercial purposes"
 
+	// HighIncomeNationUse refers to "use in a non-developing country"
 	HighIncomeNationUse = "https://creativecommons.org/ns#HighIncomeNationUse"
-	//HighIncomeNationUse refers to "use in a non-developing country"
-
 )
 
 type License struct {
