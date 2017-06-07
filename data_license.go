@@ -4,7 +4,8 @@ package thingfulx
 
 const (
 
-	// Permissions
+	// Permissions type
+
 	// Reproduction is "making multiple copies"
 	Reproduction = "https://creativecommons.org/ns#Reproduction"
 
@@ -17,7 +18,8 @@ const (
 	// Sharing is "permits commercial derivatives, but only non-commercial distribution"
 	Sharing = "https://creativecommons.org/ns#Sharing"
 
-	// Requirements
+	// Requirements type
+
 	// Notice is "copyright and license notices be kept intact"
 	Notice = "https://creativecommons.org/ns#Notice"
 
@@ -36,7 +38,8 @@ const (
 	// LesserCopyleft is "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"
 	LesserCopyleft = "https://creativecommons.org/ns#LesserCopyleft"
 
-	// Prohibitions
+	// Prohibitions type
+
 	// CommercialUse is "exercising rights for commercial purposes"
 	CommercialUse = "http://web.resource.org/cc/CommercialUse"
 
