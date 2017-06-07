@@ -83,6 +83,28 @@ var (
 		Prohibits: []string{},
 	}
 
+	CCByV3 = License{
+
+		Name: "Attribution 3.0 Unported (CC BY 3.0)",
+
+		URL: "https://creativecommons.org/licenses/by/3.0/",
+
+		LegalCodeURL: "https://creativecommons.org/licenses/by/3.0/legalcode",
+
+		Permits: []string{
+			Reproduction,
+			Distribution,
+			DerivativeWorks,
+			Sharing,
+		},
+
+		Requires: []string{
+			Attribution,
+		},
+
+		Prohibits: []string{},
+	}
+
 	CCBySaV4 = License{
 
 		Name: "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
@@ -123,6 +145,52 @@ var (
 
 		Requires: []string{
 			Attribution,
+		},
+
+		Prohibits: []string{
+			CommercialUse,
+		},
+	}
+
+	CCByNdV3 = License{ // i'm a bit confuse with this one how to describe it, need confirmation with CC
+
+		Name: "Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0)",
+
+		URL: "https://creativecommons.org/licenses/by-nd/3.0/",
+
+		LegalCodeURL: "https://creativecommons.org/licenses/by-nd/3.0/legalcode",
+
+		Permits: []string{
+			Reproduction,
+			Distribution,
+			Sharing,
+		},
+
+		Requires: []string{
+			Attribution,
+		},
+
+		Prohibits: []string{},
+	}
+
+	CCByNcSaV3 = License{
+
+		Name: "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)",
+
+		URL: "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+
+		LegalCodeURL: "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode",
+
+		Permits: []string{
+			Reproduction,
+			Distribution,
+			Sharing,
+			DerivativeWorks,
+		},
+
+		Requires: []string{
+			Attribution,
+			ShareAlike,
 		},
 
 		Prohibits: []string{

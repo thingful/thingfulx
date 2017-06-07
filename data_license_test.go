@@ -1,9 +1,8 @@
 package thingfulx
 
 import (
-	"fmt"
-	// "github.com/davecgh/go-spew/spew"
 	"encoding/json"
+	"fmt"
 	"testing"
 )
 
