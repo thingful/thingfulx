@@ -63,7 +63,7 @@ type License struct {
 }
 
 var (
-	CC_0_V1 = License{
+	CC0V1 = License{
 
 		Name: "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
 
@@ -83,7 +83,7 @@ var (
 		Prohibits: []string{},
 	}
 
-	CC_BY_SA_V4 = License{
+	CCBySaV4 = License{
 
 		Name: "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
 
@@ -106,7 +106,7 @@ var (
 		Prohibits: []string{},
 	}
 
-	CC_BY_NC_V3 = License{
+	CCByNcV3 = License{
 
 		Name: "Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)",
 
@@ -130,7 +130,7 @@ var (
 		},
 	}
 
-	OGL_V3 = License{
+	OGLV3 = License{
 
 		Name: "open government licence version 3.0",
 

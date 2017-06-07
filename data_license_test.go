@@ -8,7 +8,7 @@ import (
 )
 
 func TestLicense(t *testing.T) {
-	j, _ := json.Marshal(CC_BY_NC_V3)
+	j, _ := json.Marshal(CCByNcV3)
 	fmt.Println(string(j))
 
 	// spew.Dump(CC_0_V1)
