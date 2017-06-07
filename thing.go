@@ -53,10 +53,18 @@ type Thing struct {
 	// The value will be those defined by m3-lite's domain of interest, plus some additionally defined by thingful
 	Category string `json:"category"`
 
-	// DataLicense indicates what of data license this thing has, it is short for thingful:hasDataLicense
+	// DataLicense indicates what of data license this thing has, it is short for cc:license
 	// This could be used to decide what can we do with this thing's data
-	// NOTE: need data license ontology!!
-	DataLicense string `json:"dataLicense"`
+	// It takes DataLicense struct which can be manually defined or use predefined ones
+	DataLicense DataLicense `json:"license"`
+
+	// AttributionName indicates name ot the author of the data (if required)
+	// it is short for cc:attributionName
+	AttributionName string `json:"attributionName,omitempty"`
+
+	// AttributionURL indicates name ot the author of the data (if required)
+	// it is short for cc:attributionURL
+	AttributionURL string `json:"attributionURL,omitempty"`
 }
 
 // Provider is a data structure containing information about the upstream

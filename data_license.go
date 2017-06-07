@@ -47,8 +47,8 @@ const (
 	HighIncomeNationUse = "https://creativecommons.org/ns#HighIncomeNationUse"
 )
 
-// License is struct used to describe data license
-type License struct {
+// DataLicense is struct used to describe data license
+type DataLicense struct {
 	// Human readable name for this license
 	Name string `json:"name"`
 
@@ -68,7 +68,7 @@ type License struct {
 var (
 
 	// CC0V1 is a predefined Creative Commons CC0 version 1.0 license
-	CC0V1 = License{
+	CC0V1 = DataLicense{
 
 		Name: "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
 
@@ -89,7 +89,7 @@ var (
 	}
 
 	// CCByV3 is a predefined Creative Commons CC BY version 3.0 license
-	CCByV3 = License{
+	CCByV3 = DataLicense{
 
 		Name: "Attribution 3.0 Unported (CC BY 3.0)",
 
@@ -112,7 +112,7 @@ var (
 	}
 
 	// CCBySaV4 is a predefined Creative Commons CC BY-SA version 4.0 license
-	CCBySaV4 = License{
+	CCBySaV4 = DataLicense{
 
 		Name: "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
 
@@ -136,7 +136,7 @@ var (
 	}
 
 	// CCByNcV3 is a predefined Creative Commons CC BY-NC version 3.0 license
-	CCByNcV3 = License{
+	CCByNcV3 = DataLicense{
 
 		Name: "Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)",
 
@@ -161,7 +161,7 @@ var (
 	}
 
 	// CCByNdV3 is a predefined Creative Commons CC BY-ND version 3.0 license
-	CCByNdV3 = License{ // i'm a bit confuse with this one how to describe it, need confirmation with CC
+	CCByNdV3 = DataLicense{ // i'm a bit confuse with this one how to describe it, need confirmation with CC
 
 		Name: "Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0)",
 
@@ -183,7 +183,7 @@ var (
 	}
 
 	// CCByNcSaV3 is a predefined Creative Commons CC BY-NC-SA version 3.0 license
-	CCByNcSaV3 = License{
+	CCByNcSaV3 = DataLicense{
 
 		Name: "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)",
 
@@ -209,7 +209,7 @@ var (
 	}
 
 	// OGLV3 is a predefined Open Government Licence version 3.0 license
-	OGLV3 = License{
+	OGLV3 = DataLicense{
 
 		Name: "Open Government Licence version 3.0",
 
