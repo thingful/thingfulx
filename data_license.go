@@ -6,42 +6,42 @@ const (
 
 	// Permissions
 	Reproduction = "https://creativecommons.org/ns#Reproduction"
-	//making multiple copies
+	//Reproduction: making multiple copies
 
 	Distribution = "https://creativecommons.org/ns#Distribution"
-	//distribution, public display, and publicly performance
+	//Distribution: distribution, public display, and publicly performance
 
 	DerivativeWorks = "https://creativecommons.org/ns#DerivativeWorks"
-	//distribution of derivative works
+	//DerivativeWorks: distribution of derivative works
 
 	Sharing = "https://creativecommons.org/ns#Sharing"
-	// permits commercial derivatives, but only non-commercial distribution
+	//Sharing: permits commercial derivatives, but only non-commercial distribution
 
 	// Requirements
 	Notice = "https://creativecommons.org/ns#Notice"
-	//copyright and license notices be kept intact
+	//Notice: copyright and license notices be kept intact
 
 	Attribution = "https://creativecommons.org/ns#Attribution"
-	// credit be given to copyright holder and/or author
+	//Attribution: credit be given to copyright holder and/or author
 
 	ShareAlike = "https://creativecommons.org/ns#ShareAlike"
-	//derivative works be licensed under the same terms or compatible terms as the original work
+	//ShareAlike: derivative works be licensed under the same terms or compatible terms as the original work
 
 	SourceCode = "https://creativecommons.org/ns#SourceCode"
-	// source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license.
+	//SourceCode: source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license.
 
 	Copyleft = "https://creativecommons.org/ns#Copyleft"
-	//derivative and combined works must be licensed under specified terms, similar to those on the original work
+	//Copyleft: derivative and combined works must be licensed under specified terms, similar to those on the original work
 
 	LesserCopyleft = "https://creativecommons.org/ns#LesserCopyleft"
-	//derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms
+	//LesserCopyleft: derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms
 
 	// Prohibitions
 	CommercialUse = "http://web.resource.org/cc/CommercialUse"
-	// exercising rights for commercial purposes
+	//CommercialUse: exercising rights for commercial purposes
 
 	HighIncomeNationUse = "https://creativecommons.org/ns#HighIncomeNationUse"
-	//use in a non-developing country
+	//HighIncomeNationUse: use in a non-developing country
 
 )
 
