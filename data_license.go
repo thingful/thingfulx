@@ -1,7 +1,5 @@
 package thingfulx
 
-// Category is a simple type alias for a string
-
 const (
 
 	// Permissions type
@@ -235,6 +233,7 @@ var (
 
 		Prohibits: []string{},
 	}
+
 	// PDDLV1 is a predefined Open Data Commons Public Domain Dedication and License
 	PDDLV1 = DataLicense{
 
