@@ -235,7 +235,7 @@ var (
 
 		Prohibits: []string{},
 	}
-
+	// PDDLV1 is a predefined Open Data Commons Public Domain Dedication and License
 	PDDLV1 = DataLicense{
 
 		Name: "Open Data Commons Public Domain Dedication and License (PDDL) v1.0",
@@ -256,6 +256,7 @@ var (
 		Prohibits: []string{},
 	}
 
+	//ODCByV1 is a predefined Open Data Commons Attribution License
 	ODCByV1 = DataLicense{
 
 		Name: "Open Data Commons Attribution License (ODC-By) v1.0",
@@ -279,6 +280,7 @@ var (
 		Prohibits: []string{},
 	}
 
+	//ODCODbLV1 is a predefined Open Data Commons Open Database License
 	ODCODbLV1 = DataLicense{
 
 		Name: "Open Data Commons Open Database License (ODbL) v1.0",
