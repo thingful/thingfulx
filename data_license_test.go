@@ -1,17 +1,10 @@
 package thingfulx
 
 import (
-	// "encoding/json"
-	// "fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
-
-// what should we test?
-// 1. the predefined ones have correct values
-// 2. we can add predefined ones to thing // this is done inside thing_test.go
-// 3. we can add non-predefined ones to thing
 
 func TestCC0(t *testing.T) {
 
