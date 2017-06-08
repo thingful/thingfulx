@@ -65,6 +65,9 @@ type Thing struct {
 	// AttributionURL indicates name ot the author of the data (if required)
 	// it is short for cc:attributionURL
 	AttributionURL string `json:"attributionURL,omitempty"`
+
+	// UpdateInterval indicates how often this resource should get updated (in seconds)
+	UpdateInterval int `json:"updateInterval,omitempty"`
 }
 
 // Provider is a data structure containing information about the upstream

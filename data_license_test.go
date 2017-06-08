@@ -2,7 +2,7 @@ package thingfulx
 
 import (
 	// "encoding/json"
-	"fmt"
+	// "fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,50 +15,262 @@ import (
 
 func TestCC0(t *testing.T) {
 
-	assert.Equal(t, CC0V1.Name, "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication")
-	assert.Equal(t, CC0V1.URL, "https://creativecommons.org/publicdomain/zero/1.0/")
-	assert.Equal(t, CC0V1.LegalCodeURL, "https://creativecommons.org/publicdomain/zero/1.0/legalcode")
+	license := CC0V1
+
+	assert.Equal(t, license.Name, "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication")
+	assert.Equal(t, license.URL, "https://creativecommons.org/publicdomain/zero/1.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/publicdomain/zero/1.0/legalcode")
 	// check Permits
-	assert.Contains(t, CC0V1.Permits, Reproduction)
-	assert.Contains(t, CC0V1.Permits, Distribution)
-	assert.Contains(t, CC0V1.Permits, DerivativeWorks)
-	assert.Contains(t, CC0V1.Permits, Sharing)
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
 
 	// check Requires
-	assert.NotContains(t, CC0V1.Requires, Notice)
-	assert.NotContains(t, CC0V1.Requires, Attribution)
-	assert.NotContains(t, CC0V1.Requires, ShareAlike)
-	assert.NotContains(t, CC0V1.Requires, SourceCode)
-	assert.NotContains(t, CC0V1.Requires, Copyleft)
-	assert.NotContains(t, CC0V1.Requires, LesserCopyleft)
+	assert.NotContains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, Attribution)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
 
 	// check Prohibits
-	assert.NotContains(t, CC0V1.Prohibits, CommercialUse)
-	assert.NotContains(t, CC0V1.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
-func TestCCCByV3(t *testing.T) {
+func TestCCByV3(t *testing.T) {
 
-	assert.Equal(t, CCByV3.Name, "Attribution 3.0 Unported (CC BY 3.0)")
-	assert.Equal(t, CCByV3.URL, "https://creativecommons.org/licenses/by/3.0/")
-	assert.Equal(t, CCByV3.LegalCodeURL, "https://creativecommons.org/licenses/by/3.0/legalcode")
+	license := CCByV3
+
+	assert.Equal(t, license.Name, "Attribution 3.0 Unported (CC BY 3.0)")
+	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by/3.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by/3.0/legalcode")
 	// check Permits
-	assert.Contains(t, CCByV3.Permits, Reproduction)
-	assert.Contains(t, CCByV3.Permits, Distribution)
-	assert.Contains(t, CCByV3.Permits, DerivativeWorks)
-	assert.Contains(t, CCByV3.Permits, Sharing)
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
 
 	// check Requires
-	assert.Contains(t, CCByV3.Requires, Attribution)
-	assert.NotContains(t, CCByV3.Requires, Notice)
-	assert.NotContains(t, CCByV3.Requires, ShareAlike)
-	assert.NotContains(t, CCByV3.Requires, SourceCode)
-	assert.NotContains(t, CCByV3.Requires, Copyleft)
-	assert.NotContains(t, CCByV3.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
 
 	// check Prohibits
-	assert.NotContains(t, CCByV3.Prohibits, CommercialUse)
-	assert.NotContains(t, CCByV3.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestCCBySaV3(t *testing.T) {
+
+	license := CCBySaV4
+
+	assert.Equal(t, license.Name, "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)")
+	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-sa/4.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-sa/4.0/legalcode")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.Contains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestCCByNcV3(t *testing.T) {
+
+	license := CCByNcV3
+
+	assert.Equal(t, license.Name, "Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)")
+	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc/3.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nc/3.0/legalcode")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.Contains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestCCByNdV3(t *testing.T) {
+
+	license := CCByNdV3
+
+	assert.Equal(t, license.Name, "Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0)")
+	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nd/3.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nd/3.0/legalcode")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.NotContains(t, license.Permits, DerivativeWorks)
+	assert.NotContains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestCCByNcSaV3(t *testing.T) {
+
+	license := CCByNcSaV3
+
+	assert.Equal(t, license.Name, "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)")
+	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc-sa/3.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.Contains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.Contains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestOGLV3(t *testing.T) {
+
+	license := OGLV3
+
+	assert.Equal(t, license.Name, "Open Government Licence version 3.0")
+	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
+	assert.Equal(t, license.LegalCodeURL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestPDDLV1(t *testing.T) {
+
+	license := PDDLV1
+
+	assert.Equal(t, license.Name, "Open Data Commons Public Domain Dedication and License (PDDL) v1.0")
+	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/pddl/1.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/pddl/1.0/")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.NotContains(t, license.Requires, Attribution)
+	assert.NotContains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestODCByV1(t *testing.T) {
+
+	license := ODCByV1
+
+	assert.Equal(t, license.Name, "Open Data Commons Attribution License (ODC-By) v1.0")
+	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/by/1.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/by/1.0/")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
+func TestODCODbLV1(t *testing.T) {
+
+	license := ODCODbLV1
+
+	assert.Equal(t, license.Name, "Open Data Commons Open Database License (ODbL) v1.0")
+	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/odbl/1.0/")
+	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/odbl/1.0/")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.Contains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
 func TestCustomLicense(t *testing.T) {

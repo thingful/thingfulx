@@ -38,6 +38,7 @@ func TestCompleteThing(t *testing.T) {
 		AttributionName: "Test Data Author",
 		AttributionURL:  "http://some/data/author/url",
 		Category:        Environment.Name,
+		UpdateInterval:  900,
 		Metadata: []Metadata{
 			{
 				Prop: schema.HasCategory,
@@ -97,6 +98,7 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.AttributionName, "Test Data Author")
 	assert.Equal(t, thing.AttributionURL, "http://some/data/author/url")
 	assert.Equal(t, thing.Category, Environment.Name)
+	assert.Equal(t, thing.UpdateInterval, 900)
 	assert.Equal(t, thing.Metadata[0].Prop, schema.HasCategory)
 	assert.Equal(t, thing.Metadata[0].Val, "Environment")
 	assert.Len(t, thing.Channels, 1)

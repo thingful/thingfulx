@@ -56,7 +56,7 @@ type DataLicense struct {
 	URL string `json:"id"`
 
 	// url to the long or legal version of the license
-	LegalCodeURL string `json:"legalCodeUrl"`
+	LegalCodeURL string `json:"legalCode"`
 
 	Permits []string `json:"permits"`
 
@@ -106,6 +106,7 @@ var (
 
 		Requires: []string{
 			Attribution,
+			Notice,
 		},
 
 		Prohibits: []string{},
@@ -129,6 +130,7 @@ var (
 
 		Requires: []string{
 			Attribution,
+			Notice,
 			ShareAlike,
 		},
 
@@ -153,6 +155,7 @@ var (
 
 		Requires: []string{
 			Attribution,
+			Notice,
 		},
 
 		Prohibits: []string{
@@ -172,11 +175,11 @@ var (
 		Permits: []string{
 			Reproduction,
 			Distribution,
-			Sharing,
 		},
 
 		Requires: []string{
 			Attribution,
+			Notice,
 		},
 
 		Prohibits: []string{},
@@ -201,6 +204,7 @@ var (
 		Requires: []string{
 			Attribution,
 			ShareAlike,
+			Notice,
 		},
 
 		Prohibits: []string{
@@ -226,6 +230,74 @@ var (
 
 		Requires: []string{
 			Attribution,
+			Notice,
+		},
+
+		Prohibits: []string{},
+	}
+
+	PDDLV1 = DataLicense{
+
+		Name: "Open Data Commons Public Domain Dedication and License (PDDL) v1.0",
+
+		URL: "https://opendatacommons.org/licenses/pddl/1.0/",
+
+		LegalCodeURL: "https://opendatacommons.org/licenses/pddl/1.0/",
+
+		Permits: []string{
+			Reproduction,
+			Distribution,
+			DerivativeWorks,
+			Sharing,
+		},
+
+		Requires: []string{},
+
+		Prohibits: []string{},
+	}
+
+	ODCByV1 = DataLicense{
+
+		Name: "Open Data Commons Attribution License (ODC-By) v1.0",
+
+		URL: "https://opendatacommons.org/licenses/by/1.0/",
+
+		LegalCodeURL: "https://opendatacommons.org/licenses/by/1.0/",
+
+		Permits: []string{
+			Reproduction,
+			Distribution,
+			DerivativeWorks,
+			Sharing,
+		},
+
+		Requires: []string{
+			Attribution,
+			Notice,
+		},
+
+		Prohibits: []string{},
+	}
+
+	ODCODbLV1 = DataLicense{
+
+		Name: "Open Data Commons Open Database License (ODbL) v1.0",
+
+		URL: "https://opendatacommons.org/licenses/odbl/1.0/",
+
+		LegalCodeURL: "https://opendatacommons.org/licenses/odbl/1.0/",
+
+		Permits: []string{
+			Reproduction,
+			Distribution,
+			DerivativeWorks,
+			Sharing,
+		},
+
+		Requires: []string{
+			Attribution,
+			Notice,
+			ShareAlike,
 		},
 
 		Prohibits: []string{},
