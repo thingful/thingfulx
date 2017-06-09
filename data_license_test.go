@@ -270,7 +270,7 @@ func TestCustomLicense(t *testing.T) {
 	thing := Thing{
 		Title:       "Title",
 		Description: "Description",
-		DataLicense: DataLicense{
+		DataLicense: &DataLicense{
 			Name: "custom made data license",
 			URL:  "http://some/url/to/the/license",
 			Permits: []string{

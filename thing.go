@@ -56,7 +56,7 @@ type Thing struct {
 	// DataLicense indicates what of data license this thing has, it is short for cc:license
 	// This could be used to decide what can we do with this thing's data
 	// It takes DataLicense struct which can be manually defined or use predefined ones
-	DataLicense DataLicense `json:"license"`
+	DataLicense *DataLicense `json:"license"`
 
 	// AttributionName indicates name ot the author of the data (if required)
 	// it is short for cc:attributionName
