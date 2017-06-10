@@ -10,67 +10,67 @@ func TestCategorise(t *testing.T) {
 	// testcases
 	var testcases = []struct {
 		inputs   []string
-		expected *Category
+		expected Category
 	}{
 		{
 			[]string{
 				"arduino air quality",
 				"raspberry pi home sensor",
 			},
-			&Experiment,
+			Experiment,
 		},
 		{
 			[]string{
 				"energy monitor",
 				"home thermostat",
 			},
-			&Energy,
+			Energy,
 		},
 		{
 			[]string{
 				"healthkit",
 				"exercise tracker",
 			},
-			&Health,
+			Health,
 		},
 		{
 			[]string{
 				"garden moisture",
 				"conservatory counter",
 			},
-			&Home,
+			Home,
 		},
 		{
 			[]string{
 				"turtle neck",
 				"shark week",
 			},
-			&Flora,
+			Flora,
 		},
 		{
 			[]string{
 				"weather checker",
 				"flood monitor",
 			},
-			&Environment,
+			Environment,
 		},
 		{
 			[]string{
 				"truck",
 				"plane or car",
 			},
-			&Transport,
+			Transport,
 		},
 		{
 			[]string{
 				"banana",
 				"anything else",
 			},
-			&Miscellaneous,
+			Miscellaneous,
 		},
 	}
 
-	var got *Category
+	var got Category
 
 	for _, testcase := range testcases {
 

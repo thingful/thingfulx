@@ -6,7 +6,6 @@ import (
 
 var (
 	// Collection of regexps used for our quick nasty categorise function.
-
 	experimentRegexp = regexp.MustCompile("arduino|sunspot|mbed|beaglebone|linux|computer|raspberry|experiment")
 
 	energyRegexp = regexp.MustCompile("thermostat|energy|electricity|carbon|gas|power|meter|currentcost|cc128|solar|efergy|watt|current cost")
@@ -24,23 +23,23 @@ var (
 
 // Categorise is an extract of Thingful's original quick'n'nasty categorisation
 // logic.
-func Categorise(str string) *Category {
+func Categorise(str string) Category {
 	switch {
 	case experimentRegexp.MatchString(str):
-		return &Experiment
+		return Experiment
 	case energyRegexp.MatchString(str):
-		return &Energy
+		return Energy
 	case healthRegexp.MatchString(str):
-		return &Health
+		return Health
 	case homeRegexp.MatchString(str):
-		return &Home
+		return Home
 	case floraRegexp.MatchString(str):
-		return &Flora
+		return Flora
 	case environmentRegexp.MatchString(str):
-		return &Environment
+		return Environment
 	case transportRegexp.MatchString(str):
-		return &Transport
+		return Transport
 	default:
-		return &Miscellaneous
+		return Miscellaneous
 	}
 }
