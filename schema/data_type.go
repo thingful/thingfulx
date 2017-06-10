@@ -4,22 +4,22 @@ package schema
 // value
 type DataType string
 
-var (
+const (
 	// IntegerType is our exported const representing integer data types
-	IntegerType = DataType(Expand("xsd:integer"))
+	IntegerType = DataType("http://www.w3.org/2001/XMLSchema#integer")
 
 	// DoubleType is our exported const representing double or float data types
-	DoubleType = DataType(Expand("xsd:double"))
+	DoubleType = DataType("http://www.w3.org/2001/XMLSchema#double")
 
 	// DateTimeType is our exported const representing a date/time values
-	DateTimeType = DataType(Expand("xsd:dateTime"))
+	DateTimeType = DataType("http://www.w3.org/2001/XMLSchema#dateTime")
 
 	// TimeType is our exported const representing a value that is a time
-	TimeType = DataType(Expand("xsd:time"))
+	TimeType = DataType("http://www.w3.org/2001/XMLSchema#time")
 
 	// StringType is our exported const representing string values
-	StringType = DataType(Expand("xsd:string"))
+	StringType = DataType("http://www.w3.org/2001/XMLSchema#string")
 
 	// BytesType is our exported const representing an opaque slice of bytes
-	BytesType = DataType(Expand("thingful:bytes"))
+	BytesType = DataType("http://www.w3.org/2001/XMLSchema#bytes")
 )
