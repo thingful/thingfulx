@@ -34,7 +34,7 @@ func TestCompleteThing(t *testing.T) {
 			URL:         "http://example.com",
 		},
 		ThingType:       schema.Expand("thingful:ConnectedDevice"),
-		DataLicense:     CCByV3,
+		DataLicense:     GetDataLicense(CCByV3URL),
 		AttributionName: "Test Data Author",
 		AttributionURL:  "http://some/data/author/url",
 		Category:        Environment.Name,
@@ -94,7 +94,7 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Provider.Description, "Test Provider description")
 	assert.Equal(t, thing.Provider.URL, "http://example.com")
 	assert.Equal(t, thing.ThingType, schema.Expand("thingful:ConnectedDevice"))
-	assert.Equal(t, thing.DataLicense, CCByV3)
+	assert.Equal(t, thing.DataLicense, GetDataLicense(CCByV3URL))
 	assert.Equal(t, thing.AttributionName, "Test Data Author")
 	assert.Equal(t, thing.AttributionURL, "http://some/data/author/url")
 	assert.Equal(t, thing.Category, Environment.Name)

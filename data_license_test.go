@@ -8,7 +8,8 @@ import (
 
 func TestCC0(t *testing.T) {
 
-	license := CC0V1
+	license := GetDataLicense(CC0V1URL)
+	assert.NotNil(t, license)
 
 	assert.Equal(t, license.Name, "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication")
 	assert.Equal(t, license.URL, "https://creativecommons.org/publicdomain/zero/1.0/")
@@ -34,7 +35,7 @@ func TestCC0(t *testing.T) {
 
 func TestCCByV3(t *testing.T) {
 
-	license := CCByV3
+	license := GetDataLicense(CCByV3URL)
 
 	assert.Equal(t, license.Name, "Attribution 3.0 Unported (CC BY 3.0)")
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by/3.0/")
@@ -58,9 +59,9 @@ func TestCCByV3(t *testing.T) {
 	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
-func TestCCBySaV3(t *testing.T) {
+func TestCCBySAV3(t *testing.T) {
 
-	license := CCBySaV4
+	license := GetDataLicense(CCBySAV4URL)
 
 	assert.Equal(t, license.Name, "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)")
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-sa/4.0/")
@@ -84,9 +85,9 @@ func TestCCBySaV3(t *testing.T) {
 	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
-func TestCCByNcV3(t *testing.T) {
+func TestCCByNCV3(t *testing.T) {
 
-	license := CCByNcV3
+	license := GetDataLicense(CCByNCV3URL)
 
 	assert.Equal(t, license.Name, "Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)")
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc/3.0/")
@@ -110,9 +111,9 @@ func TestCCByNcV3(t *testing.T) {
 	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
-func TestCCByNdV3(t *testing.T) {
+func TestCCByNDV3(t *testing.T) {
 
-	license := CCByNdV3
+	license := GetDataLicense(CCByNDV3URL)
 
 	assert.Equal(t, license.Name, "Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0)")
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nd/3.0/")
@@ -138,7 +139,7 @@ func TestCCByNdV3(t *testing.T) {
 
 func TestCCByNcSaV3(t *testing.T) {
 
-	license := CCByNcSaV3
+	license := GetDataLicense(CCByNCSAV3URL)
 
 	assert.Equal(t, license.Name, "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)")
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc-sa/3.0/")
@@ -164,7 +165,7 @@ func TestCCByNcSaV3(t *testing.T) {
 
 func TestOGLV3(t *testing.T) {
 
-	license := OGLV3
+	license := GetDataLicense(OGLV3URL)
 
 	assert.Equal(t, license.Name, "Open Government Licence version 3.0")
 	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
@@ -190,7 +191,7 @@ func TestOGLV3(t *testing.T) {
 
 func TestPDDLV1(t *testing.T) {
 
-	license := PDDLV1
+	license := GetDataLicense(PDDLV1URL)
 
 	assert.Equal(t, license.Name, "Open Data Commons Public Domain Dedication and License (PDDL) v1.0")
 	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/pddl/1.0/")
@@ -216,7 +217,7 @@ func TestPDDLV1(t *testing.T) {
 
 func TestODCByV1(t *testing.T) {
 
-	license := ODCByV1
+	license := GetDataLicense(ODCByV1URL)
 
 	assert.Equal(t, license.Name, "Open Data Commons Attribution License (ODC-By) v1.0")
 	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/by/1.0/")
@@ -240,9 +241,9 @@ func TestODCByV1(t *testing.T) {
 	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
-func TestODCODbLV1(t *testing.T) {
+func TestODbLV1(t *testing.T) {
 
-	license := ODCODbLV1
+	license := GetDataLicense(ODbLV1URL)
 
 	assert.Equal(t, license.Name, "Open Data Commons Open Database License (ODbL) v1.0")
 	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/odbl/1.0/")
@@ -289,5 +290,17 @@ func TestCustomLicense(t *testing.T) {
 	assert.Contains(t, thing.DataLicense.Permits, Sharing)
 	assert.Contains(t, thing.DataLicense.Requires, Attribution)
 	assert.NotContains(t, thing.DataLicense.Prohibits, CommercialUse)
+}
 
+func TestGetDataLicense(t *testing.T) {
+	license := GetDataLicense("unknown-license")
+	assert.Nil(t, license)
+}
+
+func TestUnableToModifyReadLicenses(t *testing.T) {
+	license := GetDataLicense(PDDLV1URL)
+	license.Name = "foo"
+
+	license2 := GetDataLicense(PDDLV1URL)
+	assert.NotEqual(t, "foo", license2.Name)
 }
