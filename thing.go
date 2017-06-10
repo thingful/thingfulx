@@ -48,14 +48,16 @@ type Thing struct {
 	// the most generic thing type is thingful:ConnectedDevice
 	ThingType string `json:"thingType"`
 
-	// Category indicates what type this thing belongs to, it is short for thingful:hasCategory
-	// This is mainly used by thingful.net.
-	// The value will be those defined by m3-lite's domain of interest, plus some additionally defined by thingful
-	Category string `json:"category"`
+	// Category indicates what type this thing belongs to, it is short for
+	// thingful:hasCategory This is mainly used by thingful.net.  The value will
+	// be those defined by m3-lite's domain of interest, plus some additionally
+	// defined by thingful
+	Category Category `json:"category"`
 
-	// DataLicense indicates what of data license this thing has, it is short for cc:license
-	// This could be used to decide what can we do with this thing's data
-	// It takes DataLicense struct which can be manually defined or use predefined ones
+	// DataLicense indicates what of data license this thing has, it is short for
+	// cc:license This could be used to decide what can we do with this thing's
+	// data It takes DataLicense struct which can be manually defined or use
+	// predefined ones
 	DataLicense *DataLicense `json:"license"`
 
 	// AttributionName indicates name ot the author of the data (if required)
@@ -66,7 +68,8 @@ type Thing struct {
 	// it is short for cc:attributionURL
 	AttributionURL string `json:"attributionURL,omitempty"`
 
-	// UpdateInterval indicates how often this resource should get updated (in seconds)
+	// UpdateInterval indicates how often this resource should get updated (in
+	// seconds)
 	UpdateInterval int `json:"updateInterval,omitempty"`
 }
 
