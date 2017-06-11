@@ -12,7 +12,8 @@ const (
 	// DerivativeWorks is "distribution of derivative works"
 	DerivativeWorks = "https://creativecommons.org/ns#DerivativeWorks"
 
-	// Sharing is "permits commercial derivatives, but only non-commercial distribution"
+	// Sharing is "permits commercial derivatives, but only non-commercial
+	// distribution"
 	Sharing = "https://creativecommons.org/ns#Sharing"
 
 	// Requirements type
@@ -23,16 +24,21 @@ const (
 	// Attribution is "credit be given to copyright holder and/or author"
 	Attribution = "https://creativecommons.org/ns#Attribution"
 
-	// ShareAlike is "derivative works be licensed under the same terms or compatible terms as the original work"
+	// ShareAlike is "derivative works be licensed under the same terms or
+	// compatible terms as the original work"
 	ShareAlike = "https://creativecommons.org/ns#ShareAlike"
 
-	// SourceCode is "source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license"
+	// SourceCode is "source code (the preferred form for making modifications)
+	// must be provided when exercising some rights granted by the license"
 	SourceCode = "https://creativecommons.org/ns#SourceCode"
 
-	// Copyleft is "derivative and combined works must be licensed under specified terms, similar to those on the original work"
+	// Copyleft is "derivative and combined works must be licensed under
+	// specified terms, similar to those on the original work"
 	Copyleft = "https://creativecommons.org/ns#Copyleft"
 
-	// LesserCopyleft is "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"
+	// LesserCopyleft is "derivative works must be licensed under specified
+	// terms, with at least the same conditions as the original work;
+	// combinations with the work may be licensed under different terms"
 	LesserCopyleft = "https://creativecommons.org/ns#LesserCopyleft"
 
 	// Prohibitions type
