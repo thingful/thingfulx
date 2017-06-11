@@ -62,6 +62,10 @@ const (
 	// Attribution-ShareAlike 4.0 International
 	CCBySAV4URL = "https://creativecommons.org/licenses/by-sa/4.0/"
 
+	// CCByV4URL is the URL identifier for the Creative Commons Attribution 4.0
+	// License
+	CCByV4URL = "https://creativecommons.org/licenses/by/4.0/"
+
 	// CCByNCV3URL is the URL identifier for Creative Commons
 	// Atribution-NonCommercial 3.0 License
 	CCByNCV3URL = "https://creativecommons.org/licenses/by-nc/3.0/"
@@ -163,6 +167,23 @@ var (
 				Attribution,
 				Notice,
 				ShareAlike,
+			},
+			Prohibits: []string{},
+		},
+
+		CCByV4URL: DataLicense{
+			Name:         "Attribution 4.0 International (CC BY 4.0)",
+			URL:          "https://creativecommons.org/licenses/by/4.0/",
+			LegalCodeURL: "https://creativecommons.org/licenses/by/4.0/legalcode",
+			Permits: []string{
+				Reproduction,
+				Distribution,
+				DerivativeWorks,
+				Sharing,
+			},
+			Requires: []string{
+				Attribution,
+				Notice,
 			},
 			Prohibits: []string{},
 		},
