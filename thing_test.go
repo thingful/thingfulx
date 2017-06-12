@@ -34,19 +34,15 @@ func TestCompleteThing(t *testing.T) {
 			URL:         "http://example.com",
 		},
 		ThingType:       schema.Expand("thingful:ConnectedDevice"),
-		DataLicense:     CCByV3,
+		DataLicense:     GetDataLicense(CCByV3URL),
 		AttributionName: "Test Data Author",
 		AttributionURL:  "http://some/data/author/url",
-		Category:        Environment.Name,
+		Category:        Environment,
 		UpdateInterval:  900,
 		Metadata: []Metadata{
 			{
-				Prop: schema.HasCategory,
-				Val:  Environment.Name,
-			},
-			{
-				Prop: schema.HasCategoryUID,
-				Val:  Environment.UID,
+				Prop: schema.Expand("thingful:hasColour"),
+				Val:  "blue",
 			},
 		},
 		Channels: []Channel{
@@ -73,7 +69,7 @@ func TestCompleteThing(t *testing.T) {
 							Lng: -1.23,
 							Lat: 45.6,
 						},
-						Val: 43.3,
+						Val: "43.3",
 					},
 				},
 			},
@@ -94,13 +90,13 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Provider.Description, "Test Provider description")
 	assert.Equal(t, thing.Provider.URL, "http://example.com")
 	assert.Equal(t, thing.ThingType, schema.Expand("thingful:ConnectedDevice"))
-	assert.Equal(t, thing.DataLicense, CCByV3)
+	assert.Equal(t, thing.DataLicense, GetDataLicense(CCByV3URL))
 	assert.Equal(t, thing.AttributionName, "Test Data Author")
 	assert.Equal(t, thing.AttributionURL, "http://some/data/author/url")
-	assert.Equal(t, thing.Category, Environment.Name)
+	assert.Equal(t, thing.Category, Environment)
 	assert.Equal(t, thing.UpdateInterval, 900)
-	assert.Equal(t, thing.Metadata[0].Prop, schema.HasCategory)
-	assert.Equal(t, thing.Metadata[0].Val, "Environment")
+	assert.Equal(t, thing.Metadata[0].Prop, schema.Expand("thingful:hasColour"))
+	assert.Equal(t, thing.Metadata[0].Val, "blue")
 	assert.Len(t, thing.Channels, 1)
 	assert.Equal(t, thing.Channels[0].ID, "value1")
 	assert.Equal(t, thing.Channels[0].Type, schema.DoubleType)
@@ -111,7 +107,7 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lng, -1.23)
-	assert.Equal(t, thing.Channels[0].Observations[0].Val, 43.3)
+	assert.Equal(t, thing.Channels[0].Observations[0].Val, "43.3")
 }
 
 func TestMetaVal(t *testing.T) {
@@ -125,10 +121,6 @@ func TestMetaVal(t *testing.T) {
 			ContentType: "application/json",
 		},
 		Metadata: []Metadata{
-			{
-				Prop: schema.HasCategory,
-				Val:  Environment.Name,
-			},
 			{
 				Prop: schema.Expand("thingful:hasRoute"),
 				Val:  "1",
@@ -159,10 +151,6 @@ func TestMetaVal(t *testing.T) {
 		input    string
 		expected string
 	}{
-		{
-			input:    schema.HasCategory,
-			expected: "Environment",
-		},
 		{
 			input:    schema.Expand("thingful:hasRoute"),
 			expected: "1",

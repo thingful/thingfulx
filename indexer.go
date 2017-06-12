@@ -18,10 +18,7 @@ type Indexer interface {
 	URLProvider
 	Fetcher
 	Parser
-
-	// UID returns a unique identifier for the data infrastructure indexed by
-	// this Indexer. Good practice for this to be the same as the package name.
-	UID() string
+	UIDable
 }
 
 // URLProvider in the interface used by Pomelo to generate a minimum set of URLS that
@@ -64,4 +61,12 @@ type Parser interface {
 	// and a TimeProvider instance used internally by the fetcher to record the indexing
 	// time of the parser. This is to allow for easier testing.
 	Parse(rawData []byte, urlStr string, timeProvider TimeProvider) ([]Thing, error)
+}
+
+// UIDable is a simple interface that defines a method that exposes a UID for
+// the thing implementing this interface.
+type UIDable interface {
+	// UID returns a unique identifier for the data infrastructure indexed by
+	// this Indexer. Good practice for this to be the same as the package name.
+	UID() string
 }

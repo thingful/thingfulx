@@ -1,4 +1,4 @@
-Thingfulx
+thingfulx
 =========
 
 Library providing an interface for Thingful fetcher and parser interfaces to
