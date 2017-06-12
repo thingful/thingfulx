@@ -37,7 +37,7 @@ type Channel struct {
 // Observation contains information about where and when the Observation
 // was recorded.
 type Observation struct {
-	RecordedAt time.Time   `json:"recordedAt"`
-	Location   *Location   `json:"location"`
-	Val        interface{} `json:"value"`
+	RecordedAt time.Time `json:"recordedAt"`
+	Location   *Location `json:"location"`
+	Val        string    `json:"value"`
 }

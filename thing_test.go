@@ -69,7 +69,7 @@ func TestCompleteThing(t *testing.T) {
 							Lng: -1.23,
 							Lat: 45.6,
 						},
-						Val: 43.3,
+						Val: "43.3",
 					},
 				},
 			},
@@ -107,7 +107,7 @@ func TestCompleteThing(t *testing.T) {
 	assert.Equal(t, thing.Channels[0].Observations[0].RecordedAt, timestamp)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lat, 45.6)
 	assert.Equal(t, thing.Channels[0].Observations[0].Location.Lng, -1.23)
-	assert.Equal(t, thing.Channels[0].Observations[0].Val, 43.3)
+	assert.Equal(t, thing.Channels[0].Observations[0].Val, "43.3")
 }
 
 func TestMetaVal(t *testing.T) {
