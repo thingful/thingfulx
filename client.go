@@ -6,10 +6,13 @@ import (
 	"time"
 )
 
+// ContextKey is a type alias used for context keys to avoid any issues wth clashing keys
+type ContextKey string
+
 const (
-	// ClientToken is the key we use when setting a token on the
-	// client clientInfo property
-	ClientToken = "client-token"
+	// ClientToken is the key we use when setting a token on a context when
+	// making a request
+	ClientToken = ContextKey("client-token")
 )
 
 // Client specifies an interface we will use for making outgoing requests
