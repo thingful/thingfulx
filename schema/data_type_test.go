@@ -48,6 +48,27 @@ func TestSerializeValid(t *testing.T) {
 			StringType,
 			"foo",
 		},
+		{
+			[]time.Time{
+				time.Date(2017, 6, 1, 10, 10, 0, 0, time.UTC),
+			},
+			TimeListType,
+			"10:10:00",
+		},
+		{
+			[]time.Time{
+				time.Date(2017, 6, 1, 10, 10, 0, 0, time.UTC),
+				time.Date(2017, 6, 1, 10, 15, 0, 0, time.UTC),
+				time.Date(2017, 6, 1, 10, 20, 0, 0, time.UTC),
+			},
+			TimeListType,
+			"10:10:00,10:15:00,10:20:00",
+		},
+		{
+			[]time.Time{},
+			TimeListType,
+			"",
+		},
 	}
 
 	for _, testcase := range testcases {
@@ -92,6 +113,11 @@ func TestSerializeInvalid(t *testing.T) {
 			123,
 			StringType,
 			"cannot type assert value '123' to string",
+		},
+		{
+			"foo",
+			TimeListType,
+			"cannot type assert value 'foo' to []time.Time",
 		},
 	}
 

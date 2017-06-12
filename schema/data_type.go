@@ -1,6 +1,7 @@
 package schema
 
 import (
+	"bytes"
 	"fmt"
 	"strconv"
 	"time"
@@ -28,6 +29,10 @@ const (
 
 	// BytesType is our exported const representing an opaque slice of bytes
 	BytesType = DataType("http://www.w3.org/2001/XMLSchema#bytes")
+
+	// DateTimeList is our exported const representing a value that is a comma
+	// separated list of dateTime instances. Used for transport data values.
+	TimeListType = DataType("http://purl.org/iot/vocab/thingful#timeList")
 
 	// XSDTimeFormat is our time format string used for XSD time instances
 	XSDTimeFormat = "15:04:05"
@@ -67,6 +72,21 @@ func Serialize(value interface{}, dataType DataType) (string, error) {
 			return "", fmt.Errorf("cannot type assert value '%v' to []byte", value)
 		}
 		return string(v), nil
+	case TimeListType:
+		v, ok := value.([]time.Time)
+		if !ok {
+			return "", fmt.Errorf("cannot type assert value '%v' to []time.Time", value)
+		}
+
+		var buf bytes.Buffer
+		for i, t := range v {
+			buf.WriteString(t.Format(XSDTimeFormat))
+			if i < (len(v) - 1) {
+				buf.WriteString(",")
+			}
+		}
+
+		return buf.String(), nil
 	default:
 		v, ok := value.(string)
 		if !ok {
