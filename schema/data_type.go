@@ -30,7 +30,7 @@ const (
 	// BytesType is our exported const representing an opaque slice of bytes
 	BytesType = DataType("http://www.w3.org/2001/XMLSchema#bytes")
 
-	// DateTimeList is our exported const representing a value that is a comma
+	// TimeListType is our exported const representing a value that is a comma
 	// separated list of dateTime instances. Used for transport data values.
 	TimeListType = DataType("http://purl.org/iot/vocab/thingful#timeList")
 
