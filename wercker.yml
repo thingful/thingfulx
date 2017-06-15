@@ -14,8 +14,8 @@ build:
         - script:
             name: install glide
             code: |
-              curl --location -O  https://github.com/Masterminds/glide/releases/download/v0.11.1/glide-v0.11.1-linux-amd64.tar.gz
-              tar zxf glide-v0.11.1-linux-amd64.tar.gz
+              curl --location -O  https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-v0.12.3-linux-amd64.tar.gz
+              tar zxf glide-${GLIDE_VERSION}-linux-amd64.tar.gz
               mv linux-amd64/glide $GOPATH/bin
 
         - script:
@@ -42,4 +42,3 @@ build:
             name: lint
             code: |
               make lint
-

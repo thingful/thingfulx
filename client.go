@@ -1,14 +1,18 @@
 package thingfulx
 
 import (
+	"io/ioutil"
 	"net/http"
 	"time"
 )
 
+// ContextKey is a type alias used for context keys to avoid any issues wth clashing keys
+type ContextKey string
+
 const (
-	// ClientToken is the key we use when setting a token on the
-	// client clientInfo property
-	ClientToken = "client-token"
+	// ClientToken is the key we use when setting a token on a context when
+	// making a request
+	ClientToken = ContextKey("client-token")
 )
 
 // Client specifies an interface we will use for making outgoing requests
@@ -20,6 +24,11 @@ type Client interface {
 	// simply ensures we set the correct user agent header before making the
 	// request
 	DoHTTP(req *http.Request) (*http.Response, error)
+
+	// DoHTTPGetRequest is a method helper that groups together common
+	// steps required to perform HTTP GET requests.
+	// It returns a slice of bytes containing the HTTP response.
+	DoHTTPGetRequest(urlString string) ([]byte, error)
 }
 
 // NewClient is a constructor function that instantiates and returns a new
@@ -48,4 +57,40 @@ func (c *client) DoHTTP(req *http.Request) (*http.Response, error) {
 	req.Header.Add("User-Agent", c.userAgent)
 
 	return c.http.Do(req)
+}
+
+// DoHTTPGetRequest is a method helper that groups together common
+// steps required to perform HTTP GET requests.
+// It returns a slice of bytes containing the HTTP response.
+func (c *client) DoHTTPGetRequest(urlString string) ([]byte, error) {
+
+	req, err := http.NewRequest("GET", urlString, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := c.DoHTTP(req)
+	if err != nil {
+		return nil, err
+	}
+
+	defer func() {
+		if cerr := resp.Body.Close(); err == nil && cerr != nil {
+			err = cerr
+		}
+	}()
+
+	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusNotFound {
+			return nil, ErrNotFound
+		}
+		return nil, NewErrUnexpectedResponse(resp.Status)
+	}
+
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return b, nil
 }
