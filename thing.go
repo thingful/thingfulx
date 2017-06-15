@@ -78,7 +78,7 @@ type Thing struct {
 type Provider struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
-	Description string `json:"description"`
+	Description string `json:"description,omitempty"`
 	URL         string `json:"url"`
 }
 
