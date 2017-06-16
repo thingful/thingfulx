@@ -44,7 +44,7 @@ const (
 	// Prohibitions type
 
 	// CommercialUse is "exercising rights for commercial purposes"
-	CommercialUse = "http://web.resource.org/cc/CommercialUse"
+	CommercialUse = "https://creativecommons.org/ns#CommercialUse"
 
 	// HighIncomeNationUse is "use in a non-developing country"
 	HighIncomeNationUse = "https://creativecommons.org/ns#HighIncomeNationUse"
