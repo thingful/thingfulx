@@ -104,16 +104,16 @@ type DataLicense struct {
 	URL string `json:"id"`
 
 	// url to the long or legal version of the license
-	LegalCodeURL string `json:"legalCode"`
+	LegalCodeURL string `json:"legalCode,omitempty"`
 
 	// array containing list of properties that this license permits
-	Permits []string `json:"permits"`
+	Permits []string `json:"permits,omitempty"`
 
 	// array containing list of properties that this license requires
-	Requires []string `json:"requires"`
+	Requires []string `json:"requires,omitempty"`
 
 	// array containing list of properties that this license prohibits
-	Prohibits []string `json:"prohibits"`
+	Prohibits []string `json:"prohibits,omitempty"`
 }
 
 var (

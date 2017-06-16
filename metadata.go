@@ -8,6 +8,6 @@ package thingfulx
 // thingful.net map.  The Metadata object must also contain information about
 // the data visibility - see http://theodi.org/data-spectrum for more info.
 type Metadata struct {
-	Prop string `json:"property"`
-	Val  string `json:"value"`
+	Prop string `json:"prop"`
+	Val  string `json:"val"`
 }
