@@ -3,6 +3,11 @@ package thingfulx
 // Category is our type alias for thingful category instances
 type Category string
 
+// String is our implementation of Stringer for the Category type
+func (c Category) String() string {
+	return string(c)
+}
+
 const (
 	// Home is the exported const representing the Thingful Home category
 	Home = Category("http://purl.org/iot/vocab/thingful#Home")
