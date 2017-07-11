@@ -163,6 +163,32 @@ func TestCCByNcSaV3(t *testing.T) {
 	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
+func TestOGLV2(t *testing.T) {
+
+	license := GetDataLicense(OGLV2URL)
+
+	assert.Equal(t, license.Name, "Open Government Licence version 2.0")
+	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
+	assert.Equal(t, license.LegalCodeURL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, Notice)
+	assert.NotContains(t, license.Requires, ShareAlike)
+	assert.NotContains(t, license.Requires, SourceCode)
+	assert.NotContains(t, license.Requires, Copyleft)
+	assert.NotContains(t, license.Requires, LesserCopyleft)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
+
 func TestOGLV3(t *testing.T) {
 
 	license := GetDataLicense(OGLV3URL)
