@@ -79,6 +79,10 @@ const (
 	CCByNCSAV3URL = "https://creativecommons.org/licenses/by-nc-sa/3.0/"
 
 	// OGLV3URL is the URL identifier for the Open Government Licence version
+	// 2.0 License.
+	OGLV2URL = "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+
+	// OGLV3URL is the URL identifier for the Open Government Licence version
 	// 3.0 License.
 	OGLV3URL = "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
 
@@ -240,6 +244,23 @@ var (
 			Prohibits: []string{
 				CommercialUse,
 			},
+		},
+
+		OGLV2URL: DataLicense{
+			Name:         "Open Government Licence version 2.0",
+			URL:          "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
+			LegalCodeURL: "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
+			Permits: []string{
+				Reproduction,
+				Distribution,
+				DerivativeWorks,
+				Sharing,
+			},
+			Requires: []string{
+				Attribution,
+				Notice,
+			},
+			Prohibits: []string{},
 		},
 
 		OGLV3URL: DataLicense{
