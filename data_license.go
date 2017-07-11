@@ -78,7 +78,7 @@ const (
 	// Attribution-NonCommercial-Sharealike 3.0 License.
 	CCByNCSAV3URL = "https://creativecommons.org/licenses/by-nc-sa/3.0/"
 
-	// OGLV3URL is the URL identifier for the Open Government Licence version
+	// OGLV2URL is the URL identifier for the Open Government Licence version
 	// 2.0 License.
 	OGLV2URL = "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
 
