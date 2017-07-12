@@ -1,9 +1,14 @@
 package thingfulx
 
 import (
-	"errors"
 	"fmt"
 )
+
+// Error is a type alias we use to create const possible error instances.
+type Error string
+
+// Error is the implementation of the error interface for our Error type.
+func (e Error) Error() string { return string(e) }
 
 // ErrUnexpectedResponse is a simple struct for reporting unexpected HTTP
 // responses. It contains a single attribute which allows capturing the
@@ -58,23 +63,22 @@ func NewErrBadData(msg string) *ErrBadData {
 	return &ErrBadData{msg}
 }
 
-var (
+const (
 	// ErrInvalidData is a generic error that can be returned if retrieved data
 	// is invalid in any way
-	ErrInvalidData = errors.New("thingfulx: invalid data")
+	ErrInvalidData = Error("thingfulx: invalid data")
 
 	// ErrInvalidLocation is an error indicating that there is a problem with the
 	// location of a fetched thing
-	ErrInvalidLocation = errors.New("thingfulx: missing or invalid location data")
+	ErrInvalidLocation = Error("thingfulx: missing or invalid location data")
 
 	// ErrInvalidTime is an error indicating that there is a problem with parsing
 	// the time value from a retrieved thing
-	ErrInvalidTime = errors.New("thingfulx: invalid time data")
+	ErrInvalidTime = Error("thingfulx: invalid time data")
 
 	// ErrInvalidURL is an error used to flag an invalid url
-	ErrInvalidURL = errors.New("thingfulx: invalid url")
+	ErrInvalidURL = Error("thingfulx: invalid url")
 
-	// ErrNotFound is a concrete implementation of ErrUnexpectedResponse
-	// initialized for a 404 not found response
-	ErrNotFound = NewErrUnexpectedResponse("404")
+	// ErrNotFound is an error that can be used for a 404 not found response
+	ErrNotFound = Error("thingfulx: unexpected HTTP response code, got 404")
 )

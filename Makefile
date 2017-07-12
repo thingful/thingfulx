@@ -1,10 +1,11 @@
 # Simple Makefile for building and testing thingfulx
 
+PACKAGES := $(shell go list ./... | grep -v /vendor/ )
 LINTER = gometalinter
 ARTEFACT_DIR = ./build
 GOCMD = go
-GOTEST = go test
-GOLINT = $(LINTER) --deadline=30s --vendor --debug
+GOTEST = go test -v
+GOLINT = $(LINTER) --deadline=30s --vendor --disable-all --enable=errcheck --enable=vet --enable=vetshadow --enable=golint
 GOCOVER = go tool cover
 GOGET = $(GOCMD) get -u
 
@@ -18,7 +19,8 @@ setup:
 .PHONY: test
 test:
 	mkdir -p $(ARTEFACT_DIR)
-	$(GOTEST) -coverprofile=$(ARTEFACT_DIR)/cover.out .
+	echo 'mode: count' > $(ARTEFACT_DIR)/cover.out
+	$(foreach package, $(PACKAGES), $(GOTEST) -coverprofile=$(ARTEFACT_DIR)/cover.tmp $(package) && tail -n +2 $(ARTEFACT_DIR)/cover.tmp >> $(ARTEFACT_DIR)/cover.out || exit;)
 
 .PHONY: coverage
 coverage: test

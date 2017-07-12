@@ -1,60 +1,40 @@
 package thingfulx
 
-// Category is a simple type alias for a string
-type Category struct {
-	// Name is the name of the category
-	Name string
+// Category is our type alias for thingful category instances
+type Category string
 
-	// UID is a unique URL safe ID
-	UID string
+// String is our implementation of Stringer for the Category type
+func (c Category) String() string {
+	return string(c)
 }
 
-var (
+const (
 	// Home is the exported const representing the Thingful Home category
-	Home = Category{
-		Name: "Home",
-		UID:  "home",
-	}
+	Home = Category("http://purl.org/iot/vocab/thingful#Home")
 
-	// Environment is the exported const representing the Thingful Environment category
-	Environment = Category{
-		Name: "Environment",
-		UID:  "environment",
-	}
+	// Environment is the exported const representing the Thingful Environment
+	// category
+	Environment = Category("http://purl.org/iot/vocab/thingful#Environment")
 
-	// Transport is the exported const representing the Thingful Transport category
-	Transport = Category{
-		Name: "Transport",
-		UID:  "transport",
-	}
+	// Transport is the exported const representing the Thingful Transport
+	// category
+	Transport = Category("http://purl.org/iot/vocab/thingful#Transport")
 
 	// Health is the exported const representing the Thingful Health category
-	Health = Category{
-		Name: "Health",
-		UID:  "health",
-	}
+	Health = Category("http://purl.org/iot/vocab/thingful#Health")
 
 	// Energy is the exported const representing the Thingful Energy category
-	Energy = Category{
-		Name: "Energy",
-		UID:  "energy",
-	}
+	Energy = Category("http://purl.org/iot/vocab/thingful#Energy")
 
-	// Flora is the exported const representing the Thingful Flora and Fauna category
-	Flora = Category{
-		Name: "Flora & Fauna",
-		UID:  "flora-and-fauna",
-	}
+	// Flora is the exported const representing the Thingful Flora and Fauna
+	// category
+	Flora = Category("http://purl.org/iot/vocab/thingful#FloraFauna")
 
-	// Experiment is the exported const representing the Thingful Experiment category
-	Experiment = Category{
-		Name: "Experiment",
-		UID:  "experiment",
-	}
+	// Experiment is the exported const representing the Thingful Experiment
+	// category
+	Experiment = Category("http://purl.org/iot/vocab/thingful#Experiment")
 
-	// Miscellaneous is the exported const representing the Thingful Miscellaneous category
-	Miscellaneous = Category{
-		Name: "Miscellaneous",
-		UID:  "miscellaneous",
-	}
+	// Miscellaneous is the exported const representing the Thingful
+	// Miscellaneous category
+	Miscellaneous = Category("http://purl.org/iot/vocab/thingful#Miscellaneous")
 )
