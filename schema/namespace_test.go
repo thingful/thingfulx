@@ -45,6 +45,14 @@ func TestExpand(t *testing.T) {
 			expected: "http://schema.org/foobar",
 		},
 		{
+			input:    "jsonapi:foobar",
+			expected: "http://purl.org/iot/vocab/jsonapi#foobar",
+		},
+		{
+			input:    "thingfulqu:foobar1",
+			expected: "http://purl.org/iot/vocab/thingful/qu#foobar1",
+		},
+		{
 			input:    "cc:foobar",
 			expected: "https://creativecommons.org/ns#foobar",
 		},
@@ -97,6 +105,14 @@ func TestCompact(t *testing.T) {
 		{
 			input:    "http://purl.org/NET/ssnx/qu/qu#foobar",
 			expected: "qu:foobar",
+		},
+		{
+			input:    "http://purl.org/iot/vocab/thingful/qu#foobar",
+			expected: "thingfulqu:foobar",
+		},
+		{
+			input:    "http://purl.org/iot/vocab/jsonapi#foobar",
+			expected: "jsonapi:foobar",
 		},
 		{
 			input:    "m3-lite:foobar",

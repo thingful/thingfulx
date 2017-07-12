@@ -28,19 +28,27 @@ const (
 
 	// ccSchema is base url for Creative Commons REL
 	ccSchema = "https://creativecommons.org/ns#"
+
+	// ccSchema is base url for Creative Commons REL
+	jsonapiSchema = "http://purl.org/iot/vocab/jsonapi#"
+
+	// ccSchema is base url for Creative Commons REL
+	thingfulQuSchema = "http://purl.org/iot/vocab/thingful/qu#"
 )
 
 var (
 	// expanded is a map containing the schema to compact form mappings.
 	namespaces = map[string]string{
-		"thingful:": thingfulSchema,
-		"m3-lite:":  m3liteSchema,
-		"ssn:":      ssnSchema,
-		"iot-lite:": iotliteSchema,
-		"xsd:":      xsdSchema,
-		"qu:":       quSchema,
-		"schema:":   schemaOrgSchema,
-		"cc:":       ccSchema,
+		"thingful:":   thingfulSchema,
+		"m3-lite:":    m3liteSchema,
+		"ssn:":        ssnSchema,
+		"iot-lite:":   iotliteSchema,
+		"xsd:":        xsdSchema,
+		"qu:":         quSchema,
+		"schema:":     schemaOrgSchema,
+		"cc:":         ccSchema,
+		"jsonapi:":    jsonapiSchema,
+		"thingfulqu:": thingfulQuSchema,
 	}
 )
 
@@ -50,7 +58,7 @@ var (
 func Expand(val string) string {
 	// k is the compact version, v is the expanded, and val is a compact string
 	for k, v := range namespaces {
-		if strings.Contains(val, k) {
+		if strings.HasPrefix(val, k) {
 			return strings.Replace(val, k, v, 1)
 		}
 	}
@@ -65,7 +73,7 @@ func Expand(val string) string {
 func Compact(val string) string {
 	// here k is still the compact, v is the expanded, but val is the expanded string
 	for k, v := range namespaces {
-		if strings.Contains(val, v) {
+		if strings.HasPrefix(val, v) {
 			return strings.Replace(val, v, k, 1)
 		}
 	}
