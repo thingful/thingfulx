@@ -57,6 +57,10 @@ func TestExpand(t *testing.T) {
 			expected: "https://creativecommons.org/ns#foobar",
 		},
 		{
+			input:    "biotop:foobar",
+			expected: "http://purl.org/biotop/biotop.owl#foobar",
+		},
+		{
 			input:    "http://purl.org/iot/vocab/thingful#foobar",
 			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
@@ -113,6 +117,10 @@ func TestCompact(t *testing.T) {
 		{
 			input:    "http://purl.org/iot/vocab/jsonapi#foobar",
 			expected: "jsonapi:foobar",
+		},
+		{
+			input:    "http://purl.org/biotop/biotop.owl#foobar",
+			expected: "biotop:foobar",
 		},
 		{
 			input:    "m3-lite:foobar",
