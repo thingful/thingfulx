@@ -61,6 +61,14 @@ func TestExpand(t *testing.T) {
 			expected: "http://purl.org/biotop/biotop.owl#foobar",
 		},
 		{
+			input:    "datex:foobar",
+			expected: "http://vocab.datex.org/terms#foobar",
+		},
+		{
+			input:    "mobivoc:foobar",
+			expected: "http://schema.mobivoc.org/foobar",
+		},
+		{
 			input:    "http://purl.org/iot/vocab/thingful#foobar",
 			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
@@ -121,6 +129,14 @@ func TestCompact(t *testing.T) {
 		{
 			input:    "http://purl.org/biotop/biotop.owl#foobar",
 			expected: "biotop:foobar",
+		},
+		{
+			input:    "http://vocab.datex.org/terms#foobar",
+			expected: "datex:foobar",
+		},
+		{
+			input:    "http://schema.mobivoc.org/foobar",
+			expected: "mobivoc:foobar",
 		},
 		{
 			input:    "m3-lite:foobar",
