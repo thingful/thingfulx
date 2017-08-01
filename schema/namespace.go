@@ -29,11 +29,20 @@ const (
 	// ccSchema is base url for Creative Commons REL
 	ccSchema = "https://creativecommons.org/ns#"
 
-	// ccSchema is base url for Creative Commons REL
+	// jsonapiSchema is base url for JSONAPI schema
 	jsonapiSchema = "http://purl.org/iot/vocab/jsonapi#"
 
-	// ccSchema is base url for Creative Commons REL
+	// thingfulQuSchema is base url for thingful quantity and unit schema
 	thingfulQuSchema = "http://purl.org/iot/vocab/thingful/qu#"
+
+	// biotopSchema is base url for Biotop schema, it is the domain for Biology and Medicine
+	biotopSchema = "http://purl.org/biotop/biotop.owl#"
+
+	// datexSchema is base url for Datex2 schema, it is the domain for Traffic & Transport
+	datexSchema = "http://vocab.datex.org/terms#"
+
+	//mobivocSchema is base url for Mobivoc schema, it is the domain for Mobility
+	mobivocSchema = "http://schema.mobivoc.org/"
 )
 
 var (
@@ -49,6 +58,9 @@ var (
 		"cc:":         ccSchema,
 		"jsonapi:":    jsonapiSchema,
 		"thingfulqu:": thingfulQuSchema,
+		"biotop:":     biotopSchema,
+		"datex:":      datexSchema,
+		"mobivoc:":    mobivocSchema,
 	}
 )
 
