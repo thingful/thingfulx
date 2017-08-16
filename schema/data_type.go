@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -157,7 +158,7 @@ func Serialize(value interface{}, dataType DataType) (string, error) {
 		}
 		return string(v), nil
 
-	case StringListType:
+	case StringListType: // this should do something when there is comma in string
 		v, ok := value.([]string)
 		if !ok {
 			return "", fmt.Errorf("cannot type assert value '%v' to []string", value)
@@ -165,6 +166,9 @@ func Serialize(value interface{}, dataType DataType) (string, error) {
 
 		var buf bytes.Buffer
 		for i, j := range v {
+			if strings.Contains(j, ",") {
+				return "", fmt.Errorf("cannot use `%s` which contains comma in comma separeated list", j)
+			}
 			buf.WriteString(j)
 			if i < (len(v) - 1) {
 				buf.WriteString(",")
