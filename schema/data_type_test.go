@@ -109,6 +109,12 @@ func TestSerializeValid(t *testing.T) {
 			"one,two,3.33,4",
 		},
 		{
+			"stringListComma",
+			[]string{"1,1", "two", "three,3", "4"},
+			StringListType,
+			"\"1,1\",two,\"three,3\",4",
+		},
+		{
 			"stringListEmpty",
 			[]string{},
 			StringListType,
@@ -215,12 +221,6 @@ func TestSerializeInvalid(t *testing.T) {
 			[]float64{1.1, 2.2, 3.3, 4.4},
 			StringListType,
 			"cannot type assert value '[1.1 2.2 3.3 4.4]' to []string",
-		},
-		{
-			"stringArrayWithCommaToStringList",
-			[]string{"one", "two", "3", "4,five"},
-			StringListType,
-			"cannot use `4,five` which contains comma in comma separeated list",
 		},
 		{
 			"stringToTimeList",

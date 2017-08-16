@@ -2,6 +2,7 @@ package schema
 
 import (
 	"bytes"
+	"encoding/csv"
 	"fmt"
 	"strconv"
 	"strings"
@@ -158,24 +159,26 @@ func Serialize(value interface{}, dataType DataType) (string, error) {
 		}
 		return string(v), nil
 
-	case StringListType: // this should do something when there is comma in string
+	case StringListType:
 		v, ok := value.([]string)
 		if !ok {
 			return "", fmt.Errorf("cannot type assert value '%v' to []string", value)
 		}
 
 		var buf bytes.Buffer
-		for i, j := range v {
-			if strings.Contains(j, ",") {
-				return "", fmt.Errorf("cannot use `%s` which contains comma in comma separeated list", j)
-			}
-			buf.WriteString(j)
-			if i < (len(v) - 1) {
-				buf.WriteString(",")
-			}
+		// to be able to deal with comma in string member, we use csv package
+		w := csv.NewWriter(&buf)
+		if err := w.Write(v); err != nil {
+			return "", fmt.Errorf("error writing %v to csv: %v", value, err)
 		}
 
-		return buf.String(), nil
+		w.Flush()
+
+		if err := w.Error(); err != nil {
+			return "", fmt.Errorf("%v", err)
+		}
+		// csv package add newline char at the end of the line, we remove it here
+		return strings.Replace(buf.String(), "\n", "", -1), nil
 
 	default:
 		v, ok := value.(string)
