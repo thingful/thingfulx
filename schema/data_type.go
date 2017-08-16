@@ -178,7 +178,7 @@ func Serialize(value interface{}, dataType DataType) (string, error) {
 			return "", fmt.Errorf("%v", err)
 		}
 		// csv package add newline char at the end of the line, we remove it here
-		return strings.Replace(buf.String(), "\n", "", -1), nil
+		return strings.TrimSpace(buf.String()), nil
 
 	default:
 		v, ok := value.(string)
