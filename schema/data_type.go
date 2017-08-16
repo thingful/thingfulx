@@ -17,35 +17,35 @@ const (
 	IntegerType = DataType("http://www.w3.org/2001/XMLSchema#integer")
 
 	// IntegerListType is our exported const representing a value that is a comma
-	// separated list of integer instances. Used for transport data values.
+	// separated list of integer instances.
 	IntegerListType = DataType("http://purl.org/iot/vocab/thingful#ntegerList")
 
 	// DoubleType is our exported const representing double or float data types
 	DoubleType = DataType("http://www.w3.org/2001/XMLSchema#double")
 
 	// DoubleListType is our exported const representing a value that is a comma
-	// separated list of double instances. Used for transport data values.
+	// separated list of double instances.
 	DoubleListType = DataType("http://purl.org/iot/vocab/thingful#doubleList")
 
 	// DateTimeType is our exported const representing a date/time values
 	DateTimeType = DataType("http://www.w3.org/2001/XMLSchema#dateTime")
 
 	// DateTimeListType is our exported const representing a value that is a comma
-	// separated list of datetime instances. Used for transport data values.
+	// separated list of datetime instances.
 	DateTimeListType = DataType("http://purl.org/iot/vocab/thingful#dateTimeList")
 
 	// TimeType is our exported const representing a value that is a time
 	TimeType = DataType("http://www.w3.org/2001/XMLSchema#time")
 
 	// TimeListType is our exported const representing a value that is a comma
-	// separated list of dateTime instances. Used for transport data values.
+	// separated list of dateTime instances.
 	TimeListType = DataType("http://purl.org/iot/vocab/thingful#timeList")
 
 	// StringType is our exported const representing string values
 	StringType = DataType("http://www.w3.org/2001/XMLSchema#string")
 
 	// StringListType is our exported const representing a value that is a comma
-	// separated list of string instances. Used for transport data values.
+	// separated list of string instances.
 	StringListType = DataType("http://purl.org/iot/vocab/thingful#stringList")
 
 	// BytesType is our exported const representing an opaque slice of bytes
