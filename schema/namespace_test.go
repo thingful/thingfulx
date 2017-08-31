@@ -69,6 +69,10 @@ func TestExpand(t *testing.T) {
 			expected: "http://schema.mobivoc.org/foobar",
 		},
 		{
+			input:    "siri:foobar",
+			expected: "http://purl.org/iot/vocab/siri#foobar",
+		},
+		{
 			input:    "http://purl.org/iot/vocab/thingful#foobar",
 			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
@@ -137,6 +141,10 @@ func TestCompact(t *testing.T) {
 		{
 			input:    "http://schema.mobivoc.org/foobar",
 			expected: "mobivoc:foobar",
+		},
+		{
+			input:    "http://purl.org/iot/vocab/siri#foobar",
+			expected: "siri:foobar",
 		},
 		{
 			input:    "m3-lite:foobar",

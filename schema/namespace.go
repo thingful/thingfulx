@@ -43,6 +43,9 @@ const (
 
 	//mobivocSchema is base url for Mobivoc schema, it is the domain for Mobility
 	mobivocSchema = "http://schema.mobivoc.org/"
+
+	//siriSchema is base url for unofficial SIRI (Service Interface for Real Time Information) ontology
+	siriSchema = "http://purl.org/iot/vocab/siri#"
 )
 
 var (
@@ -61,6 +64,7 @@ var (
 		"biotop:":     biotopSchema,
 		"datex:":      datexSchema,
 		"mobivoc:":    mobivocSchema,
+		"siri:":       siriSchema,
 	}
 )
 
