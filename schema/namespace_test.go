@@ -76,6 +76,10 @@ func TestExpand(t *testing.T) {
 			input:    "http://purl.org/iot/vocab/thingful#foobar",
 			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
+		{
+			input:    "moc:foobar",
+			expected: "http://semanticweb.cs.vu.nl/2009/11/sem/foobar",
+		},
 	}
 
 	for _, testcase := range testcases {
@@ -149,6 +153,10 @@ func TestCompact(t *testing.T) {
 		{
 			input:    "m3-lite:foobar",
 			expected: "m3-lite:foobar",
+		},
+		{
+			input:    "http://semanticweb.cs.vu.nl/2009/11/sem/foobar",
+			expected: "sem:foobar",
 		},
 	}
 

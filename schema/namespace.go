@@ -41,11 +41,15 @@ const (
 	// datexSchema is base url for Datex2 schema, it is the domain for Traffic & Transport
 	datexSchema = "http://vocab.datex.org/terms#"
 
-	//mobivocSchema is base url for Mobivoc schema, it is the domain for Mobility
+	// mobivocSchema is base url for Mobivoc schema, it is the domain for Mobility
 	mobivocSchema = "http://schema.mobivoc.org/"
 
-	//siriSchema is base url for unofficial SIRI (Service Interface for Real Time Information) ontology
+	// siriSchema is base url for unofficial SIRI (Service Interface for Real Time Information) ontology
 	siriSchema = "http://purl.org/iot/vocab/siri#"
+
+	// semSchema is the base url for the Simple Event Model ontology, used to
+	// describe the events in various subject domains.
+	semSchema = "http://semanticweb.cs.vu.nl/2009/11/sem/"
 )
 
 var (
@@ -65,6 +69,7 @@ var (
 		"datex:":      datexSchema,
 		"mobivoc:":    mobivocSchema,
 		"siri:":       siriSchema,
+		"sem":         semSchema,
 	}
 )
 
