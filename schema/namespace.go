@@ -48,7 +48,7 @@ const (
 	siriSchema = "http://purl.org/iot/vocab/siri#"
 
 	// semSchema is the base url for the Simple Event Model ontology, used to
-	// describe the events in various subject domains.
+	// describe events in various subject domains.
 	semSchema = "http://semanticweb.cs.vu.nl/2009/11/sem/"
 )
 
@@ -69,7 +69,7 @@ var (
 		"datex:":      datexSchema,
 		"mobivoc:":    mobivocSchema,
 		"siri:":       siriSchema,
-		"sem":         semSchema,
+		"sem:":        semSchema,
 	}
 )
 

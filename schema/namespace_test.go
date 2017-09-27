@@ -77,7 +77,7 @@ func TestExpand(t *testing.T) {
 			expected: "http://purl.org/iot/vocab/thingful#foobar",
 		},
 		{
-			input:    "moc:foobar",
+			input:    "sem:foobar",
 			expected: "http://semanticweb.cs.vu.nl/2009/11/sem/foobar",
 		},
 	}
