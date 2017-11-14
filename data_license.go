@@ -97,6 +97,9 @@ const (
 	// ODbLV1URL is a the URL identifier for the Open Data Commons Open Database
 	// License.
 	ODbLV1URL = "https://opendatacommons.org/licenses/odbl/1.0/"
+
+	// IODLV2URL is the URL identifier for the Italian Open Data License
+	IODLV2URL = "https://www.dati.gov.it/content/italian-open-data-license-v20"
 )
 
 // DataLicense is struct used to describe data license
@@ -325,6 +328,21 @@ var (
 				Attribution,
 				Notice,
 				ShareAlike,
+			},
+			Prohibits: []string{},
+		},
+
+		IODLV2URL: DataLicense{
+			Name:         "Italian Open Data License v2.0",
+			URL:          "https://www.dati.gov.it/content/italian-open-data-license-v20",
+			LegalCodeURL: "https://www.dati.gov.it/content/italian-open-data-license-v20",
+			Permits: []string{
+				Reproduction,
+				Distribution,
+				DerivativeWorks,
+			},
+			Requires: []string{
+				Attribution,
 			},
 			Prohibits: []string{},
 		},
