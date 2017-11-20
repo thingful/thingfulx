@@ -293,6 +293,26 @@ func TestODbLV1(t *testing.T) {
 	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
 }
 
+func TestIODLV2URL(t *testing.T) {
+
+	license := GetDataLicense(IODLV2URL)
+
+	assert.Equal(t, license.Name, "Italian Open Data License v2.0")
+	assert.Equal(t, license.URL, "https://www.dati.gov.it/content/italian-open-data-license-v20")
+	assert.Equal(t, license.LegalCodeURL, "https://www.dati.gov.it/content/italian-open-data-license-v20")
+	// check Permits
+	assert.Contains(t, license.Permits, Reproduction)
+	assert.Contains(t, license.Permits, Distribution)
+	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
+
+	// check Requires
+	assert.Contains(t, license.Requires, Attribution)
+
+	// check Prohibits
+	assert.NotContains(t, license.Prohibits, CommercialUse)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+}
 func TestCustomLicense(t *testing.T) {
 	thing := Thing{
 		Title:       "Title",
