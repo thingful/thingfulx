@@ -340,6 +340,7 @@ var (
 				Reproduction,
 				Distribution,
 				DerivativeWorks,
+				Sharing,
 			},
 			Requires: []string{
 				Attribution,

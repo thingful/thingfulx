@@ -304,6 +304,7 @@ func TestIODLV2URL(t *testing.T) {
 	assert.Contains(t, license.Permits, Reproduction)
 	assert.Contains(t, license.Permits, Distribution)
 	assert.Contains(t, license.Permits, DerivativeWorks)
+	assert.Contains(t, license.Permits, Sharing)
 
 	// check Requires
 	assert.Contains(t, license.Requires, Attribution)
