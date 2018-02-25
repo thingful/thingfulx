@@ -25,9 +25,19 @@ type Client interface {
 	// request
 	DoHTTP(req *http.Request) (*http.Response, error)
 
-	// DoHTTPGetRequest is a method helper that groups together common
-	// steps required to perform HTTP GET requests.
-	// It returns a slice of bytes containing the HTTP response.
+	// Get is a helper function on the client interface for the most common usage
+	// of the Client, making a simple Get request for a given URL, and returning
+	// a slice of bytes containing the HTTP response. This uses client.DoHTTP
+	// internally so that it ensures the correct user agent string is sent.
+	Get(urlStr string) ([]byte, error)
+
+	// DoHTTPGetRequest is a helper function on the client interface for the most
+	// common usage of the Client, making a simple Get request for a given URL,
+	// and returning a slice of bytes containing the HTTP response. This uses
+	// client.DoHTTP internally so that it ensures the correct user agent string
+	// is sent.
+	//
+	// Deprecated: Use Client.Get instead
 	DoHTTPGetRequest(urlString string) ([]byte, error)
 }
 
@@ -59,12 +69,12 @@ func (c *client) DoHTTP(req *http.Request) (*http.Response, error) {
 	return c.http.Do(req)
 }
 
-// DoHTTPGetRequest is a method helper that groups together common
-// steps required to perform HTTP GET requests.
-// It returns a slice of bytes containing the HTTP response.
-func (c *client) DoHTTPGetRequest(urlString string) ([]byte, error) {
-
-	req, err := http.NewRequest("GET", urlString, nil)
+// Get is a helper function on the client interface for the most common usage
+// of the Client, making a simple Get request for a given URL, and returning a
+// slice of bytes containing the HTTP response. This uses client.DoHTTP
+// internally to ensure that the correct user agent string is sent.
+func (c *client) Get(urlStr string) (b []byte, err error) {
+	req, err := http.NewRequest("GET", urlStr, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -87,10 +97,21 @@ func (c *client) DoHTTPGetRequest(urlString string) ([]byte, error) {
 		return nil, NewErrUnexpectedResponse(resp.Status)
 	}
 
-	b, err := ioutil.ReadAll(resp.Body)
+	b, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
 
-	return b, nil
+	return b, err
+}
+
+// DoHTTPGetRequest is a helper function on the client interface for the most
+// common usage of the Client, making a simple Get request for a given URL, and
+// returning a slice of bytes containing the HTTP response. This uses
+// client.DoHTTP internally to ensure that the correct user agent string is
+// sent.
+//
+// Deprecated: Use Client.Get instead
+func (c *client) DoHTTPGetRequest(urlStr string) ([]byte, error) {
+	return c.Get(urlStr)
 }

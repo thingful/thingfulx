@@ -51,7 +51,7 @@ func TestDoHTTP(t *testing.T) {
 	assert.Equal(t, body, []byte("ok"))
 }
 
-func TestHTTPGetRequest(t *testing.T) {
+func TestGet(t *testing.T) {
 	duration := time.Duration(1) * time.Second
 
 	client := NewClient("thingful", duration)
@@ -67,13 +67,22 @@ func TestHTTPGetRequest(t *testing.T) {
 		),
 	)
 
-	got, err := client.DoHTTPGetRequest("http://example.com")
-	assert.Nil(t, err)
+	t.Run("with new Get method", func(t *testing.T) {
+		got, err := client.Get("http://example.com")
+		assert.Nil(t, err)
 
-	assert.Equal(t, []byte("ok"), got)
+		assert.Equal(t, []byte("ok"), got)
+	})
+
+	t.Run("with old DoHTTPGetRequest method", func(t *testing.T) {
+		got, err := client.DoHTTPGetRequest("http://example.com")
+		assert.Nil(t, err)
+
+		assert.Equal(t, []byte("ok"), got)
+	})
 }
 
-func TestHTTPGetRequestError(t *testing.T) {
+func TestGetError(t *testing.T) {
 
 	testcases := []struct {
 		httpStatus int
@@ -107,7 +116,7 @@ func TestHTTPGetRequestError(t *testing.T) {
 			),
 		)
 
-		_, err := client.DoHTTPGetRequest("http://example.com")
+		_, err := client.Get("http://example.com")
 		assert.Equal(t, testcase.expected, err)
 	}
 }
