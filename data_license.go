@@ -100,6 +100,9 @@ const (
 
 	// IODLV2URL is the URL identifier for the Italian Open Data License
 	IODLV2URL = "https://www.dati.gov.it/content/italian-open-data-license-v20"
+
+	// SGODLV1 is the URL identifier for the Singapore Open Data License
+	SGODLV1 = "http://www.nea.gov.sg/open-data-licence/"
 )
 
 // DataLicense is struct used to describe data license
@@ -336,6 +339,22 @@ var (
 			Name:         "Italian Open Data License v2.0",
 			URL:          "https://www.dati.gov.it/content/italian-open-data-license-v20",
 			LegalCodeURL: "https://www.dati.gov.it/content/italian-open-data-license-v20",
+			Permits: []string{
+				Reproduction,
+				Distribution,
+				DerivativeWorks,
+				Sharing,
+			},
+			Requires: []string{
+				Attribution,
+			},
+			Prohibits: []string{},
+		},
+
+		SGODLV1: DataLicense{
+			Name:         "Singapore Open Data License v1.0",
+			URL:          "http://www.nea.gov.sg/open-data-licence/",
+			LegalCodeURL: "http://www.nea.gov.sg/open-data-licence/",
 			Permits: []string{
 				Reproduction,
 				Distribution,
