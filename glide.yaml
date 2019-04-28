@@ -1,7 +1,0 @@
-package: github.com/thingful/thingfulx
-import:
-- package: github.com/thingful/httpmock
-- package: golang.org/x/net
-  subpackages:
-  - context
-- package: github.com/stretchr/testify
