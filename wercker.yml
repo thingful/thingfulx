@@ -12,33 +12,6 @@ build:
               go version
 
         - script:
-            name: install glide
-            code: |
-              curl --location -O  https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-v0.12.3-linux-amd64.tar.gz
-              tar zxf glide-${GLIDE_VERSION}-linux-amd64.tar.gz
-              mv linux-amd64/glide $GOPATH/bin
-
-        - script:
-            name: install deps
-            code: |
-              glide install
-
-        - script:
-            name: setup
-            code: |
-              make setup
-
-        - script:
-            name: appease linter
-            code: |
-              go build -i
-
-        - script:
             name: test
             code: |
               make test coverage html ARTEFACT_DIR=$WERCKER_REPORT_ARTIFACTS_DIR
-
-        - script:
-            name: lint
-            code: |
-              make lint
