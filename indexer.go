@@ -48,7 +48,7 @@ type Indexer interface {
 	// function can return data to the caller. This is intended to allow the indexer
 	// implementation to return chunks of data as it goes in order to support
 	// infrastructures with hundreds of thousands of unique URLs to return.
-	URLS(ctx context.Context, client Client, delay time.Duration, out chan<- []URLData)
+	URLS(ctx context.Context, client Client, delay time.Duration, out chan<- URLData)
 
 	// Fetch is our method that knows how to obtain raw data for an infrastructure,
 	// and is therefore responsible for negotiating any authentication or protocol
