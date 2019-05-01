@@ -9,6 +9,20 @@ import (
 // Indexer must implement.
 type IndexerBuilder func() (Indexer, error)
 
+// URLData is a struct used to send back data from the URLS method. We now send
+// back data asynchronously via a channel so we want to package our data we are
+// actually interested in (i.e. the slice of strings), along with any error that
+// might happen.
+type URLData struct {
+	// URLS is a slice of url strings representing a chunk of candidate resource
+	// URLs for the target infrastructure.
+	URLS []string
+
+	// Err is used to allow the process to signal back an error to the caller. We
+	// package it with the data so we can signal an error at any point.
+	Err error
+}
+
 // Indexer is the main interface for things that know how to index and fetch
 // resources from external data infrastructures and are thus responsible for
 // handling any authentication requirements, parsing the returned data and
@@ -31,10 +45,10 @@ type Indexer interface {
 	// Indexer must use to make any outgoing requests, a delay Duration which
 	// defines the minimum interval between consecutive requests to the
 	// infrastructure. In addition the caller must pass in a channel by which the
-	// function can return slices of strings. This is intended to allow the indexer
+	// function can return data to the caller. This is intended to allow the indexer
 	// implementation to return chunks of data as it goes in order to support
 	// infrastructures with hundreds of thousands of unique URLs to return.
-	URLS(ctx context.Context, client Client, delay time.Duration, out chan<- []string) error
+	URLS(ctx context.Context, client Client, delay time.Duration, out chan<- []URLData)
 
 	// Fetch is our method that knows how to obtain raw data for an infrastructure,
 	// and is therefore responsible for negotiating any authentication or protocol
