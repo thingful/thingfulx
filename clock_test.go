@@ -27,3 +27,10 @@ func TestMockClock(t *testing.T) {
 	assert.NotNil(t, ts)
 	assert.Equal(t, ts, clock.Now())
 }
+
+func TestTimeProvider(t *testing.T) {
+	ts := time.Now()
+
+	timeProvider := NewTimeProvider(ts)
+	assert.Equal(t, timeProvider.Now(), ts)
+}

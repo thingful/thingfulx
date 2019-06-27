@@ -13,6 +13,9 @@ type Clock interface {
 	Now() time.Time
 }
 
+// TimeProvider is an alias for our Clock interface for backwards compatibility
+type TimeProvider = Clock
+
 // NewClock returns an instantiated DefaultClock instance.
 func NewClock() Clock {
 	return &DefaultClock{}
@@ -53,4 +56,9 @@ type MockClock struct {
 // Now returns the internal time of the MockTimeProvider.
 func (t MockClock) Now() time.Time {
 	return t.internalTime
+}
+
+// NewTimeProvider is a deprecated method that calls NewMockClockAt.
+func NewTimeProvider(t time.Time) Clock {
+	return NewMockClockAt(t)
 }
