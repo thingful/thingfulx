@@ -12,46 +12,6 @@ import (
 	"github.com/thingful/simular"
 )
 
-//func TestDoHTTP(t *testing.T) {
-//	duration := time.Duration(1) * time.Second
-//
-//	client := NewClient("thingful", duration)
-//
-//	httpmock.Activate()
-//	defer httpmock.DeactivateAndReset()
-//
-//	httpmock.RegisterStubRequest(
-//		httpmock.NewStubRequest(
-//			"GET",
-//			"http://example.com/foo",
-//			httpmock.NewStringResponder(200, "ok"),
-//		),
-//	)
-//
-//	req, err := http.NewRequest("GET", "http://example.com/foo", nil)
-//	if err != nil {
-//		t.Fatalf("Unexpected error, got %#v", err)
-//	}
-//
-//	resp, err := client.DoHTTP(req)
-//	if err != nil {
-//		t.Fatalf("Unexpected error, got %#v", err)
-//	}
-//
-//	defer func() {
-//		if cerr := resp.Body.Close(); err == nil && cerr != nil {
-//			err = cerr
-//		}
-//	}()
-//
-//	body, err := ioutil.ReadAll(resp.Body)
-//	if err != nil {
-//		t.Fatalf("Unexpected error, got %#v", err)
-//	}
-//
-//	assert.Equal(t, body, []byte("ok"))
-//}
-
 func TestGet(t *testing.T) {
 	timeout := time.Duration(1) * time.Second
 

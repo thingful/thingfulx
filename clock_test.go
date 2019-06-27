@@ -7,16 +7,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTimeProvider(t *testing.T) {
-	provider := NewTimeProvider()
+func TestClock(t *testing.T) {
+	provider := NewClock()
 
 	provider.Now()
 }
 
-func TestMockTimeProvider(t *testing.T) {
+func TestMockClock(t *testing.T) {
 	ts := time.Now()
 
-	provider := NewMockTimeProvider(ts)
+	provider := NewMockClock(ts)
 
 	assert.Equal(t, provider.Now(), ts)
 }
