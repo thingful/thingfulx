@@ -28,9 +28,17 @@ func (c DefaultClock) Now() time.Time {
 	return time.Now()
 }
 
-// NewMockClock is a convenience helper that returns a new
-// MockClock initialized to the specified time.
-func NewMockClock(t time.Time) Clock {
+// NewMockClock returns a new MockClock with the internal time set to the time
+// at which the method was invoked.
+func NewMockClock() Clock {
+	return &MockClock{
+		internalTime: time.Now(),
+	}
+}
+
+// NewMockClockAt returns a new MockClock initialized to the passed in time
+// variable.
+func NewMockClockAt(t time.Time) Clock {
 	return &MockClock{
 		internalTime: t,
 	}
