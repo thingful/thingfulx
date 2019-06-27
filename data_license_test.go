@@ -319,8 +319,8 @@ func TestSGODLV1(t *testing.T) {
 	license := GetDataLicense(SGODLV1)
 
 	assert.Equal(t, license.Name, "Singapore Open Data License v1.0")
-	assert.Equal(t, license.URL, "http://www.nea.gov.sg/open-data-licence/")
-	assert.Equal(t, license.LegalCodeURL, "http://www.nea.gov.sg/open-data-licence/")
+	assert.Equal(t, license.URL, "https://data.gov.sg/open-data-licence")
+	assert.Equal(t, license.LegalCodeURL, "https://data.gov.sg/open-data-licence")
 
 	// check Permits
 	assert.Contains(t, license.Permits, Reproduction)
