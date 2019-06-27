@@ -31,8 +31,6 @@ func TestMockClock(t *testing.T) {
 func TestTimeProvider(t *testing.T) {
 	ts := time.Now()
 
-	var tp TimeProvider
-
-	tp = NewTimeProvider(ts)
-	assert.Equal(t, tp.Now(), ts)
+	timeProvider := NewTimeProvider(ts)
+	assert.Equal(t, timeProvider.Now(), ts)
 }
