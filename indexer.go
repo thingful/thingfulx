@@ -55,9 +55,10 @@ type Indexer interface {
 	// weirdness when it comes to fetching data. It takes as parameters an instance
 	// of the Context interface for request-scoped values and cancellation, the url
 	// we want to get data from, a Client object that the indexer must use to
-	// actually make the request. It returns the raw data from the infrastructure
-	// as a slice of bytes for further parsing.
-	Fetch(ctx context.Context, urlStr string, client Client) ([]byte, error)
+	// actually make the request, and a Clock to allow testing time related
+	// functions. It returns the raw data from the infrastructure as a slice of
+	// bytes for further parsing.
+	Fetch(ctx context.Context, urlStr string, client Client, clock Clock) ([]byte, error)
 
 	// Parse returns a slice of Thing objects extracted from that data source. This
 	// function takes as parameters a slice of bytes representing the data
@@ -66,5 +67,5 @@ type Indexer interface {
 	// the indexing time of the parser. This is to allow for easier testing. We
 	// separate Parsing from Fetching as we have some systems that provide data to
 	// us without having to be fetched from a remote HTTP source.
-	Parse(rawData []byte, urlStr string, timeProvider TimeProvider) ([]Thing, error)
+	Parse(rawData []byte, urlStr string, clock Clock) ([]Thing, error)
 }
