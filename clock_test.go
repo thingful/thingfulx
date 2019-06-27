@@ -8,15 +8,22 @@ import (
 )
 
 func TestClock(t *testing.T) {
-	provider := NewClock()
+	clock := NewClock()
 
-	provider.Now()
+	clock.Now()
+}
+
+func TestMockClockAt(t *testing.T) {
+	ts := time.Now()
+
+	clock := NewMockClockAt(ts)
+
+	assert.Equal(t, clock.Now(), ts)
 }
 
 func TestMockClock(t *testing.T) {
-	ts := time.Now()
-
-	provider := NewMockClock(ts)
-
-	assert.Equal(t, provider.Now(), ts)
+	clock := NewMockClock()
+	ts := clock.Now()
+	assert.NotNil(t, ts)
+	assert.Equal(t, ts, clock.Now())
 }
