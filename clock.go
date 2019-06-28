@@ -58,7 +58,7 @@ func (t MockClock) Now() time.Time {
 	return t.internalTime
 }
 
-// NewTimeProvider is a deprecated method that calls NewMockClockAt.
-func NewTimeProvider(t time.Time) Clock {
+// NewMockTimeProvider is a deprecated method that calls NewMockClockAt.
+func NewMockTimeProvider(t time.Time) Clock {
 	return NewMockClockAt(t)
 }
