@@ -34,7 +34,7 @@ func (c DefaultClock) Now() time.Time {
 // NewMockClock returns a new MockClock with the internal time set to the time
 // at which the method was invoked.
 func NewMockClock() Clock {
-	return &MockClock{
+	return &mockClock{
 		internalTime: time.Now(),
 	}
 }
@@ -42,23 +42,26 @@ func NewMockClock() Clock {
 // NewMockClockAt returns a new MockClock initialized to the passed in time
 // variable.
 func NewMockClockAt(t time.Time) Clock {
-	return &MockClock{
+	return &mockClock{
 		internalTime: t,
 	}
 }
 
-// MockClock is an implementation of the Clock interface that gives back a
+// mockClock is an implementation of the Clock interface that gives back a
 // canned time for all calls to Now(). Intended for use in testing Fetchers.
-type MockClock struct {
+type mockClock struct {
 	internalTime time.Time
 }
 
 // Now returns the internal time of the MockTimeProvider.
-func (t MockClock) Now() time.Time {
+func (t mockClock) Now() time.Time {
 	return t.internalTime
 }
 
-// NewMockTimeProvider is a deprecated method that calls NewMockClockAt.
+// NewMockTimeProvider returns a mock time provider suitable for use in tests.
+//
+// Deprecated: the TimeProvider type has been renamed to Clock, with matching
+// mock instance constructors. New code should use the Clock versions.
 func NewMockTimeProvider(t time.Time) Clock {
 	return NewMockClockAt(t)
 }
