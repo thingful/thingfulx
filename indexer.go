@@ -67,5 +67,5 @@ type Indexer interface {
 	// the indexing time of the parser. This is to allow for easier testing. We
 	// separate Parsing from Fetching as we have some systems that provide data to
 	// us without having to be fetched from a remote HTTP source.
-	Parse(rawData []byte, urlStr string, clock Clock) ([]Thing, error)
+	Parse(rawData []byte, urlStr string, clock Clock) ([]*Thing, error)
 }
