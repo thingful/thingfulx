@@ -337,7 +337,7 @@ func TestSGODLV1(t *testing.T) {
 }
 
 func TestCustomLicense(t *testing.T) {
-	thing := Thing{
+	channel := Channel{
 		Title:       "Title",
 		Description: "Description",
 		DataLicense: &DataLicense{
@@ -353,12 +353,12 @@ func TestCustomLicense(t *testing.T) {
 		},
 	}
 
-	assert.Equal(t, thing.DataLicense.Name, "custom made data license")
-	assert.Equal(t, thing.DataLicense.URL, "http://some/url/to/the/license")
-	assert.Contains(t, thing.DataLicense.Permits, Reproduction)
-	assert.Contains(t, thing.DataLicense.Permits, Sharing)
-	assert.Contains(t, thing.DataLicense.Requires, Attribution)
-	assert.NotContains(t, thing.DataLicense.Prohibits, CommercialUse)
+	assert.Equal(t, channel.DataLicense.Name, "custom made data license")
+	assert.Equal(t, channel.DataLicense.URL, "http://some/url/to/the/license")
+	assert.Contains(t, channel.DataLicense.Permits, Reproduction)
+	assert.Contains(t, channel.DataLicense.Permits, Sharing)
+	assert.Contains(t, channel.DataLicense.Requires, Attribution)
+	assert.NotContains(t, channel.DataLicense.Prohibits, CommercialUse)
 }
 
 func TestGetDataLicense(t *testing.T) {
