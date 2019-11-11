@@ -60,7 +60,7 @@ type Channel struct {
 
 	// UpdateInterval indicates how often the upstream resource obtains fresh data
 	// expressed as an integer number of seconds.
-	UpdateInterval int `json:"updateInterval,omitempty"`
+	UpdateInterval int32 `json:"updateInterval,omitempty"`
 
 	// Type defines the type of data of this channel, eg; string, double,
 	// date-time
