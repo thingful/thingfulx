@@ -13,7 +13,7 @@ default: full
 
 .PHONY: setup
 setup:
-	GO111MODULE=on $(GOGET) github.com/golangci/golangci-lint/cmd/golangci-lint@v1.21.0
+	curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s -- -b $(shell go env GOPATH)/bin v1.21.0
 
 .PHONY: test
 test:
