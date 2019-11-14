@@ -60,12 +60,12 @@ type Indexer interface {
 	// bytes for further parsing.
 	Fetch(ctx context.Context, urlStr string, client Client, clock Clock) ([]byte, error)
 
-	// Parse returns a slice of Thing objects extracted from that data source. This
-	// function takes as parameters a slice of bytes representing the data
-	// collected from the upstream data provider, the URL of the Thing being
-	// indexed and a TimeProvider instance used internally by the fetcher to record
-	// the indexing time of the parser. This is to allow for easier testing. We
+	// Parse returns a slice of Channel objects extracted from that data source.
+	// This function takes as parameters a slice of bytes representing the data
+	// collected from the upstream data provider, the URL of the Channel being
+	// indexed and a Clock instance used internally by the fetcher to record the
+	// indexing time of the parser. This is to allow for easier testing. We
 	// separate Parsing from Fetching as we have some systems that provide data to
 	// us without having to be fetched from a remote HTTP source.
-	Parse(rawData []byte, urlStr string, clock Clock) ([]*Thing, error)
+	Parse(rawData []byte, urlStr string, clock Clock) ([]*Channel, error)
 }

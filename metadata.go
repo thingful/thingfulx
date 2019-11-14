@@ -1,13 +1,11 @@
 package thingfulx
 
-// Metadata is a data structure containing additional metadata about the Thing.
-// A key requirement for Metadata at the Thing level is that it must contain a
-// 'thingful:Category' property whose value must be a Category.Name as well as
-// a 'thingful:CategoryUID' whose value must me a Category.UID. These two
-// metadata object are required for correctly displaying Things on the
-// thingful.net map.  The Metadata object must also contain information about
-// the data visibility - see http://theodi.org/data-spectrum for more info.
+// Metadata is a data structure containing additional metadata about a Channel
 type Metadata struct {
+	// Prop is an attribute used to hold the name of a property expressed as
+	// either a namespaced string or a full URL.
 	Prop string `json:"prop"`
-	Val  string `json:"val"`
+
+	// Val is an attribute used to hold the value of the specified property.
+	Val string `json:"val"`
 }
