@@ -81,4 +81,8 @@ const (
 
 	// ErrNotFound is an error that can be used for a 404 not found response
 	ErrNotFound = Error("thingfulx: unexpected HTTP response code, got 404")
+
+	// ErrRobotsForbidden is an error that is returned if access to a resource is
+	// forbidden by the remote site's robots.txt
+	ErrRobotsForbidden = Error("thingfulx: robots.txt forbids access to this resource")
 )
