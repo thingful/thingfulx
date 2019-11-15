@@ -59,6 +59,7 @@ func NewClient(userAgent string, timeout time.Duration) Client {
 		http: &http.Client{
 			Timeout: timeout,
 		},
+		robots: newRobots(),
 	}
 }
 
@@ -66,12 +67,17 @@ func NewClient(userAgent string, timeout time.Duration) Client {
 type client struct {
 	userAgent string
 	http      *http.Client
+	robots    *robots
 }
 
 // DoHTTP is a thin wrapper around the `Do` method on `net/http.Client`. It
 // simply ensures we set the correct user agent header before making the
 // request. We return an http.Response struct or an error.
 func (c *client) DoHTTP(ctx context.Context, req *http.Request) (*http.Response, error) {
+	if !c.robots.permitted(ctx, req.URL, c.userAgent, c.http) {
+		return nil, ErrRobotsForbidden
+	}
+
 	// set the user agent here
 	req.Header.Add("User-Agent", c.userAgent)
 
@@ -90,7 +96,7 @@ func (c *client) DoHTTP(ctx context.Context, req *http.Request) (*http.Response,
 // parameter in recommended style for context usage. We return a slice of bytes
 // or an error.
 func (c *client) GetHTTP(ctx context.Context, urlStr string) (b []byte, err error) {
-	req, err := http.NewRequest("GET", urlStr, nil)
+	req, err := http.NewRequest(http.MethodGet, urlStr, nil)
 	if err != nil {
 		return nil, err
 	}
