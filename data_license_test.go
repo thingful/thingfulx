@@ -15,22 +15,22 @@ func TestCC0(t *testing.T) {
 	assert.Equal(t, license.URL, "https://creativecommons.org/publicdomain/zero/1.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/publicdomain/zero/1.0/legalcode")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.NotContains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, Attribution)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.NotContains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, AttributionReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestCCByV3(t *testing.T) {
@@ -40,23 +40,24 @@ func TestCCByV3(t *testing.T) {
 	assert.Equal(t, license.Name, "Attribution 3.0 Unported (CC BY 3.0)")
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by/3.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by/3.0/legalcode")
+
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestCCBySAV3(t *testing.T) {
@@ -67,22 +68,22 @@ func TestCCBySAV3(t *testing.T) {
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-sa/4.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-sa/4.0/legalcode")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.Contains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.Contains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestCCByNCV3(t *testing.T) {
@@ -93,22 +94,22 @@ func TestCCByNCV3(t *testing.T) {
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc/3.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nc/3.0/legalcode")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.Contains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.Contains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestCCByNDV3(t *testing.T) {
@@ -119,22 +120,22 @@ func TestCCByNDV3(t *testing.T) {
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nd/3.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nd/3.0/legalcode")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.NotContains(t, license.Permits, DerivativeWorks)
-	assert.NotContains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.NotContains(t, license.Permits, DerivativeWorksPerm)
+	assert.NotContains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestCCByNcSaV3(t *testing.T) {
@@ -145,22 +146,22 @@ func TestCCByNcSaV3(t *testing.T) {
 	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc-sa/3.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.Contains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.Contains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.Contains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.Contains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestOGLV2(t *testing.T) {
@@ -171,22 +172,22 @@ func TestOGLV2(t *testing.T) {
 	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
 	assert.Equal(t, license.LegalCodeURL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestOGLV3(t *testing.T) {
@@ -197,22 +198,22 @@ func TestOGLV3(t *testing.T) {
 	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
 	assert.Equal(t, license.LegalCodeURL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestPDDLV1(t *testing.T) {
@@ -223,22 +224,22 @@ func TestPDDLV1(t *testing.T) {
 	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/pddl/1.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/pddl/1.0/")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.NotContains(t, license.Requires, Attribution)
-	assert.NotContains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.NotContains(t, license.Requires, AttributionReq)
+	assert.NotContains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestODCByV1(t *testing.T) {
@@ -249,22 +250,22 @@ func TestODCByV1(t *testing.T) {
 	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/by/1.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/by/1.0/")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.NotContains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.NotContains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestODbLV1(t *testing.T) {
@@ -275,22 +276,22 @@ func TestODbLV1(t *testing.T) {
 	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/odbl/1.0/")
 	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/odbl/1.0/")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
-	assert.Contains(t, license.Requires, Notice)
-	assert.Contains(t, license.Requires, ShareAlike)
-	assert.NotContains(t, license.Requires, SourceCode)
-	assert.NotContains(t, license.Requires, Copyleft)
-	assert.NotContains(t, license.Requires, LesserCopyleft)
+	assert.Contains(t, license.Requires, AttributionReq)
+	assert.Contains(t, license.Requires, NoticeReq)
+	assert.Contains(t, license.Requires, ShareAlikeReq)
+	assert.NotContains(t, license.Requires, SourceCodeReq)
+	assert.NotContains(t, license.Requires, CopyleftReq)
+	assert.NotContains(t, license.Requires, LesserCopyleftReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestIODLV2URL(t *testing.T) {
@@ -301,17 +302,17 @@ func TestIODLV2URL(t *testing.T) {
 	assert.Equal(t, license.URL, "https://www.dati.gov.it/content/italian-open-data-license-v20")
 	assert.Equal(t, license.LegalCodeURL, "https://www.dati.gov.it/content/italian-open-data-license-v20")
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, AttributionReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestSGODLV1(t *testing.T) {
@@ -323,17 +324,17 @@ func TestSGODLV1(t *testing.T) {
 	assert.Equal(t, license.LegalCodeURL, "https://data.gov.sg/open-data-licence")
 
 	// check Permits
-	assert.Contains(t, license.Permits, Reproduction)
-	assert.Contains(t, license.Permits, Distribution)
-	assert.Contains(t, license.Permits, DerivativeWorks)
-	assert.Contains(t, license.Permits, Sharing)
+	assert.Contains(t, license.Permits, ReproductionPerm)
+	assert.Contains(t, license.Permits, DistributionPerm)
+	assert.Contains(t, license.Permits, DerivativeWorksPerm)
+	assert.Contains(t, license.Permits, SharingPerm)
 
 	// check Requires
-	assert.Contains(t, license.Requires, Attribution)
+	assert.Contains(t, license.Requires, AttributionReq)
 
 	// check Prohibits
-	assert.NotContains(t, license.Prohibits, CommercialUse)
-	assert.NotContains(t, license.Prohibits, HighIncomeNationUse)
+	assert.NotContains(t, license.Prohibits, CommercialUseProhib)
+	assert.NotContains(t, license.Prohibits, HighIncomeNationUseProhib)
 }
 
 func TestCustomLicense(t *testing.T) {
@@ -343,22 +344,22 @@ func TestCustomLicense(t *testing.T) {
 		DataLicense: &DataLicense{
 			Name: "custom made data license",
 			URL:  "http://some/url/to/the/license",
-			Permits: []string{
-				Reproduction,
-				Sharing,
+			Permits: []Permission{
+				ReproductionPerm,
+				SharingPerm,
 			},
-			Requires: []string{
-				Attribution,
+			Requires: []Requirement{
+				AttributionReq,
 			},
 		},
 	}
 
 	assert.Equal(t, channel.DataLicense.Name, "custom made data license")
 	assert.Equal(t, channel.DataLicense.URL, "http://some/url/to/the/license")
-	assert.Contains(t, channel.DataLicense.Permits, Reproduction)
-	assert.Contains(t, channel.DataLicense.Permits, Sharing)
-	assert.Contains(t, channel.DataLicense.Requires, Attribution)
-	assert.NotContains(t, channel.DataLicense.Prohibits, CommercialUse)
+	assert.Contains(t, channel.DataLicense.Permits, ReproductionPerm)
+	assert.Contains(t, channel.DataLicense.Permits, SharingPerm)
+	assert.Contains(t, channel.DataLicense.Requires, AttributionReq)
+	assert.NotContains(t, channel.DataLicense.Prohibits, CommercialUseProhib)
 }
 
 func TestGetDataLicense(t *testing.T) {
