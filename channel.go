@@ -50,13 +50,9 @@ type Channel struct {
 	// data as set by the provider.
 	DataLicense *DataLicense `json:"dataLicense"`
 
-	// AttributionName is used to describe an optional attribution name that the
-	// provider may require to be included with any use of their data.
-	AttributionName string `json:"attributionName,omitempty"`
-
-	// AttributionURL is used to describe an optional attribution URL that the
-	// provider may require to be included with any use of their data.
-	AttributionURL string `json:"attributionURL,omitempty"`
+	// Attributions contains a list of attributions that we require to add to the
+	// Channel
+	Attributions []Attribution `json:"attributions"`
 
 	// UpdateInterval indicates how often the upstream resource obtains fresh data
 	// expressed as an integer number of seconds.
@@ -107,4 +103,15 @@ type Observation struct {
 
 	// Val contains the specific value of the datapoint expressed as a string.
 	Val string `json:"value"`
+}
+
+// Attribution contains attribution information about the resource
+type Attribution struct {
+	// Name contains the name of an attribution that we can optionally attach to a
+	// Channel should the license require it.
+	Name string `json:"name"`
+
+	// URL contains a link to an attribution that we can optionally attach to a
+	// Channel should the license require it.
+	URL string `json:"url"`
 }
