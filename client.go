@@ -6,6 +6,9 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
+
+	"github.com/opentracing/opentracing-go"
+	"github.com/opentracing/opentracing-go/log"
 )
 
 // ContextKey is a type alias used for context keys to avoid any issues wth
@@ -74,7 +77,17 @@ type client struct {
 // simply ensures we set the correct user agent header before making the
 // request. We return an http.Response struct or an error.
 func (c *client) DoHTTP(ctx context.Context, req *http.Request) (*http.Response, error) {
+	span, _ := opentracing.StartSpanFromContext(ctx, "client.DoHTTP")
+	defer span.Finish()
+
+	span.SetTag("http.method", req.Method)
+	span.SetTag("resource.url", req.URL)
+
 	if !c.robots.permitted(ctx, req.URL, c.userAgent, c.http) {
+		span.LogFields(
+			log.String("event", "error"),
+			log.String("type", "ErrRobotsForbidden"),
+		)
 		return nil, ErrRobotsForbidden
 	}
 

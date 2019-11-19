@@ -32,15 +32,15 @@ func TestRegistry(t *testing.T) {
 	err := r.Register(newTestIndexer)
 	assert.Nil(t, err)
 
-	indexer, err := r.GetIndexer(context.Background(), "testindexer")
+	indexer, err := r.GetIndexer("testindexer")
 	assert.Nil(t, err)
 	assert.NotNil(t, indexer)
 	assert.Equal(t, "testindexer", indexer.Provider().UID)
 
-	_, err = r.GetIndexer(context.Background(), "unknownprovider")
+	_, err = r.GetIndexer("unknownprovider")
 	assert.NotNil(t, err)
 	assert.True(t, errors.Is(err, registry.ErrUnknownProvider))
 
-	indexers := r.GetIndexers(context.Background())
+	indexers := r.GetIndexers()
 	assert.Len(t, indexers, 1)
 }

@@ -1,13 +1,10 @@
 package registry
 
 import (
-	"context"
 	"errors"
 	"fmt"
 	"sync"
 
-	"github.com/opentracing/opentracing-go"
-	"github.com/opentracing/opentracing-go/log"
 	"github.com/thingful/thingfulx"
 )
 
@@ -63,12 +60,7 @@ func (r *Registry) MustRegister(builder func() (thingfulx.Indexer, error)) {
 }
 
 // GetIndexer attempts to return the indexer for the specified provider UID.
-func (r *Registry) GetIndexer(ctx context.Context, providerUID string) (thingfulx.Indexer, error) {
-	span, _ := opentracing.StartSpanFromContext(ctx, "registry.GetIndexer")
-	defer span.Finish()
-
-	span.SetTag("providerUID", providerUID)
-
+func (r *Registry) GetIndexer(providerUID string) (thingfulx.Indexer, error) {
 	r.RLock()
 	defer r.RUnlock()
 
@@ -76,19 +68,11 @@ func (r *Registry) GetIndexer(ctx context.Context, providerUID string) (thingful
 		return indexer, nil
 	}
 
-	span.LogFields(
-		log.String("event", "error"),
-		log.String("type", "unknown provider UID"),
-	)
-
 	return nil, fmt.Errorf("Unknown indexer '%s': %w", providerUID, ErrUnknownProvider)
 }
 
 // GetIndexers returns a list of the registered Indexers in the registry
-func (r *Registry) GetIndexers(ctx context.Context) []thingfulx.Indexer {
-	span, _ := opentracing.StartSpanFromContext(ctx, "registry.GetIndexers")
-	defer span.Finish()
-
+func (r *Registry) GetIndexers() []thingfulx.Indexer {
 	r.RLock()
 	defer r.RUnlock()
 
