@@ -83,3 +83,19 @@ func (r *Registry) GetIndexer(ctx context.Context, providerUID string) (thingful
 
 	return nil, fmt.Errorf("Unknown indexer '%s': %w", providerUID, ErrUnknownProvider)
 }
+
+// GetIndexers returns a list of the registered Indexers in the registry
+func (r *Registry) GetIndexers(ctx context.Context) []thingfulx.Indexer {
+	span, _ := opentracing.StartSpanFromContext(ctx, "registry.GetIndexers")
+	defer span.Finish()
+
+	r.RLock()
+	defer r.RUnlock()
+
+	indexers := []thingfulx.Indexer{}
+	for _, i := range r.indexers {
+		indexers = append(indexers, i)
+	}
+
+	return indexers
+}

@@ -27,7 +27,7 @@ func newTestIndexer() (thingfulx.Indexer, error) {
 	return &testIndexer{}, nil
 }
 
-func TestRegister(t *testing.T) {
+func TestRegistry(t *testing.T) {
 	r := registry.NewRegistry()
 	err := r.Register(newTestIndexer)
 	assert.Nil(t, err)
@@ -40,4 +40,7 @@ func TestRegister(t *testing.T) {
 	_, err = r.GetIndexer(context.Background(), "unknownprovider")
 	assert.NotNil(t, err)
 	assert.True(t, errors.Is(err, registry.ErrUnknownProvider))
+
+	indexers := r.GetIndexers(context.Background())
+	assert.Len(t, indexers, 1)
 }
