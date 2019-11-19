@@ -32,9 +32,8 @@ type Channel struct {
 	// the channel at time of indexing.
 	Location *Location `json:"location"`
 
-	// Provider is an embedded data structure containing information about the
-	// data provider.
-	Provider *Provider `json:"provider"`
+	// ProviderUID is the UID for the provider.
+	ProviderUID string `json:"providerUid"`
 
 	// Metadata is a data structure that holds a list of Metadata properties about
 	// the Channel. This is for facts that do not fit neatly into the primary
