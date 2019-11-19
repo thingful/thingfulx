@@ -30,9 +30,8 @@ type URLData struct {
 // interface attempts to be agnostic in terms of protocol so an implementing
 // class is free to perform whatever steps required to get the data.
 type Indexer interface {
-	// UID returns a unique identifier for the data infrastructure indexed by
-	// this Indexer. Good practice for this to be the same as the package name.
-	UID() string
+	// Provider returns data for the current provider.
+	Provider() *Provider
 
 	// URLS returns the smallest set of URLs required to completely index the
 	// upstream data provider. The returned values might be a single URL for hosts
