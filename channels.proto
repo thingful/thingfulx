@@ -40,10 +40,10 @@ message Channel {
   // available via a private API. This is a required field.
   Visibility visibility = 9; // required
 
-  // DataLicence returns the unique identifying URL of a specific data license
+  // DataLicense returns the unique identifying URL of a specific data license
   // that the data provider has chosen to apply to their data. This is an
   // optional field.
-  DataLicense data_licence = 10;
+  DataLicense data_license = 10;
 
   // Attributions contains a list of attributions we require to add to a
   // channel. Typically there will only be one, but some providers may require
