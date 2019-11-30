@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package thingfulx.protobuf;
-option go_package = "thingfulx";
+option go_package = "github.com/thingful/thingfulx";
 
 // Channel represents a single data channel being provided by an IoT device
 // somewhere in the world.

@@ -28,7 +28,7 @@ coverage: test
 
 .PHONY: generate
 generate:
-	protoc --proto_path=./ channels.proto --go_out=./
+	protoc --go_out=paths=source_relative:. channels.proto
 
 .PHONY: lint
 lint:
