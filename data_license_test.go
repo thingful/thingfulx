@@ -12,8 +12,8 @@ func TestCC0(t *testing.T) {
 	assert.NotNil(t, license)
 
 	assert.Equal(t, license.Name, "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication")
-	assert.Equal(t, license.URL, "https://creativecommons.org/publicdomain/zero/1.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/publicdomain/zero/1.0/legalcode")
+	assert.Equal(t, license.Url, "https://creativecommons.org/publicdomain/zero/1.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://creativecommons.org/publicdomain/zero/1.0/legalcode")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -38,8 +38,8 @@ func TestCCByV3(t *testing.T) {
 	license := GetDataLicense(CCByV3URL)
 
 	assert.Equal(t, license.Name, "Attribution 3.0 Unported (CC BY 3.0)")
-	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by/3.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by/3.0/legalcode")
+	assert.Equal(t, license.Url, "https://creativecommons.org/licenses/by/3.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://creativecommons.org/licenses/by/3.0/legalcode")
 
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
@@ -65,8 +65,8 @@ func TestCCBySAV3(t *testing.T) {
 	license := GetDataLicense(CCBySAV4URL)
 
 	assert.Equal(t, license.Name, "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)")
-	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-sa/4.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-sa/4.0/legalcode")
+	assert.Equal(t, license.Url, "https://creativecommons.org/licenses/by-sa/4.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://creativecommons.org/licenses/by-sa/4.0/legalcode")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -91,8 +91,8 @@ func TestCCByNCV3(t *testing.T) {
 	license := GetDataLicense(CCByNCV3URL)
 
 	assert.Equal(t, license.Name, "Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)")
-	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc/3.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nc/3.0/legalcode")
+	assert.Equal(t, license.Url, "https://creativecommons.org/licenses/by-nc/3.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://creativecommons.org/licenses/by-nc/3.0/legalcode")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -117,8 +117,8 @@ func TestCCByNDV3(t *testing.T) {
 	license := GetDataLicense(CCByNDV3URL)
 
 	assert.Equal(t, license.Name, "Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0)")
-	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nd/3.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nd/3.0/legalcode")
+	assert.Equal(t, license.Url, "https://creativecommons.org/licenses/by-nd/3.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://creativecommons.org/licenses/by-nd/3.0/legalcode")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -143,8 +143,8 @@ func TestCCByNcSaV3(t *testing.T) {
 	license := GetDataLicense(CCByNCSAV3URL)
 
 	assert.Equal(t, license.Name, "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)")
-	assert.Equal(t, license.URL, "https://creativecommons.org/licenses/by-nc-sa/3.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode")
+	assert.Equal(t, license.Url, "https://creativecommons.org/licenses/by-nc-sa/3.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -169,8 +169,8 @@ func TestOGLV2(t *testing.T) {
 	license := GetDataLicense(OGLV2URL)
 
 	assert.Equal(t, license.Name, "Open Government Licence version 2.0")
-	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
-	assert.Equal(t, license.LegalCodeURL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
+	assert.Equal(t, license.Url, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
+	assert.Equal(t, license.LegalCodeUrl, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -195,8 +195,8 @@ func TestOGLV3(t *testing.T) {
 	license := GetDataLicense(OGLV3URL)
 
 	assert.Equal(t, license.Name, "Open Government Licence version 3.0")
-	assert.Equal(t, license.URL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
-	assert.Equal(t, license.LegalCodeURL, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
+	assert.Equal(t, license.Url, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
+	assert.Equal(t, license.LegalCodeUrl, "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -221,8 +221,8 @@ func TestPDDLV1(t *testing.T) {
 	license := GetDataLicense(PDDLV1URL)
 
 	assert.Equal(t, license.Name, "Open Data Commons Public Domain Dedication and License (PDDL) v1.0")
-	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/pddl/1.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/pddl/1.0/")
+	assert.Equal(t, license.Url, "https://opendatacommons.org/licenses/pddl/1.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://opendatacommons.org/licenses/pddl/1.0/")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -247,8 +247,8 @@ func TestODCByV1(t *testing.T) {
 	license := GetDataLicense(ODCByV1URL)
 
 	assert.Equal(t, license.Name, "Open Data Commons Attribution License (ODC-By) v1.0")
-	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/by/1.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/by/1.0/")
+	assert.Equal(t, license.Url, "https://opendatacommons.org/licenses/by/1.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://opendatacommons.org/licenses/by/1.0/")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -273,8 +273,8 @@ func TestODbLV1(t *testing.T) {
 	license := GetDataLicense(ODbLV1URL)
 
 	assert.Equal(t, license.Name, "Open Data Commons Open Database License (ODbL) v1.0")
-	assert.Equal(t, license.URL, "https://opendatacommons.org/licenses/odbl/1.0/")
-	assert.Equal(t, license.LegalCodeURL, "https://opendatacommons.org/licenses/odbl/1.0/")
+	assert.Equal(t, license.Url, "https://opendatacommons.org/licenses/odbl/1.0/")
+	assert.Equal(t, license.LegalCodeUrl, "https://opendatacommons.org/licenses/odbl/1.0/")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -299,8 +299,8 @@ func TestIODLV2URL(t *testing.T) {
 	license := GetDataLicense(IODLV2URL)
 
 	assert.Equal(t, license.Name, "Italian Open Data License v2.0")
-	assert.Equal(t, license.URL, "https://www.dati.gov.it/content/italian-open-data-license-v20")
-	assert.Equal(t, license.LegalCodeURL, "https://www.dati.gov.it/content/italian-open-data-license-v20")
+	assert.Equal(t, license.Url, "https://www.dati.gov.it/content/italian-open-data-license-v20")
+	assert.Equal(t, license.LegalCodeUrl, "https://www.dati.gov.it/content/italian-open-data-license-v20")
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
 	assert.Contains(t, license.Permits, DistributionPerm)
@@ -320,8 +320,8 @@ func TestSGODLV1(t *testing.T) {
 	license := GetDataLicense(SGODLV1)
 
 	assert.Equal(t, license.Name, "Singapore Open Data License v1.0")
-	assert.Equal(t, license.URL, "https://data.gov.sg/open-data-licence")
-	assert.Equal(t, license.LegalCodeURL, "https://data.gov.sg/open-data-licence")
+	assert.Equal(t, license.Url, "https://data.gov.sg/open-data-licence")
+	assert.Equal(t, license.LegalCodeUrl, "https://data.gov.sg/open-data-licence")
 
 	// check Permits
 	assert.Contains(t, license.Permits, ReproductionPerm)
@@ -338,24 +338,24 @@ func TestSGODLV1(t *testing.T) {
 }
 
 func TestCustomLicense(t *testing.T) {
-	channel := Channel{
+ 	channel := &Channel{
 		Title:       "Title",
 		Description: "Description",
 		DataLicense: &DataLicense{
 			Name: "custom made data license",
-			URL:  "http://some/url/to/the/license",
-			Permits: []Permission{
+			Url:  "http://some/url/to/the/license",
+			Permits: []string{
 				ReproductionPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 			},
 		},
 	}
 
 	assert.Equal(t, channel.DataLicense.Name, "custom made data license")
-	assert.Equal(t, channel.DataLicense.URL, "http://some/url/to/the/license")
+	assert.Equal(t, channel.DataLicense.Url, "http://some/url/to/the/license")
 	assert.Contains(t, channel.DataLicense.Permits, ReproductionPerm)
 	assert.Contains(t, channel.DataLicense.Permits, SharingPerm)
 	assert.Contains(t, channel.DataLicense.Requires, AttributionReq)
@@ -363,8 +363,8 @@ func TestCustomLicense(t *testing.T) {
 }
 
 func TestGetDataLicense(t *testing.T) {
-	license := GetDataLicense("unknown-license")
-	assert.Nil(t, license)
+	license := GetDataLicense("http://unexpected-license.com")
+	assert.Equal(t, "Unknown License", license.Name)
 }
 
 func TestUnableToModifyReadLicenses(t *testing.T) {

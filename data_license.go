@@ -1,60 +1,48 @@
 package thingfulx
 
-// Permission is a string type alias used to define a permission that may be
-// granted by a license.
-type Permission string
-
-// Requirement is a string type alias used to define a requirement that may be
-// enforced by a license.
-type Requirement string
-
-// Prohibition is a string type alias used to define a prohibtion that may be
-// dictated by a license.
-type Prohibition string
-
 const (
 	// ReproductionPerm is "making multiple copies of a dataset
-	ReproductionPerm Permission = "cc:Reproduction"
+	ReproductionPerm = "cc:Reproduction"
 
 	// DistributionPerm is "distribution, public display, and publicly performance"
-	DistributionPerm Permission = "cc:Distribution"
+	DistributionPerm = "cc:Distribution"
 
 	// DerivativeWorksPerm is "distribution of derivative works"
-	DerivativeWorksPerm Permission = "cc:DerivativeWorks"
+	DerivativeWorksPerm = "cc:DerivativeWorks"
 
 	// SharingPerm is "permits commercial derivatives, but only non-commercial
 	// distribution"
-	SharingPerm Permission = "cc:Sharing"
+	SharingPerm = "cc:Sharing"
 
 	// Requirements type
 
 	// NoticeReq is "copyright and license notices be kept intact"
-	NoticeReq Requirement = "cc:Notice"
+	NoticeReq = "cc:Notice"
 
 	// AttributionReq is "credit required to give to copyright holder and/or author"
-	AttributionReq Requirement = "cc:Attribution"
+	AttributionReq = "cc:Attribution"
 
 	// ShareAlikeReq is "derivative works be licensed under the same terms or
 	// compatible terms as the original work"
-	ShareAlikeReq Requirement = "cc:ShareAlike"
+	ShareAlikeReq = "cc:ShareAlike"
 
 	// SourceCodeReq is "source code (the preferred form for making modifications)
 	// must be provided when exercising some rights granted by the license"
-	SourceCodeReq Requirement = "cc:SourceCode"
+	SourceCodeReq = "cc:SourceCode"
 
 	// CopyleftReq is "derivative and combined works must be licensed under
 	// specified terms, similar to those on the original work"
-	CopyleftReq Requirement = "cc:Copyleft"
+	CopyleftReq = "cc:Copyleft"
 
 	// LesserCopyleftReq is "derivative works must be licensed under specified
 	// terms, with at least the same conditions as the original work;
 	// combinations with the work may be licensed under different terms"
-	LesserCopyleftReq Requirement = "cc:LesserCopyleft"
+	LesserCopyleftReq = "cc:LesserCopyleft"
 
 	// Prohibitions type
 
 	// CommercialUseProhib is "exercising rights for commercial purposes"
-	CommercialUseProhib Prohibition = "cc:CommercialUse"
+	CommercialUseProhib = "cc:CommercialUse"
 
 	// HighIncomeNationUseProhib is "use in a non-developing country"
 	HighIncomeNationUseProhib = "cc:HighIncomeNationUse"
@@ -113,28 +101,10 @@ const (
 
 	// SGODLV1 is the URL identifier for the Singapore Open Data License
 	SGODLV1 = "https://data.gov.sg/open-data-licence"
+
+	// Unknown is a placeholder identifier for an unknown or unspecified data license
+	Unknown = "urn:thingful:data-license"
 )
-
-// DataLicense is struct used to describe data license
-type DataLicense struct {
-	// Human readable name for this license
-	Name string `json:"name"`
-
-	// url to the short version of the license
-	URL string `json:"id"`
-
-	// url to the long or legal version of the license
-	LegalCodeURL string `json:"legalCode,omitempty"`
-
-	// array containing list of properties that this license permits
-	Permits []Permission `json:"permits,omitempty"`
-
-	// array containing list of properties that this license requires
-	Requires []Requirement `json:"requires,omitempty"`
-
-	// array containing list of properties that this license prohibits
-	Prohibits []Prohibition `json:"prohibits,omitempty"`
-}
 
 var (
 	// licenses is an unexported map of license instances, which allows us to
@@ -144,237 +114,244 @@ var (
 	licenses = map[string]DataLicense{
 		CC0V1URL: DataLicense{
 			Name:         "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
-			URL:          "https://creativecommons.org/publicdomain/zero/1.0/",
-			LegalCodeURL: "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
-			Permits: []Permission{
+			Url:          CC0V1URL,
+			LegalCodeUrl: "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires:  []Requirement{},
-			Prohibits: []Prohibition{},
+			Requires:  []string{},
+			Prohibits: []string{},
 		},
 
 		CCByV3URL: DataLicense{
 			Name:         "Attribution 3.0 Unported (CC BY 3.0)",
-			URL:          "https://creativecommons.org/licenses/by/3.0/",
-			LegalCodeURL: "https://creativecommons.org/licenses/by/3.0/legalcode",
-			Permits: []Permission{
+			Url:          CCByV3URL,
+			LegalCodeUrl: "https://creativecommons.org/licenses/by/3.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		CCBySAV4URL: DataLicense{
 			Name:         "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
-			URL:          "https://creativecommons.org/licenses/by-sa/4.0/",
-			LegalCodeURL: "https://creativecommons.org/licenses/by-sa/4.0/legalcode",
-			Permits: []Permission{
+			Url:          CCBySAV4URL,
+			LegalCodeUrl: "https://creativecommons.org/licenses/by-sa/4.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 				ShareAlikeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		CCByV4URL: DataLicense{
 			Name:         "Attribution 4.0 International (CC BY 4.0)",
-			URL:          "https://creativecommons.org/licenses/by/4.0/",
-			LegalCodeURL: "https://creativecommons.org/licenses/by/4.0/legalcode",
-			Permits: []Permission{
+			Url:          CCByV4URL,
+			LegalCodeUrl: "https://creativecommons.org/licenses/by/4.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		CCByNCV3URL: DataLicense{
 			Name:         "Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)",
-			URL:          "https://creativecommons.org/licenses/by-nc/3.0/",
-			LegalCodeURL: "https://creativecommons.org/licenses/by-nc/3.0/legalcode",
-			Permits: []Permission{
+			Url:          CCByNCV3URL,
+			LegalCodeUrl: "https://creativecommons.org/licenses/by-nc/3.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{
+			Prohibits: []string{
 				CommercialUseProhib,
 			},
 		},
 
 		CCByNDV3URL: DataLicense{ // i'm a bit confuse with this one how to describe it, need confirmation with CC
 			Name:         "Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0)",
-			URL:          "https://creativecommons.org/licenses/by-nd/3.0/",
-			LegalCodeURL: "https://creativecommons.org/licenses/by-nd/3.0/legalcode",
-			Permits: []Permission{
+			Url:          CCByNDV3URL,
+			LegalCodeUrl: "https://creativecommons.org/licenses/by-nd/3.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		CCByNCSAV3URL: DataLicense{
 			Name:         "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)",
-			URL:          "https://creativecommons.org/licenses/by-nc-sa/3.0/",
-			LegalCodeURL: "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode",
-			Permits: []Permission{
+			Url:          CCByNCSAV3URL,
+			LegalCodeUrl: "https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				SharingPerm,
 				DerivativeWorksPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				ShareAlikeReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{
+			Prohibits: []string{
 				CommercialUseProhib,
 			},
 		},
 
 		OGLV2URL: DataLicense{
 			Name:         "Open Government Licence version 2.0",
-			URL:          "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
-			LegalCodeURL: "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
-			Permits: []Permission{
+			Url:          OGLV2URL,
+			LegalCodeUrl: "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		OGLV3URL: DataLicense{
 			Name:         "Open Government Licence version 3.0",
-			URL:          "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-			LegalCodeURL: "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-			Permits: []Permission{
+			Url:          OGLV3URL,
+			LegalCodeUrl: "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		PDDLV1URL: DataLicense{
 			Name:         "Open Data Commons Public Domain Dedication and License (PDDL) v1.0",
-			URL:          "https://opendatacommons.org/licenses/pddl/1.0/",
-			LegalCodeURL: "https://opendatacommons.org/licenses/pddl/1.0/",
-			Permits: []Permission{
+			Url:          PDDLV1URL,
+			LegalCodeUrl: "https://opendatacommons.org/licenses/pddl/1.0/",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires:  []Requirement{},
-			Prohibits: []Prohibition{},
+			Requires:  []string{},
+			Prohibits: []string{},
 		},
 
 		ODCByV1URL: DataLicense{
 			Name:         "Open Data Commons Attribution License (ODC-By) v1.0",
-			URL:          "https://opendatacommons.org/licenses/by/1.0/",
-			LegalCodeURL: "https://opendatacommons.org/licenses/by/1.0/",
-			Permits: []Permission{
+			Url:          ODCByV1URL,
+			LegalCodeUrl: "https://opendatacommons.org/licenses/by/1.0/",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		ODbLV1URL: DataLicense{
 			Name:         "Open Data Commons Open Database License (ODbL) v1.0",
-			URL:          "https://opendatacommons.org/licenses/odbl/1.0/",
-			LegalCodeURL: "https://opendatacommons.org/licenses/odbl/1.0/",
-			Permits: []Permission{
+			Url:          ODbLV1URL,
+			LegalCodeUrl: "https://opendatacommons.org/licenses/odbl/1.0/",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 				NoticeReq,
 				ShareAlikeReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		IODLV2URL: DataLicense{
 			Name:         "Italian Open Data License v2.0",
-			URL:          "https://www.dati.gov.it/content/italian-open-data-license-v20",
-			LegalCodeURL: "https://www.dati.gov.it/content/italian-open-data-license-v20",
-			Permits: []Permission{
+			Url:          IODLV2URL,
+			LegalCodeUrl: "https://www.dati.gov.it/content/italian-open-data-license-v20",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
 		},
 
 		SGODLV1: DataLicense{
 			Name:         "Singapore Open Data License v1.0",
-			URL:          "https://data.gov.sg/open-data-licence",
-			LegalCodeURL: "https://data.gov.sg/open-data-licence",
-			Permits: []Permission{
+			Url:          SGODLV1,
+			LegalCodeUrl: "https://data.gov.sg/open-data-licence",
+			Permits: []string{
 				ReproductionPerm,
 				DistributionPerm,
 				DerivativeWorksPerm,
 				SharingPerm,
 			},
-			Requires: []Requirement{
+			Requires: []string{
 				AttributionReq,
 			},
-			Prohibits: []Prohibition{},
+			Prohibits: []string{},
+		},
+
+		Unknown: DataLicense{
+			Name:      "Unknown License",
+			Permits:   []string{},
+			Requires:  []string{},
+			Prohibits: []string{},
 		},
 	}
 )
@@ -383,11 +360,11 @@ var (
 // to make it easier to apply a standard license to a Thing. It takes in a
 // license URL as a parameter, and returns an instantiated DataLicense instance
 // representing that license or nil if the license is not defined in Thingfulx.
-func GetDataLicense(licenseURL string) *DataLicense {
+func GetDataLicense(licenseURL string) DataLicense {
 	license, ok := licenses[licenseURL]
 	if !ok {
-		return nil
+		return licenses[Unknown]
 	}
 
-	return &license
+	return license
 }

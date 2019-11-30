@@ -1,0 +1,185 @@
+syntax = "proto3";
+
+package thingfulx.protobuf;
+option go_package = "github.com/thingful/thingfulx";
+
+// Channel represents a single data channel being provided by an IoT device
+// somewhere in the world.
+message Channel {
+  // URL contains a unique URL for the Channel that must be the URL at which the
+  // Channel's data is available
+  string url = 1; // required
+
+  // Title contains a unique (if possible) title for the Channel
+  string title = 2; // required
+
+  // Description contains a human centered description of the Channel if
+  // available.
+  string description = 3;
+
+  // Webpage contains a human centered web resource where information about the
+  // specific device providing the Channel may be found
+  string webpage = 4;
+
+  // IndexedAt contains an RFC3339 timestamp showing when the Channel was indexed
+  string indexed_at = 5; // required
+
+  // Location contains the geographical location of the Channel
+  Location location = 6; // required
+
+  // ProviderUID must return the unique identifier of the provider on which the
+  // Device publishes this Channel. This is a required field.
+  string provider_uid = 7; // required
+
+  // Metadata contains an optional list of metadata about the Channel
+  repeated Metadata metadata = 8;
+
+  // Visibility returns the visibility status of the Channel. Can be one of OPEN
+  // - open API freely accessible with no authentication, SHARED - available via
+  // a public API provided suitable authentication is supplied, or CLOSED - only
+  // available via a private API. This is a required field.
+  Visibility visibility = 9; // required
+
+  // DataLicense returns the unique identifying URL of a specific data license
+  // that the data provider has chosen to apply to their data. This is an
+  // optional field.
+  DataLicense data_license = 10;
+
+  // Attributions contains a list of attributions we require to add to a
+  // channel. Typically there will only be one, but some providers may require
+  // multiple attributions.
+  repeated Attribution attributions = 11;
+
+  // UpdateInterval returns the update frequency of the data resource expressed
+  // as an integer number of seconds.
+  int32 update_interval = 12;
+
+  // QuantityKind is used to describe the specific physical quantity kind this
+  // channel measures. This will be expressed as a namespaced string, i.e.
+  // m3-lite:AirTemperature where this compressed string can be expanded to URL
+  // that uniquely identifies the quantity kind.
+  string quantity_kind = 13;
+
+  // Unit is used to describe the unit in which the Channel publishes its data.
+  // This will be expressed as a namespaced string, i.e. m3-lite:DegreeCelsius
+  // which can be expanded to a URL that uniqely identifies the unit, and can be
+  // used to obtain the symbol or to do conversions.
+  string unit = 14;
+
+  // DomainOfInterest is used to describe the broad category of the channel, and
+  // as above will be expressed as a namespaced string, i.e.
+  // m3-lite:Environment, which as above can be expanded.
+  repeated string domain_of_interest = 15;
+
+  // MeasuredBy is used to describe the type of sensor that was used to obtain
+  // the channel's data. Expressed as a namespaced string, i.e.
+  // m3-lite:Seismometer.
+  string measured_by = 16;
+
+  // DataType is used to encode the type of the value contained in each
+  // observation.
+  DataType data_type = 17;
+
+  // Observations returns a list of data observation values that represent
+  // concrete data recordings for the Channel.
+  repeated Observation observations = 18;
+}
+
+// Visibility defines an access level for a resource using definitions provided
+// by the ODI. Open means accessible without authentication, Shared is publicly
+// accessible provided some registration and authentication process is followed,
+// and Closed means the resource is private, only accessible with explicit
+// permission.
+enum Visibility {
+  OPEN = 0;
+  SHARED = 1;
+  CLOSED = 3;
+}
+
+// The DataType enum is used to encode information about the data type of the
+// values returned in the repeated Observations list.
+enum DataType {
+  NUMBER = 0;
+  INTEGER = 1;
+  STRING = 2;
+  DATE_TIME = 3;
+  TIME = 4;
+  BOOLEAN = 5;
+  BYTES = 6;
+  UNKNOWN = 7;
+}
+
+// Attribution is a message type used to add attributions to a Channel.
+message Attribution {
+  // Name is the name of at attribution
+  string Name = 1;
+
+  // URL  is the URL of  the attribution
+  string URL = 2;
+}
+
+
+// Location is a message type used to describe a physical location
+message Location {
+  // Longitude contains the decimal longitude of a geographical location
+  float longitude = 1;
+
+  // Latitude contains the decimal latitude of a geographical location
+  float latitude = 2;
+
+  // Elevation contains the elevation of a geographical location expressed as
+  // metres above sea level if available
+  float elevation = 3;
+}
+
+// Metadata is a message type used to describe arbitrary metadata properties for
+// a Channel
+message Metadata {
+  // Property contains a namespaced property of a channel that we wish to describe.
+  string property = 1;
+
+  // Value contains the value we wish to assign to that property in order to
+  // correctly describe some aspect of the Channel
+  string value = 2;
+}
+
+// Observation is a messages used to record a single data value at a point in
+// time for a channel
+message Observation {
+  // RecordedAt records the timestamp at which the observation was recorded in
+  // UTC and expressed as an RFC3339 string.
+  string recorded_at = 1; // required
+
+  // Each Observation must include its own location as this allows us to place
+  // an observation in a particular place at a particular time which may be
+  // different from the current location of the Channel.
+  Location location = 2; // required
+
+  // Value includes the actual value of the Observation at the instant of time
+  // encoded as a string.
+  string value = 3;
+}
+
+// DataLicense is a message used to describe the properties of a data license
+message DataLicense {
+  // Name is a human friendly label or name for the data license.
+  string name = 1; // required
+
+  // Url is a unique identifier for the license that should also be the URL
+  // where the text of the license is available.
+  string url = 2; // required
+
+  // LegalCodeUrl is a link to a long or legal version of the license. This may
+  // be the same as the above URL if no more detailed version is available.
+  string legal_code_url = 3; // required
+
+  // Permits is a list of properties which define what usage the license permits.
+  repeated string permits = 4;
+
+  // Requires is a list of properties which define what requirements the license
+  // has.
+  repeated string requires = 5;
+
+  // Permits is a list of properties which define what the license prohibits
+  repeated string prohibits = 6;
+}
