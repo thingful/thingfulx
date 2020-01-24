@@ -13,7 +13,7 @@ import (
 
 type testIndexer struct{}
 
-func (testIndexer) Provider() *thingfulx.Provider { return &thingfulx.Provider{UID: "testindexer"} }
+func (testIndexer) Provider() *thingfulx.Provider { return &thingfulx.Provider{Uid: "testindexer"} }
 func (testIndexer) URLS(ctx context.Context, client thingfulx.Client, delay time.Duration, out chan<- thingfulx.URLData) {
 }
 func (testIndexer) Fetch(ctx context.Context, urlStr string, client thingfulx.Client, clock thingfulx.Clock) ([]byte, error) {
@@ -35,7 +35,7 @@ func TestRegistry(t *testing.T) {
 	indexer, err := r.GetIndexer("testindexer")
 	assert.Nil(t, err)
 	assert.NotNil(t, indexer)
-	assert.Equal(t, "testindexer", indexer.Provider().UID)
+	assert.Equal(t, "testindexer", indexer.Provider().GetUid())
 
 	_, err = r.GetIndexer("unknownprovider")
 	assert.NotNil(t, err)

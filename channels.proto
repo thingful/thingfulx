@@ -27,9 +27,8 @@ message Channel {
   // Location contains the geographical location of the Channel
   Location location = 6; // required
 
-  // ProviderUID must return the unique identifier of the provider on which the
-  // Device publishes this Channel. This is a required field.
-  string provider_uid = 7; // required
+  // Provider contains information about the data provider
+  Provider provider = 7; // required
 
   // Metadata contains an optional list of metadata about the Channel
   repeated Metadata metadata = 8;
@@ -182,4 +181,19 @@ message DataLicense {
 
   // Permits is a list of properties which define what the license prohibits
   repeated string prohibits = 6;
+}
+
+// Provider is a type used to describe the provider of a dataset
+message Provider {
+  // Uid is a unique identifier for the data provider
+  string uid = 1; // required
+
+  // Name is a human friendly label for the data provider
+  string name = 2; // required
+
+  // Description is a longer form description of the data provider
+  string description = 3;
+
+  // Webpage should contain a link to a public webpage describing the provider
+  string webpage = 4;
 }
