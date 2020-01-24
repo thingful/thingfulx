@@ -45,7 +45,7 @@ func (r *Registry) Register(builder func() (thingfulx.Indexer, error)) error {
 	r.Lock()
 	defer r.Unlock()
 
-	r.indexers[indexer.Provider().UID] = indexer
+	r.indexers[indexer.Provider().GetUid()] = indexer
 
 	return nil
 }
