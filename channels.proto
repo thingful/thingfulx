@@ -21,7 +21,8 @@ message Channel {
   // specific device providing the Channel may be found
   string webpage = 4;
 
-  // IndexedAt contains an RFC3339 timestamp showing when the Channel was indexed
+  // IndexedAt contains an RFC3339 timestamp showing when the Channel was
+  // indexed
   string indexed_at = 5; // required
 
   // Location contains the geographical location of the Channel
@@ -117,24 +118,22 @@ message Attribution {
   string URL = 2;
 }
 
-
 // Location is a message type used to describe a physical location
 message Location {
+  reserved 3;
+
   // Longitude contains the decimal longitude of a geographical location
   float longitude = 1;
 
   // Latitude contains the decimal latitude of a geographical location
   float latitude = 2;
-
-  // Elevation contains the elevation of a geographical location expressed as
-  // metres above sea level if available
-  float elevation = 3;
 }
 
 // Metadata is a message type used to describe arbitrary metadata properties for
 // a Channel
 message Metadata {
-  // Property contains a namespaced property of a channel that we wish to describe.
+  // Property contains a namespaced property of a channel that we wish to
+  // describe.
   string property = 1;
 
   // Value contains the value we wish to assign to that property in order to
@@ -172,7 +171,8 @@ message DataLicense {
   // be the same as the above URL if no more detailed version is available.
   string legal_code_url = 3; // required
 
-  // Permits is a list of properties which define what usage the license permits.
+  // Permits is a list of properties which define what usage the license
+  // permits.
   repeated string permits = 4;
 
   // Requires is a list of properties which define what requirements the license
